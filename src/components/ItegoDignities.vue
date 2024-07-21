@@ -43,6 +43,10 @@
                 </div>
             </div>
         </div>
+        
+        <div class="itego-dignities__blue"></div>
+        
+        <!-- <div class="itego-dignities__btn">Записаться на бесплатный аудит</div>  -->
     </section>
 </template>
 
@@ -54,8 +58,10 @@ export default {
 
 <style lang="scss">
 .itego-dignities {
+    position: relative;
     background-color: white;
-    padding: 80px;
+    padding-top: 80px;
+    padding-bottom: 268px;
     &__title {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;
@@ -64,22 +70,48 @@ export default {
         margin-bottom: 68px;
     }
     &__cards {
+        position: relative;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
     }
     &__card {
+        z-index: 10;
+        background-color: white;
         font-family: "Montserrat", sans-serif;
         border: 1px solid #1565C0;
         width: 378px;
         padding: 40px 45px;
         margin-bottom: 20px;
-        box-shadow: 0 5px 3px #d4d4d4;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         &-title {
             font-weight: 700;
             font-size: 20px;
             margin-bottom: 20px;
         }
+    }
+    &__blue {
+        position: absolute;
+        top: 40%;
+        left: 0;
+        // z-index: 0;
+        background-color: #1565C0;
+        width: 1229px;
+        height: 438px;
+    }
+    &__btn {
+        position: absolute;
+        bottom: 130px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #1565C0;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+        margin: 0 auto;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        font-size: 20px;
+        color: white;
+        padding: 20px 70px;
     }
 }
 </style>

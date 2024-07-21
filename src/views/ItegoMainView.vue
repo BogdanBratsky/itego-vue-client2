@@ -12,6 +12,12 @@
     <ItegoIntegration/>
     <ItegoExpert/>
     <ItegoDignities/>
+    <!-- <ItegoCalculator/>
+    <ItegoStaff/>
+    <ItegoReviews/> -->
+    <ItegoFAQ/>
+    <ItegoQuestions/>
+    <ItegoFooter/>
 </template>
 
 <script>
@@ -26,6 +32,12 @@ import ItegoForm from '../components/ItegoForm.vue'
 import ItegoIntegration from '../components/ItegoIntegration.vue'
 import ItegoExpert from '../components/ItegoExpert.vue'
 import ItegoDignities from '../components/ItegoDignities.vue'
+import ItegoCalculator from '../components/ItegoCalculator.vue'
+import ItegoStaff from '../components/ItegoStaff.vue'
+import ItegoReviews from '../components/ItegoReviews.vue'
+import ItegoFAQ from '../components/ItegoFAQ.vue'
+import ItegoQuestions from '../components/ItegoQuestions.vue'
+import ItegoFooter from '../components/ItegoFooter.vue'
 
 export default {
   components: {
@@ -39,7 +51,13 @@ export default {
     ItegoForm,
     ItegoIntegration,
     ItegoExpert,
-    ItegoDignities
+    ItegoDignities,
+    ItegoCalculator,
+    ItegoStaff,
+    ItegoReviews,
+    ItegoFAQ,
+    ItegoQuestions,
+    ItegoFooter
   }
 }
 </script>
