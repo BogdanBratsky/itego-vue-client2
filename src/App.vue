@@ -10,6 +10,9 @@ export default {
     name: 'App',
     components: {
         ScrollTopBtn
+    },
+    mounted() {
+      document.title = 'ITEGO'
     }
 }
 </script>
