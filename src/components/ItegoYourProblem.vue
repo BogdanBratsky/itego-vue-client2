@@ -6,12 +6,13 @@
             </div>
             <form action="" class="itego-your-problem__form">
                 <div class="itego-your-problem__contact-data">
-                    <input placeholder="Ваше имя" type="text">
-                    <input placeholder="Телефон" type="text">
+                    <input class="itego-your-problem__form-input" placeholder="Ваше имя" type="text">
+                    <input class="itego-your-problem__form-input" placeholder="Телефон" type="text">
                 </div>
-                <textarea placeholder="Проблема" name="" id=""></textarea>
-                <button>Отправить</button>
+                <textarea class="itego-your-problem__form-textarea" placeholder="Проблема" name="" id=""></textarea>
+                <button class="itego-your-problem__form-btn">Отправить</button>
                 <div class="itego-your-problem__confirm">
+                    <input type="checkbox" name="" id="chkbx">
                     Согласие на обработку персональных данных
                 </div>
             </form>
@@ -42,19 +43,19 @@ export default {
         font-family: "Montserrat", sans-serif;
         font-weight: 300;
         font-size: 18px;
-        textarea {
+        &-textarea {
             width: 100%;
             height: 150px;
         }
-        input {
+        &-input {
             width: 575px;
         }
-        textarea, input {
+        &-input, &-textarea {
             border: none;
             outline: none;
             padding: 23px 36px;
         }
-        button {
+        &-btn {
             cursor: pointer;
             background-color: #C7E7EF;
             margin-top: 32px;
@@ -74,11 +75,17 @@ export default {
         margin-bottom: 22px;
     }
     &__confirm {
+        display: flex;
+        align-items: center;
         color: white;
         align-self: center;
         font-family: "Montserrat", sans-serif;
         font-weight: 300;
         font-size: 14px;
+        input {
+            margin-right: 6px;
+            border: 1px solid white;
+        }
     }
 }
 </style>

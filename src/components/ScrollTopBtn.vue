@@ -5,38 +5,38 @@
       @click="scrollToTop"
       class="scroll-to-top-button"
     >
-        &#11014;	
+        &#11014;
     </button>
 </template>
-  
+
 <script>
 export default {
-    name: 'ScrollTopBtn',
-    data() {
-        return {
-        isVisible: false
-        };
-    },
-    methods: {
-        scrollToTop() {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    },
-        handleScroll() {
-        this.isVisible = window.scrollY > 1000;
+  name: 'ScrollTopBtn',
+  data () {
+    return {
+      isVisible: false
     }
-},
-mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-},
-beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    scrollToTop () {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      })
+    },
+    handleScroll () {
+      this.isVisible = window.scrollY > 1000
+    }
+  },
+  mounted () {
+    window.addEventListener('scroll', this.handleScroll)
+  },
+  beforeUnmount () {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
 }
-};
 </script>
-  
+
 <style lang="scss" scoped>
 // @import '../variables.scss';
 
@@ -48,7 +48,7 @@ beforeDestroy() {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px 20px;
+    padding: 10px 17px;
     background-color: #1565C0;
     border: 1px solid white;
     border-radius: 2px;
@@ -58,4 +58,3 @@ beforeDestroy() {
 }
 
 </style>
-  

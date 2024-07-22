@@ -12,6 +12,7 @@
                         <input placeholder="Телефон" type="text">
                         <button>Отправить</button>
                         <div class="itego-form__form-confirm">
+                            <input type="checkbox" name="" id="chkbx">
                             Согласие на обработку персональных данных
                         </div>
                     </form>
@@ -86,6 +87,10 @@ export default {
             font-family: "Montserrat", sans-serif;
             font-weight: 300;
             font-size: 14px;
+            input {
+                margin: 0;
+                margin-right: 6px;
+            }
         }
     }
 }

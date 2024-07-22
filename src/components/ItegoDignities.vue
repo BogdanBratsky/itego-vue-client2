@@ -43,10 +43,12 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="itego-dignities__blue"></div>
-        
-        <!-- <div class="itego-dignities__btn">Записаться на бесплатный аудит</div>  -->
+
+        <div class="itego-dignities__btn-wrapper">
+            <div class="itego-dignities__btn">Записаться на бесплатный аудит</div>
+        </div>
     </section>
 </template>
 
@@ -92,12 +94,16 @@ export default {
     }
     &__blue {
         position: absolute;
-        top: 40%;
-        left: 0;
+        top: 32%;
+        left: -35%;
         // z-index: 0;
         background-color: #1565C0;
-        width: 1229px;
+        width: 100%;
         height: 438px;
+    }
+    &__btn-wrapper {
+        margin-top: 20px;
+        width: 100%;
     }
     &__btn {
         position: absolute;

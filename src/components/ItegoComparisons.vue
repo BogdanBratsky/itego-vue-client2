@@ -48,6 +48,11 @@
                     </tr>
                 </tbody>
             </table>
+            <div class="itego-comparisons__btn-wrapper">
+                <div class="itego-comparisons__btn">
+                    Узнать точную стоимость
+                </div>
+            </div>
         </div>
     </section>
 </template>
@@ -76,27 +81,38 @@ export default {
         font-weight: 500;
         font-size: 18px;
         table-layout: fixed; /* Ensure the table takes the full width */
-        
         th, td {
             padding: 20px;
             text-align: center;
         }
-
         th {
             // background-color: #f2f2f2;
             font-weight: bold;
         }
-        
         &-gray {
-            background-color: #F5F5F5; 
+            background-color: #F5F5F5;
         }
-        
         &-title {
             text-align: left; /* Align title cells to the left */
         }
     }
-    [class$="item"]:nth-child(1n) {
-        background-color: #F5F5F5;
+    &__btn-wrapper {
+        width: 100%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+    &__btn {
+        margin-top: 60px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #1565C0;
+        color: white;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        padding: 17px 65px;
     }
 }
 </style>
