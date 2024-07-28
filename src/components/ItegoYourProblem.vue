@@ -66,7 +66,7 @@ export default {
             padding: 23px 36px;
             font-weight: 600;
             width: 570px;
-            box-shadow: 0 2px 5px #000000;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
     }
     &__contact-data {

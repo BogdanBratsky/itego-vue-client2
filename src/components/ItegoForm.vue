@@ -6,13 +6,16 @@
                     <div class="itego-form__title">
                         Закажите <br> бесплатный аудит всей инфраструктуры предприятия
                     </div>
-                    <form action="" class="itego-form__form">
-                        <input placeholder="Ваше имя" type="text">
-                        <input placeholder="Ваш e-mail" type="text">
-                        <input placeholder="Телефон" type="text">
+                    <form @submit.prevent="sendForm()" action="" class="itego-form__form">
+                        <input v-model="formData.name" id="name" name="name" placeholder="Ваше имя" type="text">
+                        <input v-model="formData.email" id="email" name="email" placeholder="Ваш e-mail" type="text">
+                        <div v-if="phoneErrorMessage" class="itego-form__error">{{ phoneErrorMessage }}</div>
+                        <input v-model="formData.phone" @input="validatePhone" id="phone" name="phone" placeholder="Телефон" type="text">
+                        <div v-if="errorMessage" class="itego-form__error">{{ errorMessage }}</div>
                         <button>Отправить</button>
                         <div class="itego-form__form-confirm">
-                            <input type="checkbox" name="" id="chkbx">
+                            <!-- <input v-model="formData.consent" :disabled="!policyAccepted" type="checkbox" name="" id="chkbx"> -->
+                            <input v-model="formData.consent" type="checkbox" name="" id="chkbx">
                             Согласие на обработку персональных данных
                         </div>
                     </form>
@@ -23,8 +26,77 @@
 </template>
 
 <script>
+import { serverAddres } from '../../config.js';
+import axios from 'axios';
+
 export default {
-  name: 'ItegoForm'
+  name: 'ItegoForm',
+  data() {
+        return {
+            formData: {
+                name: '',
+                email: '',
+                phone: '',
+                consent: false
+            },
+            errorMessage: '',
+            phoneErrorMessage: '',
+            policyAccepted: false
+        }
+    },
+    methods: {
+        validateForm() {
+            this.errorMessage = '';
+
+            if (!this.formData.name) {
+                this.errorMessage = 'Пожалуйста, введите ваше имя.';
+                return false;
+            }
+            if (!this.formData.email && !this.formData.phone) {
+                this.errorMessage = 'Пожалуйста, введите ваш телефон или почту.';
+                return false;
+            }
+            if (this.formData.phone && !this.formData.phone.match(/^\d+$/)) {
+                this.errorMessage = 'Пожалуйста, введите корректный номер телефона.';
+                return false;
+            }
+            if (!this.formData.consent) {
+                this.errorMessage = 'Пожалуйста, разрешите обработку персональных данных.';
+                return false;
+            }
+            return true;
+        },
+        validatePhone(event) {
+            const value = event.target.value;
+            if (!/^\d*$/.test(value)) {
+                this.phoneErrorMessage = 'Пожалуйста, вводите только цифры.';
+            } else {
+                this.phoneErrorMessage = '';
+            }
+            this.formData.phone = value.replace(/\D/g, '');
+        },
+        async sendForm() {
+            if (!this.validateForm()) {
+                return;
+            }
+            try {
+                const response = await axios.post(`${serverAddres}/send-email`, this.formData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.status === 200) {
+                    this.$router.push('/thanks');
+                } else {
+                    this.errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                this.errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+            }
+        },
+    }
 }
 </script>
 
@@ -72,6 +144,7 @@ export default {
             }
         }
         button {
+            cursor: pointer;
             background-color: #1565C0;
             font-family: "Montserrat", sans-serif;
             font-weight: 300;
@@ -80,7 +153,7 @@ export default {
             outline: none;
             border: none;
             margin-bottom: 13px;
-            box-shadow: 0 5px 5px #b8b8b8;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
         &-confirm {
             color: #434343;
@@ -92,6 +165,11 @@ export default {
                 margin-right: 6px;
             }
         }
+
+    }
+    &__error {
+        color: red;
+        margin-bottom: 20px;
     }
 }
 </style>

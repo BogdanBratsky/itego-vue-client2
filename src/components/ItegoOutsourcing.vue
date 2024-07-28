@@ -1,5 +1,5 @@
 <template>
-    <section class="itego-outsourcing-blocks">
+    <section id="about" class="itego-outsourcing-blocks">
         <div class="container">
             <nav class="itego-outsourcing-blocks__items">
                 <div class="itego-outsourcing-blocks__item">ИТ-обслуживание</div>
@@ -20,7 +20,7 @@
                     <ul>
                         <li>Не хватает квалифицированных сотрудников внутри компании</li>
                         <li>Персонал часто жалуется на плохую работу техники и ПО, а системный администратор не справляется</li>
-                        <li>Ограничен бюджет на найм и содержание комптентного IT-отдела</li>
+                        <li>Ограничен бюджет на найм и содержание компетентного IT-отдела</li>
                         <li>Отсутствует возможность быстрого реагирования на изменения в технологиях</li>
                         <li>Нет времени и ресурсов на постоянный контроль качества работы IT-отдела и его оптимизацию</li>
                         <li>Возникли сложности с масштабированием IT-инфраструктуры</li>
@@ -110,7 +110,7 @@ export default {
         justify-content: center;
         padding: 50px;
         margin-bottom: 20px;
-        box-shadow: 0 5px 6px #cecece;
+        box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         font-size: 12px;

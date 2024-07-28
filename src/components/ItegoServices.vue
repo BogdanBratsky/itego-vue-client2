@@ -1,5 +1,5 @@
 <template>
-    <section class="itego-services">
+    <section id="services" class="itego-services">
         <div class="container">
             <div class="itego-services__title">Предоставляем расширенный пакет услуг для вашего бизнеса</div>
             <div class="itego-services__items">

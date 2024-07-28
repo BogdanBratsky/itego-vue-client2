@@ -4,6 +4,10 @@ const routes = [
   {
     path: '/',
     component: () => import('../views/ItegoMainView.vue')
+  },
+  {
+    path: '/thanks',
+    component: () => import('../views/ItegoThanksView.vue')
   }
 ]
 

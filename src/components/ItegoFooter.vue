@@ -1,10 +1,15 @@
 <template>
-    <section class="itego-footer">
+    <section id="contacts" class="itego-footer">
         <footer class="itego-footer__footer-top">
             <div class="container">
                 <nav class="itego-footer__footer-top-nav">
-                    <div class="itego-footer__footer-top-phone">
-                        +7 (999) 999-99-99
+                    <div @click="togglePhoneVisibility" class="itego-footer__footer-top-phone">
+                        <span v-if="!isPhoneVisible">+7 (499) 348 9...</span>
+                        <span v-else>
+                            <a href="tel:+74993489933">
+                                +7 (499) 348 99 33
+                            </a>
+                        </span>
                     </div>
                     <div class="itego-footer__footer-top-letter">
                         <img src="../assets/images/contacts/letter.svg" alt="">
@@ -70,7 +75,17 @@
 
 <script>
 export default {
-    name: 'ItegoFooter'
+    name: 'ItegoFooter',
+    data() {
+        return {
+            isPhoneVisible: false,
+        }
+    },
+    methods: {
+        togglePhoneVisibility() {
+            this.isPhoneVisible = true;
+        },
+    }
 }
 </script>
 
@@ -92,6 +107,12 @@ export default {
                     width: 30px;
                     margin-right: 8px;
                 }
+            }
+        }
+        &-phone {
+            cursor: pointer;
+            a {
+                color: black;
             }
         }
     }

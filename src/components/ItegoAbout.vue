@@ -105,7 +105,7 @@ export default {
         // font-size: 18px;
         border-top: 2px solid #1565C0;
         border-left: 2px solid #1565C0;
-        box-shadow: 1px 5px 10px #c5c5c5;
+        box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
         &-title {
             color: #1565C0;
             font-weight: 700;

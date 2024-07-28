@@ -15,9 +15,14 @@
                     <div class="itego-expert__info-consultation">
                         Обратитесь к нашему эксперту за консультацией в любой день с 9:00 до 23:00
                     </div>
-                    <div class="itego-expert__info-phone">
+                    <div @click="togglePhoneVisibility" class="itego-expert__info-phone">
                         <img src="../assets/images/phone.svg" alt="">
-                        +7 (499) 348 99 33
+                        <span v-if="!isPhoneVisible">+7 (499) 348 9...</span>
+                        <span v-else>
+                            <a href="tel:+74993489933">
+                                +7 (499) 348 99 33
+                            </a>
+                        </span>
                     </div>
                     <div class="itego-expert__info-call">
                         За 10 минут разговора Вы узнаете больше, чем за несколько дней <br> поиска ответов Сети
@@ -31,7 +36,17 @@
 
 <script>
 export default {
-  name: 'ItegoExpert'
+  name: 'ItegoExpert',
+  data() {
+    return {
+        isPhoneVisible: false,
+    }
+  },
+  methods: {
+    togglePhoneVisibility() {
+        this.isPhoneVisible = true;
+    },
+  }
 }
 </script>
 
@@ -69,6 +84,7 @@ export default {
             margin-bottom: 50px;
         }
         &-phone {
+            cursor: pointer;
             margin-bottom: 30px;
             margin-top: 22px;
             display: flex;
@@ -78,6 +94,9 @@ export default {
             img {
                 width: 43px;
                 margin-right: 19px;
+            }
+            a {
+                color: white;
             }
         }
         &-call {
