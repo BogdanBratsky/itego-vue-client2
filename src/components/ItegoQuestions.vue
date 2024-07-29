@@ -5,23 +5,30 @@
                 <div class="itego-questions__info">
                     <div class="itego-questions__title">Остались вопросы?</div>
                     <div class="itego-questions__subtitle"><b>Оставьте заявку</b>, и мы ответим!</div>
-                    <form action="" class="itego-questions__form">
+                    <form @submit.prevent="sendForm()" action="" class="itego-questions__form">
                         <div class="itego-questions__form-wrapper">
                             <div class="itego-questions__form-left">
                                 <div class="itego-questions__form-left-row">
-                                    <input type="text" placeholder="Имя">
-                                    <input type="text" placeholder="E-mail">
+                                    <input v-model="formData.name" type="text" placeholder="Имя">
+                                    <input v-model="formData.email" type="text" placeholder="E-mail">
                                 </div>
-                                <input type="text" placeholder="Пожелания">
+                                <input v-model="formData.wish" type="text" placeholder="Пожелания">
                             </div>
                             <div class="itego-questions__form-right">
-                                <input type="text" placeholder="Телефон">
+                                <div v-if="phoneErrorMessage" class="itego-your-problem__error">{{ phoneErrorMessage }}</div>
+                                <input v-model="formData.phone" @input="validatePhone" type="text" placeholder="Телефон">
+                                <div v-if="errorMessage" class="itego-questions__error">{{ errorMessage }}</div>
                                 <button>Оставить заявку</button>
                             </div>
                         </div>
                         <div class="itego-questions__form-confirm">
-                            <input type="checkbox">
+                            <input v-model="formData.consent" type="checkbox">
                             Согласие на обработку персональных данных
+                        </div>
+                        <div class="itego-questions__policy">
+                            <router-link to="/privacy-policy">
+                                Политика конфиденциальности itego
+                            </router-link>
                         </div>
                     </form>
                 </div>
@@ -32,8 +39,82 @@
 </template>
 
 <script>
+import { serverAddres } from '../../config.js';
+import axios from 'axios';
+
 export default {
-    name: 'ItegoQuestions'
+    name: 'ItegoQuestions',
+    data() {
+        return {
+            formData: {
+                name: '',
+                phone: '',
+                email: '',
+                wish: '',
+                consent: false
+            },
+            errorMessage: '',
+            phoneErrorMessage: '',
+            policyAccepted: false
+        }
+    },
+    methods: {
+        validateForm() {
+            this.errorMessage = '';
+
+            if (!this.formData.name) {
+                this.errorMessage = 'Пожалуйста, введите ваше имя.';
+                return false;
+            }
+            if (this.formData.phone && !this.formData.phone.match(/^\d+$/)) {
+                this.errorMessage = 'Пожалуйста, введите корректный номер телефона.';
+                return false;
+            }
+            if (!this.formData.email) {
+                this.errorMessage = 'Пожалуйста, введите ваш email';
+                return false;
+            }
+            if (!this.formData.wish) {
+                this.errorMessage = 'Пожалуйста, напишите ваши пожелания';
+                return false;
+            }
+            if (!this.formData.consent) {
+                this.errorMessage = 'Пожалуйста, разрешите обработку персональных данных.';
+                return false;
+            }
+            return true;
+        },
+        validatePhone(event) {
+            const value = event.target.value;
+            if (!/^\d*$/.test(value)) {
+                this.phoneErrorMessage = 'Пожалуйста, вводите только цифры.';
+            } else {
+                this.phoneErrorMessage = '';
+            }
+            this.formData.phone = value.replace(/\D/g, '');
+        },
+        async sendForm() {
+            if (!this.validateForm()) {
+                return;
+            }
+            try {
+                const response = await axios.post(`${serverAddres}/send-email`, this.formData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.status === 200) {
+                    this.$router.push('/thanks');
+                } else {
+                    this.errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                this.errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+            }
+        },
+    }
 }
 </script>
 
@@ -94,6 +175,7 @@ export default {
                 margin-bottom: 10px;
             }
             button {
+                cursor: pointer;
                 width: 100%;
                 background-color: #C7E7EF;
                 font-family: "Montserrat", sans-serif;
@@ -101,14 +183,34 @@ export default {
             }
         }
         &-confirm {
+            display: flex;
+            align-items: center;
             font-family: "Montserrat", sans-serif;
             font-weight: 300;
             margin-top: 14px;
             color: white;
             input {
                 border-radius: 10px;
+                margin-right: 6px;
             }
         }
+    }
+    &__policy {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        margin: 8px 0;
+        text-decoration: underline;
+        color: #ffffff;
+        a {
+            color: #ffffff;
+        }
+    }
+    &__error {
+        color: red;
+        margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
     }
 }
 </style>

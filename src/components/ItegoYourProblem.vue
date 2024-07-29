@@ -4,16 +4,23 @@
             <div class="itego-your-problem__title">
                 Расскажите нам о своей задаче и получите коммерческое предложение <br> со скидкой 50% на 1й месяц обслуживания
             </div>
-            <form action="" class="itego-your-problem__form">
+            <form @submit.prevent="sendForm()" action="" class="itego-your-problem__form">
                 <div class="itego-your-problem__contact-data">
-                    <input class="itego-your-problem__form-input" placeholder="Ваше имя" type="text">
-                    <input class="itego-your-problem__form-input" placeholder="Телефон" type="text">
+                    <input v-model="formData.name" class="itego-your-problem__form-input" placeholder="Ваше имя" type="text">
+                    <div v-if="phoneErrorMessage" class="itego-your-problem__error">{{ phoneErrorMessage }}</div>
+                    <input v-model="formData.phone" @input="validatePhone" class="itego-your-problem__form-input" placeholder="Телефон" type="text">
                 </div>
-                <textarea class="itego-your-problem__form-textarea" placeholder="Проблема" name="" id=""></textarea>
+                <textarea v-model="formData.problem" class="itego-your-problem__form-textarea" placeholder="Проблема" name="" id=""></textarea>
+                <div v-if="errorMessage" class="itego-your-problem__error">{{ errorMessage }}</div>
                 <button class="itego-your-problem__form-btn">Отправить</button>
                 <div class="itego-your-problem__confirm">
-                    <input type="checkbox" name="" id="chkbx">
+                    <input v-model="formData.consent" type="checkbox" name="" id="chkbx">
                     Согласие на обработку персональных данных
+                </div>
+                <div class="itego-your-problem__policy">
+                    <router-link to="/privacy-policy">
+                        Политика конфиденциальности itego
+                    </router-link>
                 </div>
             </form>
         </div>
@@ -21,8 +28,77 @@
 </template>
 
 <script>
+import { serverAddres } from '../../config.js';
+import axios from 'axios';
+
 export default {
-  name: 'ItegoYourProblem'
+  name: 'ItegoYourProblem',
+  data() {
+        return {
+            formData: {
+                name: '',
+                phone: '',
+                problem: '',
+                consent: false
+            },
+            errorMessage: '',
+            phoneErrorMessage: '',
+            policyAccepted: false
+        }
+    },
+    methods: {
+        validateForm() {
+            this.errorMessage = '';
+
+            if (!this.formData.name) {
+                this.errorMessage = 'Пожалуйста, введите ваше имя.';
+                return false;
+            }
+            if (this.formData.phone && !this.formData.phone.match(/^\d+$/)) {
+                this.errorMessage = 'Пожалуйста, введите корректный номер телефона.';
+                return false;
+            }
+            if (!this.formData.problem) {
+                this.errorMessage = 'Пожалуйста, опишите вашу проблему';
+                return false;
+            }
+            if (!this.formData.consent) {
+                this.errorMessage = 'Пожалуйста, разрешите обработку персональных данных.';
+                return false;
+            }
+            return true;
+        },
+        validatePhone(event) {
+            const value = event.target.value;
+            if (!/^\d*$/.test(value)) {
+                this.phoneErrorMessage = 'Пожалуйста, вводите только цифры.';
+            } else {
+                this.phoneErrorMessage = '';
+            }
+            this.formData.phone = value.replace(/\D/g, '');
+        },
+        async sendForm() {
+            if (!this.validateForm()) {
+                return;
+            }
+            try {
+                const response = await axios.post(`${serverAddres}/send-email`, this.formData, {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+
+                if (response.status === 200) {
+                    this.$router.push('/thanks');
+                } else {
+                    this.errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                this.errorMessage = 'Произошла ошибка при отправке формы. Пожалуйста, попробуйте еще раз.';
+            }
+        },
+    }
 }
 </script>
 
@@ -86,6 +162,24 @@ export default {
             margin-right: 6px;
             border: 1px solid white;
         }
+    }
+    &__policy {
+        align-self: center;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        margin: 8px 0;
+        text-decoration: underline;
+        color: #ffffff;
+        a {
+            color: #ffffff;
+        }
+    }
+    &__error {
+        color: red;
+        margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
     }
 }
 </style>

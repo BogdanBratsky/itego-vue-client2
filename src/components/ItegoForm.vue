@@ -13,6 +13,11 @@
                         <input v-model="formData.phone" @input="validatePhone" id="phone" name="phone" placeholder="Телефон" type="text">
                         <div v-if="errorMessage" class="itego-form__error">{{ errorMessage }}</div>
                         <button>Отправить</button>
+                        <div class="itego-form__policy">
+                            <router-link to="/privacy-policy">
+                                Политика конфиденциальности itego
+                            </router-link>
+                        </div>
                         <div class="itego-form__form-confirm">
                             <!-- <input v-model="formData.consent" :disabled="!policyAccepted" type="checkbox" name="" id="chkbx"> -->
                             <input v-model="formData.consent" type="checkbox" name="" id="chkbx">
@@ -156,6 +161,8 @@ export default {
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
         &-confirm {
+            display: flex;
+            align-items: center;
             color: #434343;
             font-family: "Montserrat", sans-serif;
             font-weight: 300;
@@ -165,11 +172,20 @@ export default {
                 margin-right: 6px;
             }
         }
-
+    }
+    &__policy {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        margin: 8px 0;
+        text-decoration: underline;
+        color: #1565C0;
     }
     &__error {
         color: red;
         margin-bottom: 20px;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 400;
     }
 }
 </style>
