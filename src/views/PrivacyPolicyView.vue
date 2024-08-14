@@ -87,7 +87,12 @@
     </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.container {
+    margin: 0 auto;
+    padding: 20px 0;
+    width: 1000px;
+}
 .policy {
     list-style: inside;
 }

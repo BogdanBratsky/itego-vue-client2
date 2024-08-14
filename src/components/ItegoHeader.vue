@@ -2,9 +2,17 @@
     <header class="header">
         <div class="container">
             <nav class="header__contact-nav">
-                <div class="header__logo">
-                    <img src="../assets/images/contacts/logo.svg" alt="">
+                <div class="header__wrap">
+                    <div class="header__logo">
+                        <img src="../assets/images/contacts/logo.svg" alt="">
+                    </div>
+                    <router-link to="/blog">
+                        <div class="header__blog">
+                            Наш блог
+                        </div>
+                    </router-link>
                 </div>
+
                 <div class="header__contacts">
                     <div @click="togglePhoneVisibility" class="header__phone">
                         <img src="../assets/images/contacts/phone.svg" alt="">
@@ -15,7 +23,7 @@
                             </a>
                         </span>
                     </div>
-                    <div class="header__btn">
+                    <div @click="showForm" class="header__btn">
                         Получить консультацию
                     </div>
                     <div class="header__social-networks">
@@ -24,6 +32,9 @@
                         <img src="../assets/images/contacts/vk.svg" alt="">
                         <img src="../assets/images/contacts/ig.svg" alt="">
                     </div>
+                </div>
+                <div class="header__burger">
+                    &#9776;	
                 </div>
             </nav>
         </div>
@@ -41,68 +52,90 @@
             </div>
         </nav>
     </header>
+
+    <ItegoModalForm v-if="isOpen" @close="showForm"/>
 </template>
 
 <script>
+import ItegoModalForm from './ItegoModalForm.vue'
+
 export default {
-  name: 'ItegoHeader',
-  data() {
-    return {
-        isPhoneVisible: false,
-        isFixed: false,
-        isHidden: false,
-        lastScrollTop: 0,
-    }
-  },
-  methods: {
-    togglePhoneVisibility() {
-        this.isPhoneVisible = true;
-    },
-    handleScroll() {
-        const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (currentScroll > this.lastScrollTop && currentScroll > 50) {
-            this.isHidden = true;
-        } else {
-            this.isHidden = false;
+    name: 'ItegoHeader',
+    data() {
+        return {
+            isPhoneVisible: false,
+            isFixed: false,
+            isHidden: false,
+            lastScrollTop: 0,
+            isOpen: false,
         }
+    },
+    components: {
+        ItegoModalForm
+    },
+    methods: {
+        togglePhoneVisibility() {
+            this.isPhoneVisible = true;
+        },
+        handleScroll() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
 
-        this.isFixed = currentScroll > 100;
-        this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+            if (currentScroll > this.lastScrollTop && currentScroll > 50) {
+                this.isHidden = true;
+            } else {
+                this.isHidden = false;
+            }
+
+            this.isFixed = currentScroll > 100;
+            this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        },
+        scrollToSection(event) {
+            event.preventDefault();
+            const targetId = event.currentTarget.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
+                behavior: 'smooth',
+                });
+            }
+        },
+        showForm() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
     },
-    scrollToSection(event) {
-      event.preventDefault();
-      const targetId = event.currentTarget.getAttribute('href').substring(1);
-      const targetElement = document.getElementById(targetId);
-      if (targetElement) {
-        window.scrollTo({
-          top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
-          behavior: 'smooth',
+    mounted() {
+        window.addEventListener('scroll', this.handleScroll);
+        document.querySelectorAll('.header__nav-item').forEach(item => {
+        item.addEventListener('click', this.scrollToSection);
         });
-      }
     },
-  },
-  mounted() {
-    window.addEventListener('scroll', this.handleScroll);
-    document.querySelectorAll('.header__nav-item').forEach(item => {
-      item.addEventListener('click', this.scrollToSection);
-    });
-  },
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll);
-    document.querySelectorAll('.header__nav-item').forEach(item => {
-      item.removeEventListener('click', this.scrollToSection);
-    });
-  },
+    beforeDestroy() {
+        window.removeEventListener('scroll', this.handleScroll);
+        document.querySelectorAll('.header__nav-item').forEach(item => {
+            item.removeEventListener('click', this.scrollToSection);
+        });
+    },
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
-    padding-top: 35px;
+    margin: 0 auto;
     &__contact-nav {
+        padding: 16px 0;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        width: 100%;
+    }
+    &__wrap {
+        display: flex;
         align-items: center;
     }
     &__logo {
@@ -110,6 +143,15 @@ export default {
         img {
             width: 106px;
         }
+    }
+    &__blog {
+        padding: 7px 14px;
+        background-color: #1565C0;
+        border-radius: 2px;
+        color: white;
+        margin-left: 20px;
+        font-size: 12px;
+        font-weight: 600;
     }
     &__phone {
         cursor: pointer;
@@ -125,15 +167,14 @@ export default {
     }
     &__btn {
         cursor: pointer;
-        font-size: 12px;
+        padding: 7px 14px;
         background-color: #1565C0;
+        border-radius: 2px;
         color: white;
-        padding: 10px 15px;
-        font-family: "Montserrat", sans-serif;
+        margin-left: 20px;
+        margin-right: 35px;
+        font-size: 12px;
         font-weight: 600;
-        font-size: 11px;
-        border-radius: 1px;
-        margin-right: 20px;
     }
     &__contacts {
         display: flex;
@@ -151,7 +192,8 @@ export default {
         }
     }
     &__nav {
-        margin-top: 42px;
+        background-color: #C7E7EF;
+        padding-top: 20px;
         // display: flex;
         // align-items: center;
         font-family: "Montserrat", sans-serif;
@@ -167,7 +209,7 @@ export default {
             top: 0;
             left: 0;
             width: 100%;
-            padding: 30px 0;
+            padding: 22px 0;
             z-index: 50;
             background-color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
@@ -183,6 +225,50 @@ export default {
         &-item {
             cursor: pointer;
             margin-right: 20px;
+        }
+    }
+    &__burger {
+        display: none;
+        font-size: 24px;
+        color: #1565C0;
+    }
+}
+</style>
+
+<style lang="scss" scoped>
+@media screen and (max-width: 1024px) {
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        margin: 0 auto;
+        &__logo {
+            img {
+                width: 78px;
+            }
+        }
+        &__contacts {
+            display: none;
+        }
+        &__blog {
+            font-size: 12px;
+        }
+        &__burger {
+            display: block;
+        }
+        &__nav {
+            display: none;
+        }
+    }
+}
+@media screen and (max-width: 320px) {
+    .header {
+        &__blog {
+            display: none;
         }
     }
 }

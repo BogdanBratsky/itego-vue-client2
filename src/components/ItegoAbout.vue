@@ -78,7 +78,7 @@ export default {
             width: 458px;
         }
         &-txt {
-            width: 623px;
+            max-width: 623px;
             font-family: "Montserrat", sans-serif;
             font-weight: 400;
             font-size: 18px;
@@ -93,6 +93,7 @@ export default {
     }
     &__cards {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         margin-bottom: 70px;
     }
@@ -110,6 +111,62 @@ export default {
             color: #1565C0;
             font-weight: 700;
             font-size: 35px;
+        }
+    }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-about {
+        padding: 30px 0;
+        &__title {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        &__info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            &-img img {
+                display: none;
+            }
+            &-txt {
+                max-width: 623px;
+                font-size: 10px;
+                header, li {
+                    text-align: center;
+                    margin-bottom: 12px;
+                }
+                li {
+                    background-color: white;
+                    padding: 18px 9px;
+                    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+                }
+                li::before {
+                    content: none;
+                    // margin-right: 10px;
+                }
+            }
+        }
+        &__cards {
+            margin-bottom: 20px;
+        }
+        &__card {
+            width: 130px;
+            padding: 10px 14px;
+            font-size: 8px;
+            margin-bottom: 10px;
+            box-shadow: none;
+            &-title {
+                font-size: 18px;
+            }
         }
     }
 }

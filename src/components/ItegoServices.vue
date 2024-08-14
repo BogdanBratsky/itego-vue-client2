@@ -80,7 +80,7 @@ export default {
 
 <style lang="scss">
 .itego-services {
-    padding: 100px;
+    padding: 100px 0;
     background-color: #F5F5F5;
     &__title {
         font-family: "Montserrat", sans-serif;
@@ -90,6 +90,7 @@ export default {
         margin-bottom: 64px;
     }
     &__items {
+        width: 100%;
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -109,5 +110,47 @@ export default {
             margin-right: 30px;
         }
     }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-services {
+    padding: 30px 0;
+    background-color: #F5F5F5;
+    &__title {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        color: #1565C0;
+        margin-bottom: 38px;
+    }
+    &__items {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    &__item {
+        display: flex;
+        align-items: center;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+        font-size: 10px;
+        background-color: white;
+        max-width: 288px;
+        margin-bottom: 10px;
+        padding: 13px 25px;
+        img {
+            width: 20px;
+            margin-right: 20px;
+        }
+    }
+}
 }
 </style>

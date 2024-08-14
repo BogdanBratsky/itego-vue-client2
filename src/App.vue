@@ -38,11 +38,40 @@ li {
 
 html, body {
   height: 100%;
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  margin: 0 auto;
 }
 
 .container {
-    width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+  width: 100%;
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        padding: 0 10px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        width: 100%; /* Лучше установить width в 100% */
+        padding: 0 20px;
+    }
 }
 </style>

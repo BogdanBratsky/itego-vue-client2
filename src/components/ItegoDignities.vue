@@ -42,23 +42,48 @@
                     Все пароли и учетные записи клиентов хранятся в зашифрованной системе хранения БД. Доступ есть у клиента и ответственного лица
                 </div>
             </div>
+            <div @click="showForm" class="itego-dignities__btn">Записаться на бесплатный аудит</div>
         </div>
 
         <div class="itego-dignities__blue"></div>
 
-        <div class="itego-dignities__btn-wrapper">
-            <div class="itego-dignities__btn">Записаться на бесплатный аудит</div>
-        </div>
     </section>
+
+    <ItegoModalForm v-if="isOpen" @close="showForm"/>
 </template>
 
 <script>
+import ItegoModalForm from './ItegoModalForm.vue'
+
 export default {
-  name: 'ItegoDignities'
+    name: 'ItegoDignities',
+    data() {
+        return {
+            isOpen: false,
+        }
+    },
+    components: {
+        ItegoModalForm
+    },
+    methods: {
+        showForm() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
 .itego-dignities {
     position: relative;
     background-color: white;
@@ -100,24 +125,102 @@ export default {
         background-color: #1565C0;
         width: 100%;
         height: 438px;
-    }
-    &__btn-wrapper {
-        margin-top: 20px;
-        width: 100%;
+        z-index: 1;
     }
     &__btn {
-        position: absolute;
-        bottom: 130px;
-        left: 50%;
-        transform: translateX(-50%);
+        align-self: center;
+        z-index: 20;
+        cursor: pointer;
+        // position: absolute;
+        // bottom: 130px;
+        // left: 50%;
+        // transform: translateX(-50%);
         background-color: #1565C0;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-        margin: 0 auto;
+        margin-top: 120px;
         font-family: "Montserrat", sans-serif;
         font-weight: 600;
         font-size: 20px;
         color: white;
         padding: 20px 70px;
+    }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-dignities {
+        position: relative;
+        background-color: white;
+        padding-top: 80px;
+        padding-bottom: 268px;
+        &__title {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: #1565C0;
+            margin-bottom: 30px;
+        }
+        &__cards {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        &__card {
+            z-index: 10;
+            background-color: white;
+            font-family: "Montserrat", sans-serif;
+            font-size: 8px;
+            border: 1px solid #1565C0;
+            width: 100%;
+            padding: 29px;
+            margin-bottom: 10px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            &-title {
+                font-weight: 700;
+                font-size: 10px;
+                margin-bottom: 10px;
+            }
+        }
+        &__blue {
+            position: absolute;
+            top: 32%;
+            left: -35%;
+            // z-index: 0;
+            background-color: #1565C0;
+            width: 100%;
+            height: 180px;
+        }
+        &__btn-wrapper {
+            margin-top: 20px;
+            width: 100%;
+        }
+        &__btn {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            bottom: 130px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #1565C0;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            margin: 0 auto;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
+            font-size: 10px;
+            color: white;
+            width: 100%;
+            padding: 20px;
+        }
     }
 }
 </style>

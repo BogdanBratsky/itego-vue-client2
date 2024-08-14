@@ -1,5 +1,5 @@
 <template>
-    <section class="itego-comparisons">
+    <section id="prices" class="itego-comparisons">
         <div class="container">
             <div class="itego-comparisons__title">Превосходство IT-аутсорсинга над штатным специалистом</div>
             <table class="itego-comparisons__table">
@@ -43,23 +43,45 @@
                     </tr>
                     <tr class="itego-comparisons__table-gray">
                         <td class="itego-comparisons__table-title">Стоимость за работу в год</td>
-                        <td class="itego-comparisons__table-r"><img src="../assets/images/comparisons/red.svg" alt=""></td>
-                        <td class="itego-comparisons__table-g"><img src="../assets/images/comparisons/green.svg" alt=""></td>
+                        <td class="itego-comparisons__table-r">от 1 020 000 руб</td>
+                        <td class="itego-comparisons__table-g">от 500 000 руб</td>
                     </tr>
                 </tbody>
             </table>
             <div class="itego-comparisons__btn-wrapper">
-                <div class="itego-comparisons__btn">
+                <div @click="showForm" class="itego-comparisons__btn">
                     Узнать точную стоимость
                 </div>
             </div>
         </div>
     </section>
+
+    <ItegoModalForm v-if="isOpen" @close="showForm"/>
 </template>
 
 <script>
+import ItegoModalForm from './ItegoModalForm.vue'
+
 export default {
-  name: 'ItegoComparisons'
+    name: 'ItegoComparisons',
+    data() {
+        return {
+            isOpen: false,
+        }
+    },
+    components: {
+        ItegoModalForm
+    },
+    methods: {
+        showForm() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
 }
 </script>
 
@@ -95,8 +117,15 @@ export default {
         &-title {
             text-align: left; /* Align title cells to the left */
         }
+        &-r {
+            color: #C0382B;
+        }
+        &-g {
+            color: #27AF60;
+        }
     }
     &__btn-wrapper {
+        cursor: pointer;
         width: 100%;
         display: inline-flex;
         align-items: center;
@@ -113,6 +142,69 @@ export default {
         font-weight: 500;
         font-size: 18px;
         padding: 17px 65px;
+    }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-comparisons {
+        padding: 20px 0;
+        &__title {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+        &__table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10px;
+            table-layout: fixed; /* Ensure the table takes the full width */
+            th, td {
+                padding: 20px;
+                text-align: center;
+            }
+            th {
+                // background-color: #f2f2f2;
+                font-weight: bold;
+            }
+            &-gray {
+                background-color: #F5F5F5;
+            }
+            &-title {
+                font-size: 10px;
+                text-align: left; /* Align title cells to the left */
+            }
+            &-r {
+                img {
+                    width: 28px;
+                }
+                color: #C0382B;
+            }
+            &-g {
+                img {
+                    width: 20px;
+                }
+                color: #27AF60;
+            }
+        }
+        &__btn-wrapper {
+            width: 100%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        &__btn {
+            margin-top: 20px;
+            font-size: 8px;
+            width: 100%;
+            padding: 10px 0;
+        }
     }
 }
 </style>

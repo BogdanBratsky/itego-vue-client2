@@ -1,6 +1,6 @@
 <template>
     <div class="img-wrapper">
-        <img src="../assets/images/interface/404.svg" alt="">
+        <img src="../assets/images/interface0/404.svg" alt="">
     </div>
 </template>
 

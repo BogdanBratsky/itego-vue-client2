@@ -77,6 +77,7 @@ export default {
 .itego-outsourcing {
     margin: 56px 0;
     &__title {
+        width: 100%;
         font-family: "Montserrat", sans-serif;
         font-weight: 700;
         font-size: 45px;
@@ -89,7 +90,7 @@ export default {
         align-items: center;
     }
     &__list {
-        width: 517px;
+        max-width: 517px;
         font-family: "Montserrat", sans-serif;
         font-weight: 400;
         font-size: 18px;
@@ -118,6 +119,79 @@ export default {
     .first-column {
         margin-top: 20px;
         margin-right: 21px;
+    }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .itego-outsourcing-blocks {
+        padding: 0;
+        padding-bottom: 10px;
+        &__items {
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            // justify-content: space-between;
+            color: white;
+        }
+        &__item {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 22px 30px;
+            font-size: 10px;
+            text-align: center;
+        }
+    }
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-outsourcing {
+        // margin: 56px 0;
+        &__title {
+            font-weight: 700;
+            font-size: 20px;
+            color: #1565C0;
+            margin-bottom: 12px;
+        }
+        &__wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // justify-content: space-between;
+            // align-items: center;
+        }
+        &__list {
+            font-size: 13px;
+        }
+        &__cards {
+            display: flex;
+            flex-direction: column;
+        }
+        &__card {
+            padding: 20px;
+            width: 100%;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            font-family: "Montserrat", sans-serif;
+            font-weight: 500;
+            font-size: 12px;
+        }
+        // .first-column {
+        //     margin-top: 20px;
+        //     margin-right: 21px;
+        // }
     }
 }
 </style>

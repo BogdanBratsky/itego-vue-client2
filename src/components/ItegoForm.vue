@@ -189,3 +189,93 @@ export default {
     }
 }
 </style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-form {
+        background-color: white;
+        &__title-bkg {
+            padding-top: 85px;
+            padding-bottom: 106px;
+            background-color: #1565C0;
+        }
+        &__wrapper {
+            display: none;
+        }
+        &__title {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            color: white;
+            max-width: none;
+        }
+        &__form {
+            position: static;
+            top: auto;
+            right: auto;
+            padding: 32px;
+            background-color: #C7E7EF;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 5px 5px #b8b8b8;
+            input {
+                border: 3px solid #1565C0;
+                outline: none;
+                margin-bottom: 25px;
+                padding: 20px 30px;
+                &::placeholder {
+                    font-family: "Montserrat", sans-serif;
+                    font-weight: 400;
+                    // font-size: 18px;
+                    color: black;
+                }
+            }
+            button {
+                cursor: pointer;
+                background-color: #1565C0;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 300;
+                color: white;
+                padding: 24px 0;
+                outline: none;
+                border: none;
+                margin-bottom: 13px;
+                box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            }
+            &-confirm {
+                display: flex;
+                align-items: center;
+                color: #434343;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 300;
+                font-size: 14px;
+                input {
+                    margin: 0;
+                    margin-right: 6px;
+                }
+            }
+        }
+        &__policy {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+            font-size: 14px;
+            margin: 8px 0;
+            text-decoration: underline;
+            color: #1565C0;
+        }
+        &__error {
+            color: red;
+            margin-bottom: 20px;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 400;
+        }
+    }
+}
+</style>

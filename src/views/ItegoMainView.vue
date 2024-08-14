@@ -15,7 +15,7 @@
     <!-- <ItegoCalculator/>
     <ItegoStaff/>
     <ItegoReviews/> -->
-    <ItegoFAQ/>
+    <!-- <ItegoFAQ/> -->
     <ItegoQuestions/>
     <ItegoFooter/>
 </template>
@@ -62,7 +62,7 @@ export default {
 }
 </script>
 
-<style>
+<!-- <style>
 .wrap {
     background: linear-gradient(to right,
         white 0%,          /* красный от начала */
@@ -71,4 +71,4 @@ export default {
         #C7E7EF 100%         /* синий до конца */
     );
 }
-</style>
+</style> -->

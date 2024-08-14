@@ -39,17 +39,39 @@
                         Отвечаем на вопросы, консультируем по алгоритмам взаимодействия и начинаем обслуживание в штатном порядке
                     </div>
                 </div>
-                <div class="itego-integration__btn">
+                <div @click="showForm" class="itego-integration__btn">
                     Начать внедрение IT-аутсорсинга
                 </div>
             </div>
         </div>
     </section>
+
+    <ItegoModalForm v-if="isOpen" @close="showForm"/>
 </template>
 
 <script>
+import ItegoModalForm from './ItegoModalForm.vue'
+
 export default {
-  name: 'ItegoIntegration'
+    name: 'ItegoIntegration',
+    data() {
+        return {
+            isOpen: false,
+        }
+    },
+    components: {
+        ItegoModalForm
+    },
+    methods: {
+        showForm() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        }
+    }
 }
 </script>
 
@@ -93,7 +115,7 @@ export default {
         width: 370px;
     }
     &__btn {
-        // margin-top: 50px;
+        cursor: pointer;
         background-color: #1565C0;
         color: white;
         font-family: "Montserrat", sans-serif;
@@ -101,6 +123,54 @@ export default {
         font-size: 18px;
         align-self: center;
         padding: 20px 38px;
+    }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-integration {
+        padding: 30px 0;
+        &__title {
+            font-size: 20px;
+            color: #1565C0;
+            margin-bottom: 30px;
+        }
+        &__cards {
+            display: flex;
+            flex-direction: column;
+            &-a-row, &-b-row {
+                display: flex;
+                flex-direction: column;
+                // justify-content: space-between;
+                font-family: "Montserrat", sans-serif;
+                font-weight: 500;
+                margin-bottom: 0;
+                // font-size: 18px;
+            }
+            .card-number {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+        }
+        &__a-card, &__b-card {
+            padding: 25px;
+            width: 100%;
+            margin-bottom: 10px;
+            font-size: 10px;
+        }
+        &__btn {
+            font-size: 8px;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+        }
     }
 }
 </style>

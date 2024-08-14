@@ -41,6 +41,7 @@ export default {
 // @import '../variables.scss';
 
 .scroll-to-top-button {
+  z-index: 1000;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -50,6 +51,7 @@ export default {
     right: 20px;
     padding: 10px 17px;
     background-color: #1565C0;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
     border: 1px solid white;
     border-radius: 2px;
     transition: opacity 0.3s ease;
@@ -57,4 +59,12 @@ export default {
     color: white;
 }
 
+@media screen and (max-width: 768px) {
+  .scroll-to-top-button {
+    font-size: 17px;
+    padding: 7px 13px;
+    bottom: 5px;
+    right: 5px;
+  }
+}
 </style>

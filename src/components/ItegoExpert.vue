@@ -4,7 +4,7 @@
             <div class="itego-expert__wrapper">
                 <div class="itego-expert__info">
                     <div class="itego-expert__info-title">
-                        Прямая линия с экпертом
+                        Прямая линия с экспертом
                     </div>
                     <div class="itego-expert__info-desc">
                         У Вас есть “горящие” проблемы? Филиалы, склады, бухгалтерия на удаленке? “Тормозят” сервера или сбоят сетевые принтеры?
@@ -107,6 +107,74 @@ export default {
     &__img {
         position: relative;
         bottom: 0;
+    }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-expert {
+        position: relative;
+        &__wrapper {
+            display: flex;
+            justify-content: space-between;
+        }
+        &__info {
+            font-family: "Montserrat", sans-serif;
+            color: white;
+            &-title {
+                margin-top: 30px;
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+            &-desc {
+                font-weight: 300;
+                font-size: 22px;
+                margin-bottom: 30px;
+            }
+            &-help {
+                font-weight: 600;
+                font-size: 28px;
+                margin-bottom: 30px;
+            }
+            &-consultation {
+                font-weight: 600;
+                font-size: 20px;
+                margin-bottom: 50px;
+            }
+            &-phone {
+                cursor: pointer;
+                margin-bottom: 30px;
+                margin-top: 22px;
+                display: flex;
+                align-items: center;
+                font-weight: 600;
+                font-size: 35px;
+                img {
+                    width: 43px;
+                    margin-right: 19px;
+                }
+                a {
+                    color: white;
+                }
+            }
+            &-call {
+                font-weight: 400;
+                font-size: 18px;
+            }
+        }
+        &__img {
+            // display: none;
+            max-width: 50px;
+            position: relative;
+            bottom: 0;
+        }
     }
 }
 </style>
