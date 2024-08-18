@@ -27,10 +27,15 @@
                         Получить консультацию
                     </div>
                     <div class="header__social-networks">
-                        <img src="../assets/images/contacts/wa.svg" alt="">
-                        <img src="../assets/images/contacts/tg.svg" alt="">
-                        <img src="../assets/images/contacts/vk.svg" alt="">
-                        <img src="../assets/images/contacts/ig.svg" alt="">
+                        <a href="https://t.me/itegoproinfo">
+                            <img src="../assets/images/contacts/tg.svg" alt="">
+                        </a>
+                        <a href="https://www.instagram.com/itegopro/ ">
+                            <img src="../assets/images/contacts/ig.svg" alt="">
+                        </a>
+                        <a href="https://vk.com/itegopro">
+                            <img src="../assets/images/contacts/vk.svg" alt="">
+                        </a>
                     </div>
                 </div>
                 <div class="header__burger">

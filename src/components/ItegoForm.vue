@@ -105,7 +105,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .itego-form {
     background-color: white;
     padding-bottom: 206px;

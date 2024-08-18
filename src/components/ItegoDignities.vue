@@ -78,7 +78,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .container {
     display: flex;
     flex-direction: column;
@@ -158,8 +158,8 @@ export default {
     .itego-dignities {
         position: relative;
         background-color: white;
-        padding-top: 80px;
-        padding-bottom: 268px;
+        padding-top: 30px;
+        padding-bottom: 30px;
         &__title {
             font-family: "Montserrat", sans-serif;
             font-weight: 700;
@@ -179,8 +179,8 @@ export default {
             font-family: "Montserrat", sans-serif;
             font-size: 8px;
             border: 1px solid #1565C0;
-            width: 100%;
-            padding: 29px;
+            width: 280px;
+            padding: 20px 29px;
             margin-bottom: 10px;
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
             &-title {
@@ -207,19 +207,15 @@ export default {
             display: flex;
             align-items: center;
             justify-content: center;
-            position: absolute;
-            bottom: 130px;
-            left: 50%;
-            transform: translateX(-50%);
             background-color: #1565C0;
             box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-            margin: 0 auto;
+            margin-top: 0;
             font-family: "Montserrat", sans-serif;
             font-weight: 600;
-            font-size: 10px;
+            font-size: 8px;
             color: white;
-            width: 100%;
-            padding: 20px;
+            width: 280px;
+            padding: 10px;
         }
     }
 }

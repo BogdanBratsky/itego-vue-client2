@@ -41,7 +41,7 @@ export default {
 // @import '../variables.scss';
 
 .scroll-to-top-button {
-  z-index: 1000;
+  z-index: 90;
     cursor: pointer;
     display: flex;
     align-items: center;

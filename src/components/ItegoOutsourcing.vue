@@ -119,6 +119,24 @@ export default {
     .first-column {
         margin-top: 20px;
         margin-right: 21px;
+        .itego-outsourcing__card:last-child {
+            background: linear-gradient(to bottom,
+                white 0%,
+                white 40%,
+                #9FC9F8 80%,
+                #9FC9F8 100%
+            );
+        }
+    }
+    .second-column {
+        .itego-outsourcing__card:first-child {
+            background: linear-gradient(to top,
+                white 0%,
+                white 40%,
+                #9FC9F8 80%,
+                #9FC9F8 100%
+            );
+        }
     }
 }
 </style>

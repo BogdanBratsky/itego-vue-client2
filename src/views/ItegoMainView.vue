@@ -8,7 +8,7 @@
     <ItegoYourProblem/>
     <ItegoComparisons/>
     <ItegoAbout/>
-    <ItegoForm/>
+    <!-- <ItegoForm/> -->
     <ItegoIntegration/>
     <ItegoExpert/>
     <ItegoDignities/>

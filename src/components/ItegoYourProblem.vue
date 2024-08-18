@@ -1,5 +1,5 @@
 <template>
-    <section class="itego-your-problem">
+    <section id="problem" class="itego-your-problem">
         <div class="container">
             <div class="itego-your-problem__title">
                 Расскажите нам о своей задаче и получите коммерческое предложение <br> со скидкой 50% на 1й месяц обслуживания

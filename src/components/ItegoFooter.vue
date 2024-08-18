@@ -11,16 +11,18 @@
                             </a>
                         </span>
                     </div>
-                    <div class="itego-footer__footer-top-letter">
-                        <img src="../assets/images/contacts/letter.svg" alt="">
-                        Написать письмо
-                    </div>
+                    <a href="#problem">
+                        <div class="itego-footer__footer-top-letter">
+                            <img src="../assets/images/contacts/letter.svg" alt="">
+                            Написать письмо
+                        </div>
+                    </a>
                     <div class="itego-footer__footer-top-call">
                         <img src="../assets/images/contacts/phone.svg" alt="">
                         Позвоните мне
                     </div>
                     <a href="#questions">
-                        <div style="color: #1565C0;" class="itego-footer__footer-top-question">
+                        <div class="itego-footer__footer-top-question">
                             <img src="../assets/images/contacts/question.svg" alt="">
                             Задать вопрос
                         </div>
@@ -54,7 +56,6 @@
                         <img src="../assets/images/contacts/vk.svg" alt="">
                         <img src="../assets/images/contacts/ig.svg" alt="">
                         <img src="../assets/images/contacts/tg.svg" alt="">
-                        <img src="../assets/images/contacts/wa.svg" alt="">
                         <div @click="showForm" class="itego-footer__footer-bottom-contacts-btn">
                             Заказать звонок
                         </div>
@@ -114,6 +115,13 @@ export default {
     &__footer-top {
         background-color: white;
         padding: 70px 0;
+        a {
+            color: black;
+        }
+        &-question:hover {
+            color: #1565C0;
+            transition: 0.2s;
+        }
         &-nav {
             display: flex;
             justify-content: space-between;

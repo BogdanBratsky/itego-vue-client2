@@ -206,3 +206,91 @@ export default {
     }
 }
 </style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    .itego-form {
+        z-index: 101;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        // padding: 0 40px;
+        background-color: white;
+        border: 1px solid #000000;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
+        width: 200px;
+        border-radius: 2px;
+        // overflow-y: auto;
+        &__cancel {
+            user-select: none;
+            cursor: pointer;
+            color: #ebebeb;
+            position: absolute;
+            top: 0;
+            right: -40px;
+            font-size: 30px;
+            &:hover {
+                color: #fff7f7;
+                transition: 0.7s;
+            }
+        }
+        &__title {
+            align-self: center;
+            color: #1565C0;
+            text-align: center;
+            font-size: 10px;
+            margin: 30px 0;
+        }
+        &__label {
+            margin-bottom: 6px;
+        }
+        &__input {
+            outline: none;
+            border: 1px solid black;
+            padding: 11px;
+            margin-bottom: 26px;
+            width: 100%;
+        }
+        &__policy {
+            margin-bottom: 8px;
+            a {
+                text-decoration: underline;
+            }
+        }
+        &__chkbx {
+            input {
+                cursor: pointer;
+                width: 12px;
+                margin-right: 8px;
+            }
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        &__error {
+            color: red;
+            margin-bottom: 20px;
+        }
+        &__btn {
+            cursor: pointer;
+            font-size: 20px;
+            border: none;
+            border-radius: 2px;
+            padding: 10px;
+            background-color: #1565C0;
+            color: white;
+            margin-bottom: 40px;
+        }
+    }
+}
+</style>
