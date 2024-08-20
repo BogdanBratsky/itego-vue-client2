@@ -6,13 +6,8 @@
                     <div class="header__logo">
                         <img src="../assets/images/contacts/logo.svg" alt="">
                     </div>
-                    <router-link to="/blog">
-                        <div class="header__blog">
-                            Наш блог
-                        </div>
-                    </router-link>
                 </div>
-
+                
                 <div class="header__contacts">
                     <div @click="togglePhoneVisibility" class="header__phone">
                         <img src="../assets/images/contacts/phone.svg" alt="">
@@ -52,6 +47,7 @@
                     <a href="#cases" class="header__nav-item">Кейсы</a>
                     <a href="#industry-solutions" class="header__nav-item">Отраслевые решения</a>
                     <a href="#reviews" class="header__nav-item">Отзывы</a>
+                    <router-link to="/blog" class="header__nav-item">Наш блог</router-link>
                     <a href="#contacts" class="header__nav-item">Контакты</a>
                 </div>
             </div>
@@ -230,6 +226,9 @@ export default {
         &-item {
             cursor: pointer;
             margin-right: 20px;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
     &__burger {

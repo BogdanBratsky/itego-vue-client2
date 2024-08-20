@@ -43,7 +43,10 @@
                     </tr>
                     <tr class="itego-comparisons__table-gray">
                         <td class="itego-comparisons__table-title">Стоимость за работу в год</td>
-                        <td class="itego-comparisons__table-r">от 1 020 000 руб</td>
+                        <td class="itego-comparisons__table-r">
+                            от 1 020 000 руб
+                            <img class="itego-comparisons__question" @click="showTable" src="../assets/images/q.svg" alt="">
+                        </td>
                         <td class="itego-comparisons__table-g">от 500 000 руб</td>
                     </tr>
                 </tbody>
@@ -56,26 +59,38 @@
         </div>
     </section>
 
+    <TablePopUp v-if="isOpenTable" @closeTable="showTable"/>
     <ItegoModalForm v-if="isOpen" @close="showForm"/>
 </template>
 
 <script>
 import ItegoModalForm from './ItegoModalForm.vue'
+import TablePopUp from './TablePopUp.vue'
 
 export default {
     name: 'ItegoComparisons',
     data() {
         return {
             isOpen: false,
+            isOpenTable: false
         }
     },
     components: {
-        ItegoModalForm
+        ItegoModalForm,
+        TablePopUp
     },
     methods: {
         showForm() {
             this.isOpen = !this.isOpen;
             if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        },
+        showTable() {
+            this.isOpenTable = !this.isOpenTable;
+            if (this.isOpenTable) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'auto';
@@ -89,6 +104,9 @@ export default {
 .itego-comparisons {
     padding: 100px 0;
     background-color: white;
+    &__question {
+        cursor: pointer;
+    }
     &__title {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;

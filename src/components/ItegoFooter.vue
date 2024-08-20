@@ -11,10 +11,11 @@
                             </a>
                         </span>
                     </div>
-                    <a href="#problem">
+                    <a href="#" @click.prevent="toggleEmailVisibility">
                         <div class="itego-footer__footer-top-letter">
                             <img src="../assets/images/contacts/letter.svg" alt="">
-                            Написать письмо
+                            <span v-if="!isEmailVisible">Написать письмо</span>
+                            <span v-else>help@itego.pro</span>
                         </div>
                     </a>
                     <div class="itego-footer__footer-top-call">
@@ -88,7 +89,8 @@ export default {
     data() {
         return {
             isPhoneVisible: false,
-            isOpen: false
+            isOpen: false,
+            isEmailVisible: false  // Новое свойство
         }
     },
     components: {
@@ -97,6 +99,9 @@ export default {
     methods: {
         togglePhoneVisibility() {
             this.isPhoneVisible = true;
+        },
+        toggleEmailVisibility() {
+            this.isEmailVisible = true;
         },
         showForm() {
             this.isOpen = !this.isOpen;
