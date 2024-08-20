@@ -3,9 +3,9 @@
         <div class="container">
             <nav class="itego-outsourcing-blocks__items">
                 <div class="itego-outsourcing-blocks__item">ИТ-обслуживание</div>
-                <div class="itego-outsourcing-blocks__item">ИТ-поддержка</div>
-                <div class="itego-outsourcing-blocks__item">ИТ-сопровождение</div>
-                <div class="itego-outsourcing-blocks__item">Обслуживание компьютерной техники</div>
+                <div class="itego-outsourcing-blocks__item">Аренда серверов</div>
+                <div class="itego-outsourcing-blocks__item">Поддержка 1с</div>
+                <div class="itego-outsourcing-blocks__item">Резервное копирование данных</div>
                 <div class="itego-outsourcing-blocks__item">ИТ-аутсорсинг</div>
             </nav>
         </div>

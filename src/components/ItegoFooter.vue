@@ -18,7 +18,7 @@
                             <span v-else>help@itego.pro</span>
                         </div>
                     </a>
-                    <div class="itego-footer__footer-top-call">
+                    <div @click="showPhoneForm" class="itego-footer__footer-top-call">
                         <img src="../assets/images/contacts/phone.svg" alt="">
                         Позвоните мне
                     </div>
@@ -79,10 +79,12 @@
     </section>
 
     <ItegoModalForm v-if="isOpen" @close="showForm"/>
+    <ItegoPhoneForm v-if="isOpen2" @close="showPhoneForm"/>
 </template>
 
 <script>
 import ItegoModalForm from './ItegoModalForm.vue'
+import ItegoPhoneForm from './ItegoPhoneForm.vue'
 
 export default {
     name: 'ItegoFooter',
@@ -90,11 +92,13 @@ export default {
         return {
             isPhoneVisible: false,
             isOpen: false,
+            isOpen2: false,
             isEmailVisible: false  // Новое свойство
         }
     },
     components: {
-        ItegoModalForm
+        ItegoModalForm,
+        ItegoPhoneForm
     },
     methods: {
         togglePhoneVisibility() {
@@ -106,6 +110,14 @@ export default {
         showForm() {
             this.isOpen = !this.isOpen;
             if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        },
+        showPhoneForm() {
+            this.isOpen2 = !this.isOpen2;
+            if (this.isOpen2) {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'auto';
@@ -147,6 +159,9 @@ export default {
             a {
                 color: black;
             }
+        }
+        &-call {
+            cursor: pointer;
         }
     }
     &__footer-bottom {
