@@ -20,7 +20,9 @@
                     </a>
                     <div @click="showPhoneForm" class="itego-footer__footer-top-call">
                         <img src="../assets/images/contacts/phone.svg" alt="">
-                        Позвоните мне
+                        <a>
+                            Позвоните мне
+                        </a>
                     </div>
                     <a href="#questions">
                         <div class="itego-footer__footer-top-question">
@@ -54,9 +56,17 @@
                         </div>
                     </div>
                     <div class="itego-footer__footer-bottom-contacts">
-                        <img src="../assets/images/contacts/vk.svg" alt="">
-                        <img src="../assets/images/contacts/ig.svg" alt="">
-                        <img src="../assets/images/contacts/tg.svg" alt="">
+                        <div class="itego-footer__footer-bottom-contacts-images">
+                            <a href="https://vk.com/itegopro" target="_blank">
+                                <img src="../assets/images/contacts/vk.svg" alt="">
+                            </a>
+                            <a href="https://www.instagram.com/itegopro/" target="_blank">
+                                <img src="../assets/images/contacts/ig.svg" alt="">
+                            </a>
+                            <a href="https://t.me/itegoproinfo" target="_blank">
+                                <img src="../assets/images/contacts/tg.svg" alt="">
+                            </a>
+                        </div>
                         <div @click="showForm" class="itego-footer__footer-bottom-contacts-btn">
                             Заказать звонок
                         </div>
@@ -133,11 +143,8 @@ export default {
         background-color: white;
         padding: 70px 0;
         a {
+            cursor: pointer;
             color: black;
-        }
-        &-question:hover {
-            color: #1565C0;
-            transition: 0.2s;
         }
         &-nav {
             display: flex;
@@ -152,6 +159,9 @@ export default {
                     width: 30px;
                     margin-right: 8px;
                 }
+            }
+            a:hover {
+                color: #1565C0;
             }
         }
         &-phone {
@@ -177,8 +187,6 @@ export default {
             display: flex;
             justify-content: space-between;
         }
-        &-logo {
-        }
         &-column {
             margin-left: 90px;
             display: flex;
@@ -195,10 +203,17 @@ export default {
             img:not(:last-child) {
                 margin-right: 16px;
             }
+            img {
+                filter: grayscale(0.4);
+            }
+            &-images {
+                display: flex;
+                justify-content: space-between;
+            }
             &-btn {
                 cursor: pointer;
                 margin-top: 25px;
-                width: 100%;
+                width: 140px;
                 background-color: #1565C0;
                 color: white;
                 display: flex;

@@ -88,7 +88,7 @@ export default {
     position: relative;
     background-color: white;
     padding-top: 80px;
-    padding-bottom: 268px;
+    padding-bottom: 68px;
     &__title {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;

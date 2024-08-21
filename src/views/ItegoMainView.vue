@@ -12,9 +12,9 @@
     <ItegoIntegration/>
     <ItegoExpert/>
     <ItegoDignities/>
-    <!-- <ItegoCalculator/>
-    <ItegoStaff/>
-    <ItegoReviews/> -->
+    <!-- <ItegoCalculator/> -->
+    <!-- <ItegoStaff/> -->
+    <ItegoReviews/>
     <!-- <ItegoFAQ/> -->
     <ItegoQuestions/>
     <ItegoFooter/>

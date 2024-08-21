@@ -22,13 +22,13 @@
                         Получить консультацию
                     </div>
                     <div class="header__social-networks">
-                        <a href="https://t.me/itegoproinfo">
+                        <a href="https://t.me/itegoproinfo" target="_blank">
                             <img src="../assets/images/contacts/tg.svg" alt="">
                         </a>
-                        <a href="https://www.instagram.com/itegopro/ ">
+                        <a href="https://www.instagram.com/itegopro/" target="_blank">
                             <img src="../assets/images/contacts/ig.svg" alt="">
                         </a>
-                        <a href="https://vk.com/itegopro">
+                        <a href="https://vk.com/itegopro" target="_blank">
                             <img src="../assets/images/contacts/vk.svg" alt="">
                         </a>
                     </div>
