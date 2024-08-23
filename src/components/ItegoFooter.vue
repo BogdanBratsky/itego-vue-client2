@@ -67,7 +67,7 @@
                                 <img src="../assets/images/contacts/tg.svg" alt="">
                             </a>
                         </div>
-                        <div @click="showForm" class="itego-footer__footer-bottom-contacts-btn">
+                        <div @click="showPhoneForm" class="itego-footer__footer-bottom-contacts-btn">
                             Заказать звонок
                         </div>
                     </div>
@@ -168,6 +168,9 @@ export default {
             cursor: pointer;
             a {
                 color: black;
+            }
+            &:hover {
+                color: #1565C0;
             }
         }
         &-call {
