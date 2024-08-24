@@ -206,9 +206,6 @@ export default {
             img:not(:last-child) {
                 margin-right: 16px;
             }
-            img {
-                filter: grayscale(0.4);
-            }
             &-images {
                 display: flex;
                 justify-content: space-between;

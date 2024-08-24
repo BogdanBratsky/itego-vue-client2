@@ -172,8 +172,7 @@ export default {
         background-color: #1565C0;
         border-radius: 2px;
         color: white;
-        margin-left: 20px;
-        margin-right: 35px;
+        margin: 0 20px;
         font-size: 12px;
         font-weight: 600;
     }
@@ -190,6 +189,7 @@ export default {
             align-items: center;
             cursor: pointer;
             margin-left: 9px;
+            // box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
     }
     &__nav {
