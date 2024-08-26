@@ -32,19 +32,19 @@
                 </div>
                 <div class="itego-about__card">
                     <div class="itego-about__card-title">
-                        >__
+                        10
                     </div>
                     специалистов готовы решать IT-задачи 24/7
                 </div>
                 <div class="itego-about__card">
                     <div class="itego-about__card-title">
-                        >30
+                        35
                     </div>
                     клиентов доверяют нам свою инфраструктуру
                 </div>
                 <div class="itego-about__card">
                     <div class="itego-about__card-title">
-                        >__ ____
+                        750
                     </div>
                     единиц техники уже на нашем обслуживании
                 </div>
@@ -108,6 +108,7 @@ export default {
         border-left: 2px solid #1565C0;
         box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
         &-title {
+            margin-bottom: 6px;
             color: #1565C0;
             font-weight: 700;
             font-size: 35px;
