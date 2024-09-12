@@ -9,16 +9,16 @@
                     <div class="itego-calculator__slider-wrapper">
                         <header class="itego-calculator__slider-header">
                             <p class="itego-calculator__slider-title">Количество компьютеров</p>
-                            <div class="itego-calculator__counter">{{ computerValue }}</div>
+                            <div class="itego-calculator__counter">{{ displayComputerValue }}</div>
                         </header>
-                        <input class="itego-calculator__slider" type="range" v-model="computerValue" :min="min" :max="max">
+                        <input class="itego-calculator__slider" type="range" v-model="computerValue" :min="minComputer" :max="maxComputer" @input="adjustComputerValue">
                     </div>
                     <div class="itego-calculator__slider-wrapper">
                         <header class="itego-calculator__slider-header">
                             <p class="itego-calculator__slider-title">Количество серверов</p>
                             <div class="itego-calculator__counter">{{ serverValue }}</div>
                         </header>
-                        <input class="itego-calculator__slider" type="range" v-model="serverValue" :min="min" :max="max">
+                        <input class="itego-calculator__slider" type="range" v-model="serverValue" :min="minServer" :max="maxServer">
                     </div>
                 </div>
                 <div class="itego-calculator__banner">
@@ -47,17 +47,52 @@ export default {
     name: 'ItegoCalculator',
     data() {
         return {
-            computerValue: 0, // Значение для ползунка компьютеров
-            serverValue: 0,   // Значение для ползунка серверов
-            min: 0,            // Минимальное значение ползунка
-            max: 50,           // Максимальное значение ползунка
-            priceOfComputer: 1450,  // Стоимость одного компьютера
-            priceOfServer: 3300     // Стоимость одного сервера
+            computerValue: 10,    // Значение для ползунка компьютеров
+            serverValue: 0,      // Значение для ползунка серверов
+            minComputer: 0,      // Минимальное значение ползунка для компьютеров
+            maxComputer: 50,     // Максимальное значение ползунка для компьютеров
+            minServer: 0,        // Минимальное значение ползунка для серверов
+            maxServer: 10,       // Максимальное значение ползунка для серверов
+            basePrice: 14500,    // Базовая стоимость
+            pricePerComputer: 1450,  // Стоимость одного компьютера
+            pricePerServer: 3300     // Стоимость одного сервера
         };
     },
     computed: {
+        displayComputerValue() {
+            return this.computerValue < 10 ? 0 : this.computerValue;
+        },
         totalPrice() {
-            return (this.priceOfComputer * this.computerValue) + (this.priceOfServer * this.serverValue);
+            let price = 0;
+            
+            // Рассчитываем стоимость компьютеров
+            if (this.computerValue >= 10) {
+                price = this.basePrice + (this.computerValue - 10) * this.pricePerComputer;
+            }
+            
+            // Добавляем стоимость серверов
+            if (this.serverValue > 0) {
+                if (this.computerValue < 10) {
+                    // Если компьютеров нет, базовая цена применяется только при наличии серверов
+                    price = this.basePrice;
+                }
+                if (this.serverValue > 2) {
+                    // Дополнительные серверы после второго
+                    price += (this.serverValue - 2) * this.pricePerServer;
+                } else {
+                    // Для 1-2 серверов используем максимум из текущей цены и базовой цены с серверами
+                    price = Math.max(price, this.basePrice + this.serverValue * this.pricePerServer);
+                }
+            }
+            
+            return price;
+        }
+    },
+    methods: {
+        adjustComputerValue() {
+            if (this.computerValue > 0 && this.computerValue < 10) {
+                this.computerValue = 10;
+            }
         }
     }
 }
@@ -77,7 +112,7 @@ export default {
     &__wrapper {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        // align-items: center;
     }
     &__sliders {
         width: 625px;
