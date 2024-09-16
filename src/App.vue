@@ -45,6 +45,10 @@ body {
   margin: 0 auto;
 }
 
+img {
+    image-rendering: optimizeQuality;
+}
+
 .container {
   max-width: 1200px;
   margin: 0 auto;
