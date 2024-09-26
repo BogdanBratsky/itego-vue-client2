@@ -32,7 +32,7 @@
                         </div>
                     </form>
                 </div>
-                <img class="itego-questions__img" src="../assets/images/men.svg">
+                <img class="itego-questions__img" src="../assets/images/men.png">
             </div>
         </div>
     </section>
@@ -215,7 +215,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
@@ -317,4 +317,4 @@ export default {
         }
     }    
 }
-</style>
+</style> -->

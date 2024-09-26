@@ -28,7 +28,7 @@
                         За 10 минут разговора Вы узнаете больше, чем за несколько дней <br> поиска ответов Сети
                     </div>
                 </div>
-                <img class="itego-expert__img" src="../assets/images/expert.svg" alt="">
+                <img class="itego-expert__img" src="../assets/images/expert.png" alt="">
             </div>
         </div>
     </section>
@@ -111,7 +111,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
@@ -177,4 +177,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->

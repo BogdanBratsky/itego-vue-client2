@@ -46,7 +46,9 @@ body {
 }
 
 img {
-    image-rendering: optimizeQuality;
+    // image-rendering: optimizeQuality;
+    // image-rendering: -webkit-optimize-contrast; /* Для Safari */
+    // image-rendering: crisp-edges;
 }
 
 .container {
@@ -57,7 +59,7 @@ img {
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @media screen and (max-width: 1024px) {
     .container {
         width: 100%;
@@ -78,4 +80,4 @@ img {
         padding: 0 20px;
     }
 }
-</style>
+</style> -->

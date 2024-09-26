@@ -239,7 +239,7 @@ export default {
 }
 </style>
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 @media screen and (max-width: 1024px) {
     .container {
         display: flex;
@@ -276,4 +276,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->

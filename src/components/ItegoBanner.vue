@@ -21,7 +21,9 @@
                         <img id="arrow" src="../assets/images/interface0/arrow.svg" alt="">
                     </footer>
                 </div>
-                <img id="banner" src="../assets/images/interface0/banner.svg" alt="">
+                <div style="display: block;" class="img-block">
+                    <img id="banner" src="../assets/images/interface0/banner.png" alt="">
+                </div>
             </div>
         </div>
     </section>
@@ -118,7 +120,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @media screen and (max-width: 1024px) {
     .itego-banner {
         &__info {
@@ -196,4 +198,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->

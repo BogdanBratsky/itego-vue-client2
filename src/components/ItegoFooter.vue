@@ -13,20 +13,20 @@
                     </div>
                     <a href="#" @click.prevent="toggleEmailVisibility">
                         <div class="itego-footer__footer-top-letter">
-                            <img src="../assets/images/contacts/letter.svg" alt="">
+                            <img src="../assets/images/contacts/letter.png" alt="">
                             <span v-if="!isEmailVisible">Написать письмо</span>
                             <span v-else>help@itego.pro</span>
                         </div>
                     </a>
                     <div @click="showPhoneForm" class="itego-footer__footer-top-call">
-                        <img src="../assets/images/contacts/phone.svg" alt="">
+                        <img src="../assets/images/contacts/phone.png" alt="">
                         <a>
                             Позвоните мне
                         </a>
                     </div>
                     <a href="#questions">
                         <div class="itego-footer__footer-top-question">
-                            <img src="../assets/images/contacts/question.svg" alt="">
+                            <img src="../assets/images/contacts/question.png" alt="">
                             Задать вопрос
                         </div>
                     </a>
@@ -252,7 +252,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
@@ -355,4 +355,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->

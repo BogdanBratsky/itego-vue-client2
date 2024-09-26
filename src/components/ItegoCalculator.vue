@@ -98,7 +98,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<!-- <style lang="scss">
 .itego-calculator {
     background-color: #F5F5F5;
     padding: 60px 0;
@@ -191,4 +191,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->

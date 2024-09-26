@@ -6,7 +6,7 @@
             </div>
             <div class="itego-about__info">
                 <div class="itego-about__info-img">
-                    <img src="../assets/images/about.svg" alt="">
+                    <img src="../assets/images/about.png" alt="">
                 </div>
                 <div class="itego-about__info-txt">
                     <header><b>Itego</b> - специализируется на развитии и поддержке IT-инфраструктуры для малых и средних предприятий. </header>
@@ -117,7 +117,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<!-- <style lang="scss">
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
@@ -171,4 +171,4 @@ export default {
         }
     }
 }
-</style>
+</style> -->
