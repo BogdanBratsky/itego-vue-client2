@@ -4,7 +4,7 @@
             <nav class="header__contact-nav">
                 <div class="header__wrap">
                     <div class="header__logo">
-                        <img src="../assets/images/contacts/logo.svg" alt="">
+                        <img src="../assets/images/contacts/logo.png" alt="">
                     </div>
                 </div>
                 
@@ -23,13 +23,13 @@
                     </div>
                     <div class="header__social-networks">
                         <a href="https://t.me/itegoproinfo" target="_blank">
-                            <img src="../assets/images/contacts/tg.svg" alt="">
+                            <img src="../assets/images/contacts/tg.png" alt="">
                         </a>
                         <a href="https://www.instagram.com/itegopro/" target="_blank">
-                            <img src="../assets/images/contacts/ig.svg" alt="">
+                            <img src="../assets/images/contacts/ig.png" alt="">
                         </a>
                         <a href="https://vk.com/itegopro" target="_blank">
-                            <img src="../assets/images/contacts/vk.svg" alt="">
+                            <img src="../assets/images/contacts/vk.png" alt="">
                         </a>
                     </div>
                 </div>
