@@ -28,7 +28,7 @@
             Я разрешаю обработку моих персональных данных
         </div>
         <div v-if="errorMessage" class="itego-form__error">{{ errorMessage }}</div>
-        <button class="itego-form__btn">Отправить</button>
+        <button class="itego-form__btn" type="submit" :disabled="!isFormValid">Отправить</button>
     </form>
     
     <div @click="close" class="background"></div>
@@ -52,6 +52,11 @@ export default {
             },
             errorMessage: '',
             phoneErrorMessage: '',
+        }
+    },
+    computed: {
+        isFormValid() {
+            return this.formData.name && (this.formData.phone || this.formData.email) && this.formData.consent && !this.errorMessage;
         }
     },
     methods: {
@@ -164,11 +169,11 @@ export default {
         margin: 30px 0;
     }
     &__label {
-        margin-bottom: 6px;
+        margin-bottom: 8px;
     }
     &__input {
         outline: none;
-        border: 1px solid black;
+        border: 1px solid #7a7a7a;
         padding: 11px;
         margin-bottom: 26px;
         width: 100%;
@@ -203,6 +208,10 @@ export default {
         background-color: #1565C0;
         color: white;
         margin-bottom: 40px;
+        &:disabled {
+            background-color: #d3d3d3;
+            cursor: not-allowed;
+        }
     }
 }
 </style>

@@ -190,6 +190,11 @@ export default {
             display: flex;
             justify-content: space-between;
         }
+        &-logo {
+            img {
+                width: 106px;
+            }
+        }
         &-column {
             margin-left: 90px;
             display: flex;
@@ -227,6 +232,9 @@ export default {
         }
     }
     &__footer-other {
+        a {
+            color: black;
+        }
         &-top {
             font-family: "Montserrat", sans-serif;
             font-weight: 400;

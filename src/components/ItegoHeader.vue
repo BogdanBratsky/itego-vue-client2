@@ -4,7 +4,7 @@
             <nav class="header__contact-nav">
                 <div class="header__wrap">
                     <div class="header__logo">
-                        <img src="../assets/images/contacts/logo.png" alt="">
+                        <img src="../assets/images/contacts/logo.svg" alt="">
                     </div>
                 </div>
                 
@@ -126,6 +126,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+    margin: 0 auto;
+}
+
 .header {
     margin: 0 auto;
     &__contact-nav {
@@ -235,6 +239,17 @@ export default {
         display: none;
         font-size: 24px;
         color: #1565C0;
+    }
+}
+</style>
+
+<style lang="scss" scoped>
+@media screen and (max-width: 768px) {
+    // .container {
+    //     width: 768px;
+    // }
+    .header__logo {
+        display: none;
     }
 }
 </style>

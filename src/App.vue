@@ -1,6 +1,8 @@
 <template>
-  <router-view></router-view>
-  <ScrollTopBtn/>
+    <div class="wrap">
+        <router-view></router-view>
+        <ScrollTopBtn/>
+    </div>
 </template>
 
 <script>
@@ -52,11 +54,15 @@ img {
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-  width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
 }
+
+.wrap {
+    margin: 0 auto;
+} 
 </style>
 
 <!-- <style lang="scss">

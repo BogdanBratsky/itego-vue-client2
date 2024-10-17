@@ -1,21 +1,19 @@
 <template>
-    <div class="wrap">
-        <ItegoHeader/>
-        <ItegoBanner/>
-    </div>
+    <ItegoHeader/>
+    <ItegoBanner/>
     <ItegoOutsourcing/>
     <ItegoServices/>
     <ItegoYourProblem/>
     <ItegoComparisons/>
     <ItegoAbout/>
-    <!-- <ItegoForm/> -->
+    <ItegoForm/>
     <ItegoIntegration/>
     <ItegoExpert/>
     <ItegoDignities/>
     <ItegoCalculator/>
-    <!-- <ItegoStaff/> -->
+    <ItegoStaff/>
     <ItegoReviews/>
-    <!-- <ItegoFAQ/> -->
+    <ItegoFAQ/>
     <ItegoQuestions/>
     <ItegoFooter/>
 </template>
@@ -64,11 +62,6 @@ export default {
 
 <!-- <style>
 .wrap {
-    background: linear-gradient(to right,
-        white 0%,          /* красный от начала */
-        white 35%,         /* красный на 30% */
-        #C7E7EF 35%,         /* синий начинается с 30% */
-        #C7E7EF 100%         /* синий до конца */
-    );
-}
+    margin: 0 auto;
+} 
 </style> -->
