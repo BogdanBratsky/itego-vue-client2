@@ -214,6 +214,9 @@ export default {
             &-images {
                 display: flex;
                 justify-content: space-between;
+                img {
+                    width: 25px;
+                }
             }
             &-btn {
                 cursor: pointer;

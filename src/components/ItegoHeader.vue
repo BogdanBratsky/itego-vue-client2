@@ -23,13 +23,13 @@
                     </div>
                     <div class="header__social-networks">
                         <a href="https://t.me/itegoproinfo" target="_blank">
-                            <img src="../assets/images/contacts/tg.png" alt="">
+                            <img src="../assets/images/contacts/tg.svg" alt="">
                         </a>
                         <a href="https://www.instagram.com/itegopro/" target="_blank">
-                            <img src="../assets/images/contacts/ig.png" alt="">
+                            <img src="../assets/images/contacts/ig.svg" alt="">
                         </a>
                         <a href="https://vk.com/itegopro" target="_blank">
-                            <img src="../assets/images/contacts/vk.png" alt="">
+                            <img src="../assets/images/contacts/vk.svg" alt="">
                         </a>
                     </div>
                 </div>
@@ -192,7 +192,8 @@ export default {
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
-            margin-left: 9px;
+            margin-left: 15px;
+            width: 25px;
             // box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         }
     }

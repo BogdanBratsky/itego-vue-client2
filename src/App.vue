@@ -48,7 +48,7 @@ body {
 }
 
 img {
-    // image-rendering: optimizeQuality;
+    image-rendering: optimizeQuality;
     // image-rendering: -webkit-optimize-contrast; /* Для Safari */
     // image-rendering: crisp-edges;
 }

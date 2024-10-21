@@ -11,7 +11,7 @@
     <ItegoExpert/>
     <ItegoDignities/>
     <ItegoCalculator/>
-    <ItegoStaff/>
+    <!-- <ItegoStaff/> -->
     <ItegoReviews/>
     <ItegoFAQ/>
     <ItegoQuestions/>

@@ -19,7 +19,6 @@
                             </router-link>
                         </div>
                         <div class="itego-form__form-confirm">
-                            <!-- <input v-model="formData.consent" :disabled="!policyAccepted" type="checkbox" name="" id="chkbx"> -->
                             <input v-model="formData.consent" type="checkbox" name="" id="chkbx">
                             Согласие на обработку персональных данных
                         </div>
@@ -42,6 +41,7 @@ export default {
                 name: '',
                 email: '',
                 phone: '',
+                message: '',
                 consent: false
             },
             errorMessage: '',
@@ -49,7 +49,31 @@ export default {
             policyAccepted: false
         }
     },
+    props: {
+        computerValue: {
+            type: Number,
+            required: true
+        },
+        serverValue: {
+            type: Number,
+            required: true
+        },
+        totalPrice: {
+            type: Number,
+            required: true
+        }
+    },
+    mounted() {
+        this.generateMessage();
+    },
     methods: {
+        generateMessage() {
+            if (this.computerValue > 0 || this.serverValue > 0 || this.totalPrice > 0) {
+                this.formData.message = `Количество компьютеров: ${this.computerValue}, Количество серверов: ${this.serverValue}, Общая стоимость: ${this.totalPrice} руб.`;
+            } else {
+                this.formData.message = '';
+            }
+        },
         validateForm() {
             this.errorMessage = '';
 

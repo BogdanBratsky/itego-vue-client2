@@ -33,66 +33,71 @@
                     <div class="itego-calculator__banner-description">
                         Получите подробное КП, учитывая ваши уникальные задачи
                     </div>
-                    <div class="itego-calculator__banner-btn">
+                    <div @click="showForm" class="itego-calculator__banner-btn">
                         Получить КП
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <ItegoModalForm v-if="isOpen" 
+        :computerValue="computerValue" 
+        :serverValue="serverValue" 
+        :totalPrice="totalPrice" 
+    @close="showForm"/>
 </template>
 
 <script>
+import ItegoModalForm from './ItegoModalForm.vue'
+
 export default {
     name: 'ItegoCalculator',
     data() {
         return {
-            computerValue: 10,    // Значение для ползунка компьютеров
+            isOpen: false,
+            computerValue: 0,    // Значение для ползунка компьютеров
             serverValue: 0,      // Значение для ползунка серверов
             minComputer: 0,      // Минимальное значение ползунка для компьютеров
             maxComputer: 50,     // Максимальное значение ползунка для компьютеров
             minServer: 0,        // Минимальное значение ползунка для серверов
-            maxServer: 10,       // Максимальное значение ползунка для серверов
+            maxServer: 50,        // Максимальное значение ползунка для серверов
             basePrice: 14500,    // Базовая стоимость
-            pricePerComputer: 1450,  // Стоимость одного компьютера
-            pricePerServer: 3300     // Стоимость одного сервера
+            pricePerComputer: 1450,  // Стоимость одного компьютера после 10
+            pricePerServer: 3300     // Стоимость одного сервера после 2
         };
+    },
+    components: {
+        ItegoModalForm
     },
     computed: {
         displayComputerValue() {
-            return this.computerValue < 10 ? 0 : this.computerValue;
+            return this.computerValue;
         },
         totalPrice() {
-            let price = 0;
+            let price = this.basePrice;
             
             // Рассчитываем стоимость компьютеров
-            if (this.computerValue >= 10) {
-                price = this.basePrice + (this.computerValue - 10) * this.pricePerComputer;
+            if (this.computerValue > 10) {
+                price += (this.computerValue - 10) * this.pricePerComputer;
             }
-            
-            // Добавляем стоимость серверов
-            if (this.serverValue > 0) {
-                if (this.computerValue < 10) {
-                    // Если компьютеров нет, базовая цена применяется только при наличии серверов
-                    price = this.basePrice;
-                }
-                if (this.serverValue > 2) {
-                    // Дополнительные серверы после второго
-                    price += (this.serverValue - 2) * this.pricePerServer;
-                } else {
-                    // Для 1-2 серверов используем максимум из текущей цены и базовой цены с серверами
-                    price = Math.max(price, this.basePrice + this.serverValue * this.pricePerServer);
-                }
+
+            // Рассчитываем стоимость серверов
+            if (this.serverValue > 2) {
+                price += (this.serverValue - 2) * this.pricePerServer;
             }
-            
+
             return price;
         }
     },
     methods: {
-        adjustComputerValue() {
-            if (this.computerValue > 0 && this.computerValue < 10) {
-                this.computerValue = 10;
-            }
+        showForm() {
+            this.isOpen = !this.isOpen;
+            // if (this.isOpen) {
+            //     document.body.style.overflow = 'hidden';
+            // } else {
+            //     document.body.style.overflow = 'auto';
+            // }
         }
     }
 }
