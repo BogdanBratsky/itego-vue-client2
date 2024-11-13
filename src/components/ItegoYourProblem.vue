@@ -12,7 +12,7 @@
                 <textarea v-model="formData.problem" class="itego-your-problem__form-textarea" placeholder="Проблема" name="" id=""></textarea>
                 <div v-if="phoneErrorMessage" class="itego-your-problem__error">{{ phoneErrorMessage }}</div>
                 <div v-if="errorMessage" class="itego-your-problem__error">{{ errorMessage }}</div>
-                <button class="itego-your-problem__form-btn">Отправить</button>
+                <button class="itego-your-problem__form-btn" type="submit">Отправить</button>
                 <div class="itego-your-problem__confirm">
                     <input v-model="formData.consent" type="checkbox" name="" id="chkbx">
                     Согласие на обработку персональных данных

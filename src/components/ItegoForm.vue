@@ -12,7 +12,7 @@
                         <div v-if="phoneErrorMessage" class="itego-form__error">{{ phoneErrorMessage }}</div>
                         <input v-model="formData.phone" @input="validatePhone" id="phone" name="phone" placeholder="Телефон" type="text">
                         <div v-if="errorMessage" class="itego-form__error">{{ errorMessage }}</div>
-                        <button>Отправить</button>
+                        <button type="submit">Отправить</button>
                         <div class="itego-form__policy">
                             <router-link to="/privacy-policy">
                                 Политика конфиденциальности itego
