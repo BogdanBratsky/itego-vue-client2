@@ -115,13 +115,23 @@ export default {
 @media screen and (max-width: 1024px) {
     .itego-expert {
         &__info {
-            font-family: "Montserrat", sans-serif;
-            color: white;
-            max-width: 700px;
+            max-width: 600px;
+            &-title {
+                margin-top: 30px;
+                max-width: 500px;
+            }
+            &-consultation {
+                max-width: 400px;
+            }
+            &-call {
+                max-width: 500px;
+                font-size: 15px;
+                margin-bottom: 50px;
+            }
         }
         &__img {
-            width: 250px;
-            position: relative;
+            max-width: 250px;
+            position: absolute;
             bottom: 0;
             right: 0;
         }

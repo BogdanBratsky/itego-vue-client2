@@ -147,23 +147,41 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
+@media screen and (max-width: 1190px) {
+    .itego-dignities {
+        &__cards {
+            position: relative;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        &__card {
+            z-index: 10;
+            background-color: white;
+            font-family: "Montserrat", sans-serif;
+            font-size: 12px;
+            border: 1px solid #1565C0;
+            width: 280px;
+            padding: 20px 29px;
+            margin-bottom: 10px;
+            margin-right: 10px;
+            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            &-title {
+                font-size: 14px;
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+}
 @media screen and (max-width: 1024px) {
-}
-@media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-dignities {
         position: relative;
         background-color: white;
         padding-top: 30px;
         padding-bottom: 30px;
         &__title {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
             color: #1565C0;
             margin-bottom: 30px;
         }
@@ -171,18 +189,16 @@ export default {
             position: relative;
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
+            justify-content: center;
         }
         &__card {
             z-index: 10;
-            background-color: white;
-            font-family: "Montserrat", sans-serif;
             font-size: 8px;
             border: 1px solid #1565C0;
             width: 280px;
             padding: 20px 29px;
             margin-bottom: 10px;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+            margin-right: 10px;
             &-title {
                 font-weight: 700;
                 font-size: 10px;
@@ -203,12 +219,6 @@ export default {
             width: 100%;
         }
         &__btn {
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #1565C0;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
             margin-top: 0;
             font-family: "Montserrat", sans-serif;
             font-weight: 600;
@@ -219,4 +229,36 @@ export default {
         }
     }
 }
-</style> -->
+@media screen and (max-width: 768px) {
+    .itego-dignities {
+        &__title {
+            font-size: 18px;
+        }
+        &__card {
+            width: 100%;
+            margin-right: 0;
+            font-size: 12px;
+            &-title {
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+        }
+        &__btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8px;
+            color: white;
+            width: 100%;
+            padding: 10px;
+        }
+    }
+}
+@media screen and (max-width: 425px) {
+    .itego-dignities {
+        &__title {
+            font-size: 18px;
+        }
+    }
+}
+</style>

@@ -197,3 +197,91 @@ export default {
     }
 }
 </style>
+
+<style lang="scss">
+@media screen and (max-width: 1300px) {
+    .itego-calculator {
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            // align-items: center;
+        }
+    }
+}
+@media screen and (max-width: 768px) {
+    .itego-calculator {
+        padding: 60px 0;
+        &__title {
+            font-size: 18px;
+            margin-bottom: 50px;
+        }
+        &__wrapper {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            // align-items: center;
+        }
+        &__sliders {
+            width: 100%;
+        }
+        &__slider-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        &__counter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            width: 55px;
+            height: 30px;
+        }
+        &__slider {
+            margin-bottom: 30px;
+            width: 100%;
+            font-size: 14px;
+            &-title {
+                font-size: 18px;
+            }
+        }
+        &__banner {
+            position: relative;
+            bottom: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            text-align: center;
+            width: 100%;
+            padding: 50px 0;
+            &-title {
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+            &-price {
+                font-size: 30px;
+                color: #1565C0;
+                margin-bottom: 75px;
+            }
+            &-description {
+                width: 100%;
+                font-size: 14px;
+            }
+            &-btn {
+                cursor: pointer;
+                position: absolute;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                top: 90%;
+                width: 100%;
+                height: 40px;
+                font-size: 12px;
+            }
+        }
+    }
+}
+</style>

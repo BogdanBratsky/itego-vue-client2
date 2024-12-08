@@ -9,8 +9,8 @@
     <!-- <ItegoForm/> -->
     <ItegoIntegration/>
     <ItegoExpert/>
-    <!-- <ItegoDignities/> -->
-    <!-- <ItegoCalculator/> -->
+    <ItegoDignities/>
+    <ItegoCalculator/>
     <!-- <ItegoStaff/> -->
     <!-- <ItegoReviews/> -->
     <ItegoFAQ/>
