@@ -32,9 +32,9 @@
                             <img src="../assets/images/contacts/vk.svg" alt="">
                         </a>
                     </div>
-                </div>
-                <div class="header__burger">
-                    &#9776;	
+                    <div class="header__burger">
+                        &#9776;	
+                    </div>
                 </div>
             </nav>
         </div>
@@ -127,7 +127,10 @@ export default {
 
 <style lang="scss" scoped>
 .container {
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
 }
 
 .header {
@@ -244,52 +247,36 @@ export default {
 }
 </style>
 
-<style lang="scss" scoped>
-@media screen and (max-width: 768px) {
-    // .container {
-    //     width: 768px;
-    // }
-    .header__logo {
-        display: none;
-    }
-}
-</style>
-
-<!-- <style lang="scss" scoped>
+<style lang="scss">
 @media screen and (max-width: 1024px) {
-    .container {
-        display: flex;
-        justify-content: center;
+    .header__nav-items {
+        font-size: 14px;
     }
 }
-
 @media screen and (max-width: 768px) {
+    .container {
+        width: 768px;
+    }
     .header {
-        margin: 0 auto;
-        &__logo {
-            img {
-                width: 78px;
-            }
-        }
-        &__contacts {
+        &__btn {
             display: none;
         }
-        &__blog {
-            font-size: 12px;
+        &__phone {
+            font-size: 15px !important;
+        }
+        &__contacts {
+            justify-content: end;
+        }
+        &__social-networks {
+            display: none !important;
         }
         &__burger {
-            display: block;
+            display: block !important;
         }
+
         &__nav {
             display: none;
         }
     }
 }
-@media screen and (max-width: 320px) {
-    .header {
-        &__blog {
-            display: none;
-        }
-    }
-}
-</style> -->
+</style>

@@ -3,7 +3,7 @@
         <footer class="itego-footer__footer-top">
             <div class="container">
                 <nav class="itego-footer__footer-top-nav">
-                    <div @click="togglePhoneVisibility" class="itego-footer__footer-top-phone">
+                    <div @click="togglePhoneVisibility" class="itego-footer__footer-top-item" id="phone">
                         <span v-if="!isPhoneVisible">+7 (499) 348 9...</span>
                         <span v-else>
                             <a href="tel:+74993489933">
@@ -12,20 +12,20 @@
                         </span>
                     </div>
                     <a href="#" @click.prevent="toggleEmailVisibility">
-                        <div class="itego-footer__footer-top-letter">
+                        <div class="itego-footer__footer-top-item" id="letter">
                             <img src="../assets/images/contacts/letter.png" alt="">
                             <span v-if="!isEmailVisible">Написать письмо</span>
                             <span v-else>help@itego.pro</span>
                         </div>
                     </a>
-                    <div @click="showPhoneForm" class="itego-footer__footer-top-call">
+                    <div @click="showPhoneForm" class="itego-footer__footer-top-item" id="call">
                         <img src="../assets/images/contacts/phone.png" alt="">
                         <a>
                             Позвоните мне
                         </a>
                     </div>
                     <a href="#questions">
-                        <div class="itego-footer__footer-top-question">
+                        <div class="itego-footer__footer-top-item" id="question">
                             <img src="../assets/images/contacts/question.png" alt="">
                             Задать вопрос
                         </div>
@@ -215,6 +215,7 @@ export default {
                 display: flex;
                 justify-content: space-between;
                 img {
+                    margin-right: 10px;
                     width: 25px;
                 }
             }
@@ -239,8 +240,6 @@ export default {
             color: black;
         }
         &-top {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 400;
             font-size: 12px;
             margin: 12px 0;
             span {
@@ -251,9 +250,7 @@ export default {
         &-bottom {
             display: flex;
             align-items: center;
-            font-family: "Roboto", sans-serif;
-            font-weight: 400;
-            font-size: 12px;
+            font-size: 8px;
             span {
                 font-size: 18px;
                 margin-right: 5px;
@@ -263,14 +260,10 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-footer {
         &__footer-top {
             padding: 20px 0;
@@ -278,9 +271,7 @@ export default {
                 display: flex;
                 flex-direction: column;
                 justify-content: space-between;
-                font-family: "Montserrat", sans-serif;
-                font-weight: 700;
-                font-size: 24px;
+                font-size: 18px;
                 div {
                     display: flex;
                     align-items: center;
@@ -289,6 +280,14 @@ export default {
                         margin-right: 8px;
                     }
                 }
+            }
+            &-item {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 25px;
+                padding: 20px 0;
+                box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
             }
             &-phone {
                 cursor: pointer;
@@ -303,12 +302,18 @@ export default {
             &-nav {
                 display: flex;
                 flex-direction: column;
-                padding-bottom: 40px;
-                border-bottom: 1px solid #1565C0;
+                padding-bottom: 10px;
+                border: none;
             }
             &-wrapper {
                 display: flex;
                 flex-direction: column;
+            }
+            &-logo {
+                img {
+                    width: 90px;
+                    margin-bottom: 25px;
+                }
             }
             &-column {
                 margin-left: 0;
@@ -316,13 +321,20 @@ export default {
                 flex-direction: column;
                 font-family: "Montserrat", sans-serif;
                 font-weight: 500;
-                font-size: 14px;
+                font-size: 10px;
                 span {
                     cursor: pointer;
                     margin-bottom: 12px;
                 }
             }
             &-contacts {
+                display: flex;
+                flex-direction: column-reverse;
+                &-images {
+                    margin-top: 12px;
+                    display: flex;
+                    justify-content: center;
+                }
                 img:not(:last-child) {
                     margin-right: 16px;
                 }
@@ -334,36 +346,153 @@ export default {
                     display: flex;
                     align-items: center;
                     justify-content: center;
-                    padding: 8px 0;
-                    font-family: "Montserrat", sans-serif;
-                    font-weight: 500;
+                    padding: 12px 0;
                     font-size: 10px;
                 }
             }
         }
         &__footer-other {
             &-top {
-                font-family: "Montserrat", sans-serif;
-                font-weight: 400;
                 font-size: 12px;
                 margin: 12px 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
                 span {
+                    display: block;
                     text-decoration: underline;
+                    font-size: 8px;
                     margin-right: 17px;
                 }
             }
             &-bottom {
                 display: flex;
                 align-items: center;
-                font-family: "Roboto", sans-serif;
-                font-weight: 400;
-                font-size: 12px;
+                justify-content: center;
+                font-size: 8px;
                 span {
-                    font-size: 18px;
+                    font-size: 8px;
                     margin-right: 5px;
                 }
             }
         }
     }
 }
-</style> -->
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    // .itego-footer {
+    //     &__footer-top {
+    //         padding: 20px 0;
+    //         &-nav {
+    //             display: flex;
+    //             flex-direction: column;
+    //             justify-content: space-between;
+    //             font-size: 18px;
+    //             div {
+    //                 display: flex;
+    //                 align-items: center;
+    //                 img {
+    //                     width: 30px;
+    //                     margin-right: 8px;
+    //                 }
+    //             }
+    //         }
+    //         &-item {
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             margin-bottom: 25px;
+    //             padding: 20px 0;
+    //             box-shadow: 0px 5px 4px rgba(0, 0, 0, 0.25);
+    //         }
+    //         &-phone {
+    //             cursor: pointer;
+    //             a {
+    //                 color: black;
+    //             }
+    //         }
+    //     }
+    //     &__footer-bottom {
+    //         padding: 20px 0;
+    //         background-color: #F5F5F5;
+    //         &-nav {
+    //             display: flex;
+    //             flex-direction: column;
+    //             padding-bottom: 10px;
+    //             border: none;
+    //         }
+    //         &-wrapper {
+    //             display: flex;
+    //             flex-direction: column;
+    //         }
+    //         &-logo {
+    //             img {
+    //                 width: 90px;
+    //                 margin-bottom: 25px;
+    //             }
+    //         }
+    //         &-column {
+    //             margin-left: 0;
+    //             display: flex;
+    //             flex-direction: column;
+    //             font-family: "Montserrat", sans-serif;
+    //             font-weight: 500;
+    //             font-size: 10px;
+    //             span {
+    //                 cursor: pointer;
+    //                 margin-bottom: 12px;
+    //             }
+    //         }
+    //         &-contacts {
+    //             display: flex;
+    //             flex-direction: column-reverse;
+    //             &-images {
+    //                 margin-top: 12px;
+    //                 display: flex;
+    //                 justify-content: center;
+    //             }
+    //             img:not(:last-child) {
+    //                 margin-right: 16px;
+    //             }
+    //             &-btn {
+    //                 margin-top: 25px;
+    //                 width: 100%;
+    //                 background-color: #1565C0;
+    //                 color: white;
+    //                 display: flex;
+    //                 align-items: center;
+    //                 justify-content: center;
+    //                 padding: 12px 0;
+    //                 font-size: 10px;
+    //             }
+    //         }
+    //     }
+    //     &__footer-other {
+    //         &-top {
+    //             font-size: 12px;
+    //             margin: 12px 0;
+    //             display: flex;
+    //             flex-direction: column;
+    //             align-items: center;
+    //             span {
+    //                 display: block;
+    //                 text-decoration: underline;
+    //                 font-size: 8px;
+    //                 margin-right: 17px;
+    //             }
+    //         }
+    //         &-bottom {
+    //             display: flex;
+    //             align-items: center;
+    //             justify-content: center;
+    //             font-size: 8px;
+    //             span {
+    //                 font-size: 8px;
+    //                 margin-right: 5px;
+    //             }
+    //         }
+    //     }
+    // }
+}
+</style>

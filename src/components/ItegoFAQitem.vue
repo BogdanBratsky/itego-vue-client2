@@ -70,3 +70,33 @@ export default {
 }
 
 </style>
+
+<style lang="scss">
+@media screen and (max-width: 768px) {
+    .faq-item {
+        padding: 10px 0;
+        &__title {
+            font-size: 15px;
+            img {
+                width: 20px;
+            }
+        }
+        &__text {
+            font-size: 12px;
+        }
+    }
+}
+@media screen and (max-width: 320px) {
+    .faq-item {
+        &__title {
+            font-size: 13px;
+        }
+        &__text {
+            font-size: 12px;
+        }
+    }
+}
+// @media screen and (max-width: 768px) {
+
+// }
+</style>

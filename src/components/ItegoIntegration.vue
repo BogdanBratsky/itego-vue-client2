@@ -127,14 +127,10 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-integration {
         padding: 30px 0;
         &__title {
@@ -173,4 +169,45 @@ export default {
         }
     }
 }
-</style> -->
+@media screen and (max-width: 425px) {
+}
+// @media screen and (max-width: 320px) {
+//     .itego-integration {
+//         padding: 30px 0;
+//         &__title {
+//             font-size: 20px;
+//             color: #1565C0;
+//             margin-bottom: 30px;
+//         }
+//         &__cards {
+//             display: flex;
+//             flex-direction: column;
+//             &-a-row, &-b-row {
+//                 display: flex;
+//                 flex-direction: column;
+//                 // justify-content: space-between;
+//                 font-family: "Montserrat", sans-serif;
+//                 font-weight: 500;
+//                 margin-bottom: 0;
+//                 // font-size: 18px;
+//             }
+//             .card-number {
+//                 font-size: 24px;
+//                 margin-bottom: 10px;
+//             }
+//         }
+//         &__a-card, &__b-card {
+//             padding: 25px;
+//             width: 100%;
+//             margin-bottom: 10px;
+//             font-size: 10px;
+//         }
+//         &__btn {
+//             font-size: 8px;
+//             text-align: center;
+//             padding: 10px 0;
+//             width: 100%;
+//         }
+//     }
+// }
+</style>

@@ -113,17 +113,49 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
+@media screen and (max-width: 1192px) {
+    .itego-services {
+        &__items {
+            justify-content: center;
+        }
+        &__item {
+            width: 100%;
+        }
+    }
+}
 @media screen and (max-width: 1024px) {
+    // .itego-services {
+    //     &__items {
+    //         justify-content: center;
+    //     }
+    // }
 }
 @media screen and (max-width: 768px) {
+    .itego-services {
+        &__title {
+            font-size: 30px;
+        }
+    }
+}
+@media screen and (max-width: 600px) {
+    .itego-services {
+        &__item {
+            font-size: 10px;
+        }
+    }
 }
 @media screen and (max-width: 425px) {
+    .itego-services {
+        &__title {
+            font-size: 20px;
+        }
+    }
 }
 @media screen and (max-width: 320px) {
     .itego-services {
-    padding: 30px 0;
-    background-color: #F5F5F5;
+        padding: 30px 0;
+        background-color: #F5F5F5;
     &__title {
         font-family: "Montserrat", sans-serif;
         font-weight: 700;
@@ -153,4 +185,4 @@ export default {
     }
 }
 }
-</style> -->
+</style>

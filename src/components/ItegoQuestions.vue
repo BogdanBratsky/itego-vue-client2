@@ -7,20 +7,18 @@
                     <div class="itego-questions__subtitle"><b>Оставьте заявку</b>, и мы ответим!</div>
                     <form @submit.prevent="sendForm()" action="" class="itego-questions__form">
                         <div class="itego-questions__form-wrapper">
-                            <div class="itego-questions__form-left">
-                                <div class="itego-questions__form-left-row">
-                                    <input v-model="formData.name" type="text" placeholder="Имя">
-                                    <input v-model="formData.email" type="text" placeholder="E-mail">
-                                </div>
-                                <input v-model="formData.wish" type="text" placeholder="Пожелания">
-                            </div>
-                            <div class="itego-questions__form-right">
-                                <div v-if="phoneErrorMessage" class="itego-your-problem__error">{{ phoneErrorMessage }}</div>
+                            <div class="itego-questions__form-top">
+                                <input v-model="formData.name" type="text" placeholder="Имя">
+                                <input v-model="formData.email" type="text" placeholder="E-mail">
                                 <input v-model="formData.phone" @input="validatePhone" type="text" placeholder="Телефон">
-                                <div v-if="errorMessage" class="itego-questions__error">{{ errorMessage }}</div>
-                                <button type="submit">Оставить заявку</button>
+                            </div>
+                            <div class="itego-questions__form-bottom">
+                                <textarea  v-model="formData.wish" type="text" placeholder="Пожелания"></textarea>
                             </div>
                         </div>
+                        <div v-if="phoneErrorMessage" class="itego-your-problem__error">{{ phoneErrorMessage }}</div>
+                        <div v-if="errorMessage" class="itego-questions__error">{{ errorMessage }}</div>
+                        <button type="submit">Оставить заявку</button>
                         <div class="itego-questions__policy">
                             <router-link to="/privacy-policy">
                                 Политика конфиденциальности itego
@@ -122,6 +120,7 @@ export default {
 .itego-questions {
     background-color: #1565C0;
     &__wrapper {
+        position: relative;
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -143,6 +142,8 @@ export default {
     &__form {
         &-wrapper {
             display: flex;
+            flex-direction: column;
+            display: flex;
         }
         input, button {
             padding: 12px 20px;
@@ -153,34 +154,29 @@ export default {
             font-family: "Montserrat", sans-serif;
             font-weight: 300;
         }
-        &-left {
-            display: flex;
-            flex-direction: column;
-            width: 444px;
-            margin-right: 10px;
-            &-row {
-                width: 100%;
-                display: flex;
-                justify-content: space-between;
-                margin-bottom: 10px;
-                input {
-                    width: 217px;
-                }
+        textarea {
+            padding: 12px 20px;
+            border: none;
+            outline: none;
+            width: 100%;
+            height: 90px;
+        }
+        &-top {
+            margin-bottom: 10px;
+            input {
+                width: 200px;
+            }
+            input:not(:last-child) {
+                margin-right: 10px;
             }
         }
-        &-right {
-            width: 216px;
-            input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-            button {
-                cursor: pointer;
-                width: 100%;
-                background-color: #C7E7EF;
-                font-family: "Montserrat", sans-serif;
-                font-weight: 600;
-            }
+        button {
+            margin-top: 10px;
+            cursor: pointer;
+            width: 100%;
+            background-color: #C7E7EF;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 600;
         }
         &-confirm {
             display: flex;
@@ -215,84 +211,79 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
+@media screen and (max-width: 1100px) {
+    .itego-questions {
+        &__title {
+            margin-top: 80px;
+        }
+        &__img {
+            width: 300px;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
+    }
+}
 @media screen and (max-width: 1024px) {
-}
-@media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-questions {
         border-top: 1px solid white;
         &__wrapper {
-            display: flex;
-            flex-direction: column;
-            // justify-content: space-between;
-            // align-items: center;
+            width: 100%;
+            textarea {
+                width: 100%;
+                margin-top: 0;
+                margin-bottom: 10px;
+            }
+        }
+        &__info {
+            width: 100%;
         }
         &__title {
             font-size: 18px;
-            margin-bottom: 40px;
+            margin-top: 30px;
+            margin-bottom: 10px;
         }
         &__subtitle {
             font-size: 8px;
             color: white;
-            margin-bottom: 40px;
+            margin-bottom: 20px;
         }
         &__form {
             &-wrapper {
-                display: block;
+                width: 100%;
             }
             input, button {
+                width: 100%;
                 padding: 12px 20px;
                 border: none;
                 outline: none;
             }
-            input::placeholder {
-                font-family: "Montserrat", sans-serif;
-                font-weight: 300;
+            input::placeholder, textarea::placeholder {
+                font-size: 10px;
             }
-            &-left {
-                display: block;
-                width: 280px;
-                margin-right: 10px;
-                &-row {
-                    width: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    margin-bottom: 10px;
-                    input {
-                        width: 217px;
-                    }
-                }
-            }
-            &-right {
-                display: block;
-                width: 280px;
+            &-top {
+                margin: 0;
                 input {
-                    width: 100%;
                     margin-bottom: 10px;
-                }
-                button {
-                    cursor: pointer;
-                    width: 100%;
-                    background-color: #C7E7EF;
-                    font-family: "Montserrat", sans-serif;
-                    font-weight: 600;
                 }
             }
             &-confirm {
                 display: flex;
                 align-items: center;
-                font-family: "Montserrat", sans-serif;
-                font-weight: 300;
                 margin-top: 6px;
                 color: white;
+                font-size: 10px;
+                margin-bottom: 60px;
                 input {
                     border-radius: 10px;
                     margin-right: 6px;
+                    width: 10px;
                 }
+            }
+            button {
+                margin: 0;
+                width: 100%;
             }
         }
         &__img {
@@ -302,7 +293,7 @@ export default {
             font-family: "Montserrat", sans-serif;
             font-weight: 400;
             font-size: 14px;
-            margin-top: 12px;
+            margin-top: 10px;
             text-decoration: underline;
             color: #ffffff;
             a {
@@ -317,4 +308,114 @@ export default {
         }
     }    
 }
-</style> -->
+@media screen and (max-width: 768px) {
+    // .itego-questions {
+    //     border-top: 1px solid white;
+    //     &__wrapper {
+    //         width: 100%;
+    //         textarea {
+    //             width: 100%;
+    //             margin-top: 0;
+    //             margin-bottom: 10px;
+    //         }
+    //     }
+    //     &__info {
+    //         width: 100%;
+    //     }
+    //     &__title {
+    //         font-size: 18px;
+    //         margin-top: 30px;
+    //         margin-bottom: 10px;
+    //     }
+    //     &__subtitle {
+    //         font-size: 8px;
+    //         color: white;
+    //         margin-bottom: 20px;
+    //     }
+    //     &__form {
+    //         &-wrapper {
+    //             width: 100%;
+    //         }
+    //         input, button {
+    //             width: 100%;
+    //             padding: 12px 20px;
+    //             border: none;
+    //             outline: none;
+    //         }
+    //         input::placeholder, textarea::placeholder {
+    //             font-size: 10px;
+    //         }
+    //         &-left {
+    //             display: block;
+    //             width: 100%;
+    //             margin: 0;
+    //             &-row {
+    //                 width: 100%;
+    //                 display: flex;
+    //                 flex-direction: column;
+    //                 margin: 0;
+    //                 input {
+    //                     width: 100%;
+    //                     margin-bottom: 10px;
+    //                 }
+    //             }
+    //         }
+    //         &-right {
+    //             display: block;
+    //             width: 100%;
+    //             input {
+    //                 width: 100%;
+    //                 margin-bottom: 10px;
+    //             }
+    //             button {
+    //                 cursor: pointer;
+    //                 width: 100%;
+    //                 background-color: #C7E7EF;
+    //                 font-family: "Montserrat", sans-serif;
+    //                 font-weight: 600;
+    //             }
+    //         }
+    //         &-confirm {
+    //             display: flex;
+    //             align-items: center;
+    //             margin-top: 6px;
+    //             color: white;
+    //             font-size: 10px;
+    //             margin-bottom: 60px;
+    //             input {
+    //                 border-radius: 10px;
+    //                 margin-right: 6px;
+    //                 width: 10px;
+    //             }
+    //         }
+    //         button {
+    //             width: 100%;
+    //         }
+    //     }
+    //     &__img {
+    //         display: none;
+    //     }
+    //     &__policy {
+    //         font-family: "Montserrat", sans-serif;
+    //         font-weight: 400;
+    //         font-size: 14px;
+    //         margin-top: 10px;
+    //         text-decoration: underline;
+    //         color: #ffffff;
+    //         a {
+    //             color: #ffffff;
+    //         }
+    //     }
+    //     &__error {
+    //         color: red;
+    //         margin-bottom: 20px;
+    //         font-family: "Montserrat", sans-serif;
+    //         font-weight: 400;
+    //     }
+    // }    
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+}
+</style>

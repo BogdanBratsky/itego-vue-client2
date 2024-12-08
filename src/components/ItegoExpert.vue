@@ -111,12 +111,107 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
 @media screen and (max-width: 1024px) {
+    .itego-expert {
+        &__info {
+            font-family: "Montserrat", sans-serif;
+            color: white;
+            max-width: 700px;
+        }
+        &__img {
+            width: 250px;
+            position: relative;
+            bottom: 0;
+            right: 0;
+        }
+    }
 }
 @media screen and (max-width: 768px) {
+    .itego-expert {
+        &__info {
+            max-width: 600px;
+            &-title {
+                width: 200px;
+                margin-top: 30px;
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
+            &-desc {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            &-help {
+                font-size: 12px;
+                margin-bottom: 10px;
+            }
+            &-consultation {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+            &-phone {
+                margin-bottom: 11px;
+                font-size: 14px;
+                img {
+                    width: 11px;
+                    margin-right: 6px;
+                }
+            }
+            &-call {
+                font-weight: 400;
+                font-size: 5px;
+                margin-bottom: 50px;
+            }
+        }
+        &__img {
+            // display: none;
+            max-width: 200px;
+            position: relative;
+            bottom: 0;
+            right: 0;
+        }
+    }
 }
 @media screen and (max-width: 425px) {
+    .itego-expert {
+        &__info {
+            width: 120px;
+            &-title {
+                width: 200px;
+                margin-top: 30px;
+                font-size: 18px;
+                margin-bottom: 20px;
+            }
+            &-desc {
+                font-size: 8px;
+                margin-bottom: 10px;
+            }
+            &-help {
+                font-size: 8px;
+                margin-bottom: 10px;
+            }
+            &-consultation {
+                font-size: 8px;
+                margin-bottom: 15px;
+            }
+            &-phone {
+                margin-bottom: 11px;
+                font-size: 10px;
+                img {
+                    width: 11px;
+                    margin-right: 6px;
+                }
+            }
+            &-call {
+                font-weight: 400;
+                font-size: 5px;
+                margin-bottom: 50px;
+            }
+        }
+        &__img {
+            max-width: 179px;
+        }
+    }
 }
 @media screen and (max-width: 320px) {
     .itego-expert {
@@ -126,39 +221,31 @@ export default {
             justify-content: space-between;
         }
         &__info {
-            font-family: "Montserrat", sans-serif;
-            color: white;
+            width: 120px;
             &-title {
+                width: 200px;
                 margin-top: 30px;
                 font-size: 18px;
-                margin-bottom: 30px;
+                margin-bottom: 20px;
             }
             &-desc {
-                font-weight: 300;
-                font-size: 22px;
-                margin-bottom: 30px;
+                font-size: 8px;
+                margin-bottom: 10px;
             }
             &-help {
-                font-weight: 600;
-                font-size: 28px;
-                margin-bottom: 30px;
+                font-size: 8px;
+                margin-bottom: 10px;
             }
             &-consultation {
-                font-weight: 600;
-                font-size: 20px;
-                margin-bottom: 50px;
+                font-size: 8px;
+                margin-bottom: 15px;
             }
             &-phone {
-                cursor: pointer;
-                margin-bottom: 30px;
-                margin-top: 22px;
-                display: flex;
-                align-items: center;
-                font-weight: 600;
-                font-size: 35px;
+                margin-bottom: 11px;
+                font-size: 10px;
                 img {
-                    width: 43px;
-                    margin-right: 19px;
+                    width: 11px;
+                    margin-right: 6px;
                 }
                 a {
                     color: white;
@@ -166,15 +253,17 @@ export default {
             }
             &-call {
                 font-weight: 400;
-                font-size: 18px;
+                font-size: 5px;
+                margin-bottom: 50px;
             }
         }
         &__img {
             // display: none;
-            max-width: 50px;
-            position: relative;
+            width: 179px;
+            position: absolute;
             bottom: 0;
+            right: 0;
         }
     }
 }
-</style> -->
+</style>

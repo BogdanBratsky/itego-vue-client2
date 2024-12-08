@@ -58,6 +58,13 @@ export default {
 </script>
 
 <style lang="scss">
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
+}
+
 .itego-banner {
     background-color: #C7E7EF;
     // background-size: contain;
@@ -113,39 +120,60 @@ export default {
         #arrow {
             margin-left: 20px;
         }
-        #banner2 {
-            display: none;
-        }
     }
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
+
+// __subtitle
+// __order-title
+// __order-btn
+// img-block
 @media screen and (max-width: 1024px) {
     .itego-banner {
         &__info {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 27px 0 0 0;
+        }
+        &__title {
+            font-size: 24px;
+        }
+        &__subtitle {
+            font-size: 13px;
         }
         &__order-title {
-            text-align: center;
+            font-size: 14px;
         }
-        &__wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        &__order-btn {
+            font-size: 14px;
+            padding: 10px 12px;
         }
-    }
-    #arrow {
-        display: none;
+        #banner {
+            width: 400px;
+        }
     }
 }
 
 @media screen and (max-width: 768px) {
     .itego-banner {
+        &__wrapper {
+            flex-direction: column;
+            justify-content: center;
+            // align-items: center;
+        }
         &__info {
             padding: 27px 0 0 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            text-align: center;
+        }
+        &__title {
+            font-size: 24px;
+        }
+        #arrow {
+            display: none;
         }
         #banner {
             width: 400px;
@@ -155,47 +183,29 @@ export default {
 
 @media screen and (max-width: 425px) {
     .itego-banner {
+        &__wrapper {
+            flex-direction: column;
+            justify-content: center;
+            // align-items: center;
+        }
+        &__info {
+            padding: 27px 0 0 0;
+        }
         &__title {
-            font-size: 30px;
-        }
-        &__subtitle {
-            font-size: 15px;
-        }
-        &__order-title {
-            font-size: 13px;
-        }
-        &__order-btn {
-            font-size: 12px;
-        }
-        #banner {
-            max-width: 240px;
-        }
-    }
-}
-
-@media screen and (max-width: 320px) {
-    .itego-banner {
-        &__title {
-            text-align: center;
             font-size: 20px;
         }
-        &__subtitle {
-            text-align: center;
-            font-size: 10px;
-            font-weight: 500;
-        }
-        &__order-title {
-            text-align: center;
-            font-size: 8px;
-            font-weight: 600;
-        }
-        &__order-btn {
-            font-size: 9px;
-            padding: 10px 70px;
+        #arrow {
+            display: none;
         }
         #banner {
-            width: 200px;
+            width: 300px;
+        }
+        &__order {
+            &-btn {
+                justify-content: center;
+                width: 100%;
+            }
         }
     }
 }
-</style> -->
+</style>

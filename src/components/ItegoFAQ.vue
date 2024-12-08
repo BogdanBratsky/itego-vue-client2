@@ -67,3 +67,20 @@ export default {
     }
 }
 </style>
+
+<style lang="scss">
+@media screen and (max-width: 768px) {
+    .itego-faq {
+        &__title {
+            font-size: 30px;
+        }
+    }
+}
+@media screen and (max-width: 425px) {
+    .itego-faq {
+        &__title {
+            font-size: 20px;
+        }
+    }
+}
+</style>

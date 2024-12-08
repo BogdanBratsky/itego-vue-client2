@@ -141,14 +141,80 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
+@media screen and (max-width: 1090px) {
+    .itego-outsourcing-blocks__item {
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 880px) {
+    .itego-outsourcing-blocks__item {
+        padding: 12px 18px;
+    }
+}
+
 @media screen and (max-width: 1024px) {
+    .itego-outsourcing {
+        &__card {
+            padding: 30px;
+        }
+        .first-column {
+            margin: 0;
+            .itego-outsourcing__card:last-child {
+                background: white;
+            }
+        }
+        .second-column {
+            .itego-outsourcing__card:first-child {
+                background: white;
+            }
+        }
+    }
+    .itego-outsourcing__cards {
+        flex-direction: column;
+    }
 }
 @media screen and (max-width: 768px) {
-    .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    // .container {
+    //     display: flex;
+    //     flex-direction: column;
+    //     align-items: center;
+    // }
+    .itego-outsourcing {
+        &__title {
+            font-size: 30px;
+        }
+        &__wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            // justify-content: space-between;
+            // align-items: center;
+        }
+        &__list {
+            font-size: 16px;
+        }
+        &__cards {
+            display: flex;
+            flex-direction: row;
+            // flex-wrap: nowrap;
+            width: 100%;
+            overflow-x: scroll;
+        }
+        &__card {
+            white-space: nowrap; /* Запрещает перенос слов */
+            text-align: center; /* Центрирует текст */
+            font-size: 10px;
+            padding: 8px 12px;
+            margin-right: 5px;
+        }
+        .first-column {
+           display: flex;
+        }
+        .second-column {
+            display: flex;
+        }
     }
     .itego-outsourcing-blocks {
         padding: 0;
@@ -173,6 +239,14 @@ export default {
     }
 }
 @media screen and (max-width: 425px) {
+    .itego-outsourcing {
+        &__title {
+            font-size: 20px;
+        }
+        &__list {
+            font-size: 14px;
+        }
+    }
 }
 @media screen and (max-width: 320px) {
     .itego-outsourcing {
@@ -183,33 +257,9 @@ export default {
             color: #1565C0;
             margin-bottom: 12px;
         }
-        &__wrap {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            // justify-content: space-between;
-            // align-items: center;
-        }
         &__list {
             font-size: 13px;
         }
-        &__cards {
-            display: flex;
-            flex-direction: column;
-        }
-        &__card {
-            padding: 20px;
-            width: 100%;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
-            font-family: "Montserrat", sans-serif;
-            font-weight: 500;
-            font-size: 12px;
-        }
-        // .first-column {
-        //     margin-top: 20px;
-        //     margin-right: 21px;
-        // }
     }
 }
-</style> -->
+</style>

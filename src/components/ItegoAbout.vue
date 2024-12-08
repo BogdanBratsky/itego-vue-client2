@@ -78,7 +78,7 @@ export default {
             width: 458px;
         }
         &-txt {
-            max-width: 623px;
+            width: 623px;
             font-family: "Montserrat", sans-serif;
             font-weight: 400;
             font-size: 18px;
@@ -117,14 +117,45 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
+<style lang="scss">
+@media screen and (max-width: 1200px) {
+    .itego-about {
+        &__cards {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 70px;
+            width: 100%;
+            overflow-x: scroll;
+        }
+        &__card {
+            width: 275px;
+            padding: 15px 10px;
+            font-size: 13px;
+            border-top: 2px solid #1565C0;
+            border-left: 2px solid #1565C0;
+            box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+            &-title {
+                margin-bottom: 6px;
+                color: #1565C0;
+                font-weight: 700;
+                font-size: 25px;
+            }
+        }
+    }
+}
 @media screen and (max-width: 1024px) {
+    .itego-about {
+        &__info {
+            &-img img {
+                width: 380px;
+            }
+            &-txt {
+                font-size: 14px;
+            }
+        }
+    }
 }
 @media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-about {
         padding: 30px 0;
         &__title {
@@ -135,11 +166,12 @@ export default {
             display: flex;
             justify-content: space-between;
             margin-bottom: 30px;
+            width: 100%;
             &-img img {
                 display: none;
             }
             &-txt {
-                max-width: 623px;
+                width: 100%;
                 font-size: 10px;
                 header, li {
                     text-align: center;
@@ -149,6 +181,7 @@ export default {
                     background-color: white;
                     padding: 18px 9px;
                     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+                    width: 100%;
                 }
                 li::before {
                     content: none;
@@ -171,4 +204,56 @@ export default {
         }
     }
 }
-</style> -->
+@media screen and (max-width: 425px) {
+    .itego-about {
+
+    }
+}
+// @media screen and (max-width: 320px) {
+//     .itego-about {
+//         padding: 30px 0;
+//         &__title {
+//             font-size: 20px;
+//             margin-bottom: 30px;
+//         }
+//         &__info {
+//             display: flex;
+//             justify-content: space-between;
+//             margin-bottom: 30px;
+//             &-img img {
+//                 display: none;
+//             }
+//             &-txt {
+//                 max-width: 623px;
+//                 font-size: 10px;
+//                 header, li {
+//                     text-align: center;
+//                     margin-bottom: 12px;
+//                 }
+//                 li {
+//                     background-color: white;
+//                     padding: 18px 9px;
+//                     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+//                 }
+//                 li::before {
+//                     content: none;
+//                     // margin-right: 10px;
+//                 }
+//             }
+//         }
+//         &__cards {
+//             margin-bottom: 20px;
+//         }
+//         &__card {
+//             width: 130px;
+//             padding: 10px 14px;
+//             font-size: 8px;
+//             margin-bottom: 10px;
+//             box-shadow: none;
+//             &-title {
+//                 font-size: 18px;
+//             }
+//         }
+//     }
+// }
+</style>

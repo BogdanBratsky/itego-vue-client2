@@ -186,92 +186,119 @@ export default {
 }
 </style>
 
-<!-- <style lang="scss">
-@media screen and (max-width: 1024px) {
-}
-@media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
+<style lang="scss">
+@media screen and (max-width: 1200px) {
     .itego-your-problem {
-        background-color: #1565C0;
-        padding: 20px 0;
-        &__title {
-            font-family: "Montserrat", sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            color: white;
-            margin-bottom: 40px;
-        }
-        &__form {
-            display: flex;
-            flex-direction: column;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 300;
-            font-size: 18px;
-            &-textarea {
-                min-height: 150px;
-                max-width: 100%;
-                min-width: 100%;
-            }
-            &-input {
-                max-width: 280px;
-                margin-bottom: 10px;
-            }
-            &-input, &-textarea {
-                border: none;
-                outline: none;
-                padding: 13px 18px;
-                &::placeholder {
-                    font-size: 8px;
-                }
-            }
-            &-btn {
-                cursor: pointer;
-                background-color: #C7E7EF;
-                margin: 0;
-                align-self: center;
-                border: none;
-                outline: none;
-                padding: 13px 18px;
-                font-size: 10px;
-                max-width: 280px;
-                margin: 10px 0;
-
-            }
-        }
         &__contact-data {
-            flex-direction: column;
-            margin-bottom: 0;
-        }
-        &__confirm {
             display: flex;
-            align-items: center;
-            color: white;
-            align-self: center;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 300;
-            font-size: 8px;
-            input {
-                width: 8px;
-                margin-right: 6px;
-                border: 1px solid white;
-            }
+            flex-direction: column;
+            margin: 0;
+
         }
-        &__policy {
-            align-self: center;
-            margin: 8px 0;
-            font-size: 8px;
-            text-decoration: underline;
-            color: #ffffff;
-        }
-        &__error {
-            color: red;
-            margin-bottom: 10px;
-            font-family: "Montserrat", sans-serif;
-            font-weight: 400;
+        &__form-input {
+            width: 100%;
+            margin-bottom: 20px;
         }
     }
 }
-</style> -->
+@media screen and (max-width: 1024px) {
+}
+@media screen and (max-width: 768px) {
+    .itego-your-problem {
+        &__title {
+            font-size: 30px;
+        }
+        &__form-btn {
+            width: 100%;
+        }
+    }
+}
+@media screen and (max-width: 425px) {
+    .itego-your-problem {
+        &__title {
+            font-size: 20px;
+        }
+    }
+}
+// @media screen and (max-width: 320px) {
+//     .itego-your-problem {
+//         background-color: #1565C0;
+//         padding: 20px 0;
+//         &__title {
+//             font-family: "Montserrat", sans-serif;
+//             font-weight: 700;
+//             font-size: 18px;
+//             color: white;
+//             margin-bottom: 40px;
+//         }
+//         &__form {
+//             display: flex;
+//             flex-direction: column;
+//             font-family: "Montserrat", sans-serif;
+//             font-weight: 300;
+//             font-size: 18px;
+//             &-textarea {
+//                 min-height: 150px;
+//                 max-width: 100%;
+//                 min-width: 100%;
+//             }
+//             &-input {
+//                 max-width: 280px;
+//                 margin-bottom: 10px;
+//             }
+//             &-input, &-textarea {
+//                 border: none;
+//                 outline: none;
+//                 padding: 13px 18px;
+//                 &::placeholder {
+//                     font-size: 8px;
+//                 }
+//             }
+//             &-btn {
+//                 cursor: pointer;
+//                 background-color: #C7E7EF;
+//                 margin: 0;
+//                 align-self: center;
+//                 border: none;
+//                 outline: none;
+//                 padding: 13px 18px;
+//                 font-size: 10px;
+//                 max-width: 280px;
+//                 margin: 10px 0;
+
+//             }
+//         }
+//         &__contact-data {
+//             flex-direction: column;
+//             margin-bottom: 0;
+//         }
+//         &__confirm {
+//             display: flex;
+//             align-items: center;
+//             color: white;
+//             align-self: center;
+//             font-family: "Montserrat", sans-serif;
+//             font-weight: 300;
+//             font-size: 8px;
+//             input {
+//                 width: 8px;
+//                 margin-right: 6px;
+//                 border: 1px solid white;
+//             }
+//         }
+//         &__policy {
+//             align-self: center;
+//             margin: 8px 0;
+//             font-size: 8px;
+//             text-decoration: underline;
+//             color: #ffffff;
+//         }
+//         &__error {
+//             color: red;
+//             margin-bottom: 10px;
+//             font-family: "Montserrat", sans-serif;
+//             font-weight: 400;
+//         }
+//     }
+// }
+</style>

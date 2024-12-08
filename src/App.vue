@@ -53,12 +53,12 @@ img {
     // image-rendering: crisp-edges;
 }
 
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
-    width: 100%;
-}
+// .container {
+//     max-width: 1200px;
+//     margin: 0 auto;
+//     padding: 0 15px;
+//     width: 100%;
+// }
 
 .wrap {
     margin: 0 auto;

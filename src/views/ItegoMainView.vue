@@ -6,13 +6,13 @@
     <ItegoYourProblem/>
     <ItegoComparisons/>
     <ItegoAbout/>
-    <ItegoForm/>
+    <!-- <ItegoForm/> -->
     <ItegoIntegration/>
     <ItegoExpert/>
-    <ItegoDignities/>
-    <ItegoCalculator/>
+    <!-- <ItegoDignities/> -->
+    <!-- <ItegoCalculator/> -->
     <!-- <ItegoStaff/> -->
-    <ItegoReviews/>
+    <!-- <ItegoReviews/> -->
     <ItegoFAQ/>
     <ItegoQuestions/>
     <ItegoFooter/>
