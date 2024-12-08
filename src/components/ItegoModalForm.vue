@@ -141,11 +141,11 @@ export default {
     transform: translate(-50%, -50%);
     display: flex;
     flex-direction: column;
-    padding: 0 40px;
+    padding: 0 20px;
     background-color: white;
     border: 1px solid #000000;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-    width: 500px;
+    min-width: 320px;
     border-radius: 2px;
     // overflow-y: auto;
     &__cancel {
