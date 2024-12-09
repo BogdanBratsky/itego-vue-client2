@@ -216,7 +216,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {

@@ -169,6 +169,7 @@ export default {
 }
 @media screen and (max-width: 768px) {
     .itego-comparisons {
+        padding: 30px 0;
         &__title {
             font-size: 30px;
         }
