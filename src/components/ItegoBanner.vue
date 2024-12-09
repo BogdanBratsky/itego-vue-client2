@@ -125,11 +125,6 @@ export default {
 </style>
 
 <style lang="scss">
-
-// __subtitle
-// __order-title
-// __order-btn
-// img-block
 @media screen and (max-width: 1024px) {
     .itego-banner {
         &__info {
@@ -178,6 +173,16 @@ export default {
         #banner {
             width: 400px;
         }
+        &__order {
+            width: 100%;
+            &-wrap {
+                width: 100%;
+            }
+            &-btn {
+                justify-content: center;
+                width: 100%;
+            }
+        }
     }
 }
 
@@ -199,12 +204,6 @@ export default {
         }
         #banner {
             width: 300px;
-        }
-        &__order {
-            &-btn {
-                justify-content: center;
-                width: 100%;
-            }
         }
     }
 }

@@ -182,6 +182,8 @@ export default {
     //     align-items: center;
     // }
     .itego-outsourcing {
+        padding: 30px 0;
+        margin: 0;
         &__title {
             font-size: 30px;
         }

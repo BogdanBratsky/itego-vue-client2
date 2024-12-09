@@ -32,7 +32,7 @@
                             <img src="../assets/images/contacts/vk.svg" alt="">
                         </a>
                     </div>
-                    <div class="header__burger">
+                    <div @click="togglePopUp" class="header__burger">
                         &#9776;	
                     </div>
                 </div>
@@ -55,10 +55,12 @@
     </header>
 
     <ItegoModalForm v-if="isOpen" @close="showForm"/>
+    <ItegoPopUp v-if="isClicked" @close="togglePopUp"/>
 </template>
 
 <script>
 import ItegoModalForm from './ItegoModalForm.vue'
+import ItegoPopUp from './ItegoPopUp.vue'
 
 export default {
     name: 'ItegoHeader',
@@ -69,12 +71,22 @@ export default {
             isHidden: false,
             lastScrollTop: 0,
             isOpen: false,
+            isClicked: false,
         }
     },
     components: {
-        ItegoModalForm
+        ItegoModalForm,
+        ItegoPopUp
     },
     methods: {
+        togglePopUp() {
+            this.isClicked = !this.isClicked;
+            if (this.isClicked) {
+                document.body.style.overflow = 'hidden'; // Отключаем прокрутку страницы
+            } else {
+                document.body.style.overflow = 'auto'; // Включаем прокрутку страницы
+            }
+        },
         togglePhoneVisibility() {
             this.isPhoneVisible = true;
         },
@@ -203,8 +215,8 @@ export default {
     &__nav {
         background-color: #C7E7EF;
         padding-top: 20px;
-        // display: flex;
-        // align-items: center;
+        display: flex;
+        align-items: center;
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         font-size: 15px;
@@ -254,15 +266,18 @@ export default {
     }
 }
 @media screen and (max-width: 768px) {
-    .container {
-        width: 768px;
-    }
     .header {
+        &__logo {
+            img {
+                width: 90px !important;
+            }
+        }
         &__btn {
             display: none;
         }
         &__phone {
             font-size: 15px !important;
+            margin-right: 10px !important;
         }
         &__contacts {
             justify-content: end;
@@ -273,9 +288,15 @@ export default {
         &__burger {
             display: block !important;
         }
-
         &__nav {
-            display: none;
+            display: none !important;
+        }
+    }
+}
+@media screen and (max-width: 375px) {
+    .header {
+        &__phone {
+            font-size: 13px !important;
         }
     }
 }
