@@ -11,15 +11,16 @@
             </header>
             <nav class="header-popup__nav">
                 <div class="header-popup__nav-items">
-                    <div class="header-popup__nav-item">О компании</div>
-                    <div class="header-popup__nav-item">Услуги</div>
-                    <div class="header-popup__nav-item">Цены</div>
-                    <div class="header-popup__nav-item">Кейсы</div>
-                    <div class="header-popup__nav-item">Отраслевые решения</div>
-                    <div class="header-popup__nav-item">Отзывы</div>
-                    <div class="header-popup__nav-item">Контакты</div>
+                    <div href="#about" class="header-popup__nav-item">О компании</div>
+                    <div href="#services" class="header-popup__nav-item">Услуги</div>
+                    <div href="#prices" class="header-popup__nav-item">Цены</div>
+                    <div href="#cases" class="header-popup__nav-item">Кейсы</div>
+                    <div href="#industry-solutions" class="header-popup__nav-item">Отраслевые решения</div>
+                    <div href="#reviews" class="header-popup__nav-item">Отзывы</div>
+                    <router-link to="/blog" class="header-popup__nav-item">Блог</router-link>
+                    <div href="#contacts" class="header-popup__nav-item">Контакты</div>
                 </div>
-                <div class="header-popup__btn">Получить консультацию</div>
+                <div @click="showForm" class="header-popup__btn">Получить консультацию</div>
                 <div @click="togglePhoneVisibility" class="header-popup__phone">
                     <span v-if="!isPhoneVisible">+7 (499) 348 9...</span>
                     <span v-else>
@@ -42,20 +43,71 @@
             </nav>
         </div>
     </section>
+
+    <ItegoModalForm v-if="isOpen" @close="showForm"/>
 </template>
 
 <script>
+import ItegoModalForm from './ItegoModalForm.vue'
+
 export default {
     name: 'ItegoPopUp',
     data() {
         return {
             isPhoneVisible: false,
+            isOpen: false,
         }
+    },
+    components: {
+        ItegoModalForm,
     },
     methods: {
         togglePhoneVisibility() {
             this.isPhoneVisible = true;
-        }
+        },
+        showForm() {
+            this.isOpen = !this.isOpen;
+            if (this.isOpen) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+        },
+        handleScroll() {
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            if (currentScroll > this.lastScrollTop && currentScroll > 50) {
+                this.isHidden = true;
+            } else {
+                this.isHidden = false;
+            }
+
+            this.isFixed = currentScroll > 100;
+            this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+        },
+        scrollToSection(event) {
+            event.preventDefault();
+            const targetId = event.currentTarget.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                top: targetElement.offsetTop - document.querySelector('.header').offsetHeight,
+                behavior: 'smooth',
+                });
+            }
+        },
+        mounted() {
+            window.addEventListener('scroll', this.handleScroll);
+            document.querySelectorAll('.header__nav-item').forEach(item => {
+            item.addEventListener('click', this.scrollToSection);
+        });
+        },
+        beforeDestroy() {
+            window.removeEventListener('scroll', this.handleScroll);
+            document.querySelectorAll('.header__nav-item').forEach(item => {
+                item.removeEventListener('click', this.scrollToSection);
+            });
+        },
     }
 }
 </script>
@@ -92,6 +144,9 @@ export default {
     }
     &__nav-item {
         margin-top: 23px;
+        a {
+            color: black;
+        }
     }
     &__btn {
         cursor: pointer;

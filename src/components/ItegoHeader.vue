@@ -47,7 +47,7 @@
                     <a href="#cases" class="header__nav-item">Кейсы</a>
                     <a href="#industry-solutions" class="header__nav-item">Отраслевые решения</a>
                     <a href="#reviews" class="header__nav-item">Отзывы</a>
-                    <router-link to="/blog" class="header__nav-item">Блог</router-link>
+                    <!-- <router-link to="/blog" class="header__nav-item">Блог</router-link> -->
                     <a href="#contacts" class="header__nav-item">Контакты</a>
                 </div>
             </div>

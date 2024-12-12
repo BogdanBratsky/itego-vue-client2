@@ -220,10 +220,6 @@ export default {
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-form {
         z-index: 101;
         position: fixed;
@@ -245,8 +241,8 @@ export default {
             color: #ebebeb;
             position: absolute;
             top: 0;
-            right: -40px;
-            font-size: 30px;
+            right: 4px;
+            font-size: 20px;
             &:hover {
                 color: #fff7f7;
                 transition: 0.7s;
@@ -301,5 +297,9 @@ export default {
             margin-bottom: 40px;
         }
     }
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
 }
 </style>
