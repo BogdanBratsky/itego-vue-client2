@@ -9,16 +9,16 @@
                     &#10006;
                 </div>
             </header>
-            <nav class="header-popup__nav">
+            <nav class="header-popup__nav" @click="closePopUpOnLinkClick">
                 <div class="header-popup__nav-items">
-                    <div href="#about" class="header-popup__nav-item">О компании</div>
-                    <div href="#services" class="header-popup__nav-item">Услуги</div>
-                    <div href="#prices" class="header-popup__nav-item">Цены</div>
-                    <div href="#cases" class="header-popup__nav-item">Кейсы</div>
-                    <div href="#industry-solutions" class="header-popup__nav-item">Отраслевые решения</div>
-                    <div href="#reviews" class="header-popup__nav-item">Отзывы</div>
-                    <router-link to="/blog" class="header-popup__nav-item">Блог</router-link>
-                    <div href="#contacts" class="header-popup__nav-item">Контакты</div>
+                    <a href="#about" class="header-popup__nav-item">О компании</a>
+                    <a href="#services" class="header-popup__nav-item">Услуги</a>
+                    <a href="#prices" class="header-popup__nav-item">Цены</a>
+                    <a href="#cases" class="header-popup__nav-item">Кейсы</a>
+                    <a href="#industry-solutions" class="header-popup__nav-item">Отраслевые решения</a>
+                    <a href="#reviews" class="header-popup__nav-item">Отзывы</a>
+                    <!-- <router-link to="/blog" class="header-popup__nav-item">Блог</router-link> -->
+                    <a href="#contacts" class="header-popup__nav-item">Контакты</a>
                 </div>
                 <div @click="showForm" class="header-popup__btn">Получить консультацию</div>
                 <div @click="togglePhoneVisibility" class="header-popup__phone">
@@ -71,6 +71,21 @@ export default {
                 document.body.style.overflow = 'hidden';
             } else {
                 document.body.style.overflow = 'auto';
+            }
+        },
+        closePopUpOnLinkClick(event) {
+            const target = event.target;
+            if (target.tagName === 'A' && target.getAttribute('href').startsWith('#')) {
+                const targetId = target.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    event.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+                this.$emit('close');
             }
         },
         handleScroll() {
@@ -142,8 +157,14 @@ export default {
         border-radius: 100%;
         font-size: 11px;
     }
+    &__nav-items {
+        display: flex;
+        flex-direction: column;
+        
+    }
     &__nav-item {
         margin-top: 23px;
+        color: black;
         a {
             color: black;
         }
