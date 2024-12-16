@@ -102,6 +102,16 @@ export default {
                 });
 
                 if (response.status === 200) {
+                    // Отправка события в Метрику
+                    if (typeof ym === 'function') {
+                        ym(97757702, 'reachGoal', 'formSubmit'); // Замена YOUR_METRIKA_ID на ваш ID Метрики
+                    }
+
+                    // Ручное сообщение о просмотре страницы
+                    if (typeof ym === 'function') {
+                        ym(97757702, 'hit', '/thanks'); // Сообщаем Метрике о "загрузке" страницы
+                    }
+
                     this.$router.push('/thanks');
                     this.$emit('close');
                 } else {
