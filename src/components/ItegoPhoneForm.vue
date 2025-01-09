@@ -206,37 +206,15 @@ export default {
 @media screen and (max-width: 1024px) {
 }
 @media screen and (max-width: 768px) {
-}
-@media screen and (max-width: 425px) {
-}
-@media screen and (max-width: 320px) {
     .itego-form {
-        z-index: 101;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        display: flex;
-        flex-direction: column;
-        // padding: 0 40px;
-        background-color: white;
-        border: 1px solid #000000;
-        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25);
-        width: 200px;
-        border-radius: 2px;
-        // overflow-y: auto;
+        padding: 10px;
+        // max-width: 100%;
+        // width: 200px;
         &__cancel {
-            user-select: none;
-            cursor: pointer;
-            color: #ebebeb;
             position: absolute;
             top: 0;
-            right: -40px;
-            font-size: 30px;
-            &:hover {
-                color: #fff7f7;
-                transition: 0.7s;
-            }
+            right: 4px;
+            font-size: 20px;
         }
         &__title {
             align-self: center;
@@ -287,5 +265,10 @@ export default {
             margin-bottom: 40px;
         }
     }
+}
+@media screen and (max-width: 425px) {
+}
+@media screen and (max-width: 320px) {
+    
 }
 </style>
