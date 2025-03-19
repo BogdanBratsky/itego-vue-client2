@@ -32,7 +32,7 @@
                 </div>
                 <div class="itego-about__card">
                     <div class="itego-about__card-title">
-                        >10
+                        >12
                     </div>
                     специалистов готовы решать IT-задачи 24/7
                 </div>
@@ -44,7 +44,7 @@
                 </div>
                 <div class="itego-about__card">
                     <div class="itego-about__card-title">
-                        >750
+                        >950
                     </div>
                     единиц техники уже на нашем обслуживании
                 </div>

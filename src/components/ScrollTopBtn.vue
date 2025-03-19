@@ -5,7 +5,7 @@
       @click="scrollToTop"
       class="scroll-to-top-button"
     >
-        &#11014;
+        <img src="../assets/images/interface0/arrow-up.svg" alt="">
     </button>
 </template>
 
@@ -49,14 +49,17 @@ export default {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    padding: 10px 17px;
+    padding: 10px;
     background-color: #1565C0;
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
-    border: 1px solid white;
-    border-radius: 2px;
+    border: 1px solid #dce5ff;
+    border-radius: 7px;
     transition: opacity 0.3s ease;
     font-size: 20px;
     color: white;
+    img {
+      max-width: 28px;
+    }
 }
 
 @media screen and (max-width: 768px) {

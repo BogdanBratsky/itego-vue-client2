@@ -31,6 +31,13 @@
                 </div>
                 <div class="itego-outsourcing__cards">
                     <div class="first-column">
+                        <div class="first-column__gradient"></div>
+                        <div class="itego-outsourcing__card">Сервер тормозит</div>
+                        <div class="itego-outsourcing__card">Медленный интернет</div>
+                        <div class="itego-outsourcing__card">Забыли оплатить хостинг</div>
+                        <div class="itego-outsourcing__card">ЭЦП не работает</div>
+                        <div class="itego-outsourcing__card">Медленно работает 1с</div>
+                        <div class="itego-outsourcing__card">Не отправляются письма</div>
                         <div class="itego-outsourcing__card">Сис-админ куда-то делся</div>
                         <div class="itego-outsourcing__card">1С не загружается</div>
                         <div class="itego-outsourcing__card">Wi-Fi отваливается</div>
@@ -43,6 +50,12 @@
                         <div class="itego-outsourcing__card">Отчет не отправился</div>
                         <div class="itego-outsourcing__card">Телефония глючит</div>
                         <div class="itego-outsourcing__card">Принтер не печатает</div>
+                        <div class="itego-outsourcing__card">Наши данные в безопасности?</div>
+                        <div class="itego-outsourcing__card">Камеры не показывают</div>
+                        <div class="itego-outsourcing__card">Не открывается общая папка</div>
+                        <div class="itego-outsourcing__card">Забыли пароль от…</div>
+                        <div class="itego-outsourcing__card">Сайты не открываются</div>
+                        <div class="itego-outsourcing__card">А где наши пароли?</div>
                     </div>
                 </div>
             </div>
@@ -56,7 +69,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .itego-outsourcing-blocks {
     background-color: #C7E7EF;
     padding: 65px 0;
@@ -110,30 +123,44 @@ export default {
         align-items: center;
         justify-content: center;
         padding: 50px;
-        margin-bottom: 20px;
+        margin: 0 10px 20px 10px;
+        // margin-bottom: 20px;
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
         font-family: "Montserrat", sans-serif;
         font-weight: 500;
         font-size: 12px;
     }
     .first-column {
+        position: relative;
         margin-top: 20px;
+        height: 600px;
         margin-right: 21px;
-        .itego-outsourcing__card:last-child {
-            background: linear-gradient(to bottom,
-                white 0%,
-                white 40%,
-                #9FC9F8 80%,
-                #9FC9F8 100%
-            );
-        }
+        overflow-y: auto;
+        scrollbar-width: none;
+        // &__gradient {
+        //     margin: 0 auto;
+        //     position: sticky;
+        //     top: 0;
+        //     left: 0;
+        //     background: linear-gradient(to top,
+        //         white 0%,
+        //         white 88%,
+        //         #9FC9F8 95%,
+        //         #9FC9F8 100%
+        //     );
+        //     height: 10px;
+        //     width: calc(100% - 16px);
+        // }
     }
     .second-column {
-        .itego-outsourcing__card:first-child {
+        height: 600px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        &:first-child {
             background: linear-gradient(to top,
                 white 0%,
-                white 40%,
-                #9FC9F8 80%,
+                white 88%,
+                #9FC9F8 95%,
                 #9FC9F8 100%
             );
         }
