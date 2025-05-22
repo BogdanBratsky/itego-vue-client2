@@ -123,7 +123,7 @@ export default {
 <style lang="scss">
 .itego-staff {
     position: relative;
-    padding: 70px 0;
+    padding: 30px 0;
     background-color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -145,7 +145,45 @@ export default {
         align-self: flex-end;
         user-select: none;
         cursor: pointer;
-        float: right;
     }
+}
+</style>
+
+<style lang="scss">
+@media screen and (max-width: 768px) {
+    .itego-staff {
+        &__title {
+            font-size: 18px;
+        }
+    }
+}
+// @media screen and (max-width: 525px) {
+//     .itego-staff {
+//         &__title {
+//             font-size: 20px;
+//         }
+//     }
+// }
+@media screen and (max-width: 320px) {
+  .itego-staff {
+    &__title {
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    &__subtitle {
+      font-size: 10px;
+      margin-bottom: 28px;
+    }
+    &__next-btn {
+      margin-top: 50px;
+      align-self: flex-end;
+      user-select: none;
+      cursor: pointer;
+      font-size: 10px;
+      img {
+        width: 50%;
+      }
+    } 
+  }
 }
 </style>

@@ -69,3 +69,98 @@ export default {
     }
 }
 </style>
+
+<style lang="scss">
+@media screen and (max-width: 1024px) {
+ .itego-staff-person {
+  &__facts {
+        line-height: 30px;
+        li {
+            padding-left: 6px;
+            font-size: 16px;
+        }
+    }
+ }
+}
+
+@media screen and (max-width: 768px) {
+  .itego-staff-person {
+    display: flex;
+    flex-direction: column-reverse;
+    &__photo-section {
+      // width: 280px;
+      // height: 177px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+    }
+    &__info {
+      align-self: flex-start;
+    }
+    &__name {
+      font-size: 16px;
+      margin-top: 21px;
+    }
+    &__post {
+      font-size: 14px;
+    }
+    &__superpower {
+      font-size: 14px;
+      margin-bottom: 14px;
+    }
+    &__facts {
+        line-height: 30px;
+        li {
+            padding-left: 6px;
+            font-size: 14px;
+        }
+    }
+  }
+}
+
+@media screen and (max-width: 525px) {
+  .itego-staff-person {
+     &__photo-section {
+      width: 320px;
+      height: 320x;
+    }
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .itego-staff-person {
+    display: flex;
+    flex-direction: column-reverse;
+    &__photo-section {
+      width: 280px;
+      height: 177px;
+      box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+      img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+      }
+    }
+    &__info {
+      align-self: flex-start;
+    }
+    &__name {
+      font-size: 10px;
+      margin-top: 21px;
+    }
+    &__post, &__superpower {
+      font-size: 8px;
+    }
+    &__facts {
+        line-height: 20px;
+        li {
+            padding-left: 6px;
+            font-size: 8px;
+        }
+    }
+  }
+}
+</style>
