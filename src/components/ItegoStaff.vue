@@ -1,28 +1,37 @@
 <template>
-    <section class="itego-staff">
-        <div class="container">
-            <div class="itego-staff__title">
-                Собственный штат высококвалифицированных IT-специалистов
-            </div>
-            <div class="itego-staff__subtitle">
-                Сложные задачи решают уверенно и эффективно
-            </div>
-             <ItegoStaffPerson
-                :name="staffList[currentIndex].name"
-                :post="staffList[currentIndex].post"
-                :superpower="staffList[currentIndex].superpower"
-                :facts="staffList[currentIndex].facts"
-                :photo="staffList[currentIndex].photo"
-            />
+  <section class="itego-staff">
+    <div class="container">
+      <div class="itego-staff__title">
+        Собственный штат высококвалифицированных IT-специалистов
+      </div>
+      <div class="itego-staff__subtitle">
+        Сложные задачи решают уверенно и эффективно
+      </div>
+      <ItegoStaffPerson
+        :name="staffList[currentIndex].name"
+        :post="staffList[currentIndex].post"
+        :superpower="staffList[currentIndex].superpower"
+        :facts="staffList[currentIndex].facts"
+        :photo="staffList[currentIndex].photo"
+      />
 
-            <div class="itego-staff__next-btn" @click="nextPerson">
-                <div class="itego-staff__next-btn-img">
-                    <img src="../assets/images/interface0/arrow2.svg" alt="">
-                </div>
-                следующий специалист
-            </div>
+      <div class="itego-staff__controls">
+        <div class="itego-staff__btn" @click="prevPerson">
+          <div class="itego-staff__btn-img">
+            <img src="../assets/images/interface0/arrow2.svg" alt="" style="transform: rotate(180deg);" />
+          </div>
+          предыдущий специалист
         </div>
-    </section>
+
+        <div class="itego-staff__btn" @click="nextPerson">
+          <div class="itego-staff__btn-img">
+            <img src="../assets/images/interface0/arrow2.svg" alt="" />
+          </div>
+          следующий специалист
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -37,30 +46,6 @@ export default {
     return {
       currentIndex: 0,
       staffList: [
-        {
-          name: 'Антон',
-          post: 'Технический директор',
-          superpower: 'Где бы ни появился - там всё начинает работать…',
-          facts: [
-            '19 лет трудится в IT',
-            'Большой опыт в решении сложных задач',
-            'С детства хотел работать в IT-сфере',
-            'Увлекается плаванием и боксом'
-          ],
-          photo: require('../assets/images/staff/5.jpg')
-        },
-        {
-          name: 'Владислав',
-          post: 'Специалист технической поддержки',
-          superpower: 'Всё записывает',
-          facts: [
-            'КМС по настольному теннису',
-            'Знает несколько иностранных языков',
-            'Увлекается программированием',
-            'Любит путешествовать',
-          ],
-          photo: require('../assets/images/staff/2.jpg')
-        },
         {
           name: 'Алексей',
           post: 'Программист 1с',
@@ -98,6 +83,30 @@ export default {
           photo: require('../assets/images/staff/1.jpg')
         },
         {
+          name: 'Антон',
+          post: 'Технический директор',
+          superpower: 'Где бы ни появился - там всё начинает работать…',
+          facts: [
+            '19 лет трудится в IT',
+            'Большой опыт в решении сложных задач',
+            'С детства хотел работать в IT-сфере',
+            'Увлекается плаванием и боксом'
+          ],
+          photo: require('../assets/images/staff/5.jpg')
+        },
+        {
+          name: 'Владислав',
+          post: 'Специалист технической поддержки',
+          superpower: 'Всё записывает',
+          facts: [
+            'КМС по настольному теннису',
+            'Знает несколько иностранных языков',
+            'Увлекается программированием',
+            'Любит путешествовать',
+          ],
+          photo: require('../assets/images/staff/2.jpg')
+        },
+        {
           name: 'Виталий',
           post: 'Специалист технической поддержки',
           superpower: '',
@@ -115,75 +124,96 @@ export default {
   methods: {
     nextPerson() {
       this.currentIndex = (this.currentIndex + 1) % this.staffList.length;
+    },
+    prevPerson() {
+      this.currentIndex =
+        (this.currentIndex - 1 + this.staffList.length) % this.staffList.length;
     }
   }
-}
+};
 </script>
 
 <style lang="scss">
 .itego-staff {
-    position: relative;
-    padding: 30px 0;
-    background-color: #ffffff;
+  position: relative;
+  padding: 30px 0;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 45px;
+    color: #1565C0;
+    margin-bottom: 15px;
+  }
+
+  &__subtitle {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    margin-bottom: 41px;
+  }
+
+  &__controls {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  &__btn {
+    user-select: none;
+    cursor: pointer;
     display: flex;
     flex-direction: column;
-    &__title {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 700;
-        font-size: 45px;
-        color: #1565C0;
-        margin-bottom: 15px;
-    }
-    &__subtitle {
-        font-family: "Montserrat", sans-serif;
-        font-weight: 400;
-        font-size: 18px;
-        margin-bottom: 41px;
-    }
-    &__next-btn {
-        margin-top: 50px;
-        align-self: flex-end;
-        user-select: none;
-        cursor: pointer;
-    }
+    align-items: center;
+    gap: 10px;
+    font-family: "Montserrat", sans-serif;
+    font-size: 16px;
+  }
+
+  &__btn-img img {
+    // width: 100px;
+    // height: 54px;
+  }
 }
 </style>
 
 <style lang="scss">
 @media screen and (max-width: 768px) {
-    .itego-staff {
-        &__title {
-            font-size: 18px;
-        }
+  .itego-staff {
+    &__title {
+      font-size: 18px;
     }
+  }
 }
-// @media screen and (max-width: 525px) {
-//     .itego-staff {
-//         &__title {
-//             font-size: 20px;
-//         }
-//     }
-// }
+
 @media screen and (max-width: 320px) {
   .itego-staff {
     &__title {
       font-size: 18px;
       margin-bottom: 16px;
     }
+
     &__subtitle {
       font-size: 10px;
       margin-bottom: 28px;
     }
-    &__next-btn {
-      margin-top: 50px;
-      align-self: flex-end;
-      user-select: none;
-      cursor: pointer;
-      font-size: 10px;
-      img {
-        width: 50%;
-      }
-    } 
+
+    &__controls {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &__btn {
+      font-size: 8px;
+    }
+
+    &__btn-img img {
+      width: 135px;
+    }
   }
 }
 </style>
