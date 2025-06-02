@@ -21,5 +21,9 @@ export default {
 .container {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+    width: 100%;
 }
 </style>
