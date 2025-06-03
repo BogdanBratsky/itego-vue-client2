@@ -7,6 +7,7 @@
       <div class="itego-staff__subtitle">
         Сложные задачи решают уверенно и эффективно
       </div>
+
       <ItegoStaffPerson
         :name="staffList[currentIndex].name"
         :post="staffList[currentIndex].post"
@@ -16,19 +17,26 @@
       />
 
       <div class="itego-staff__controls">
-        <div class="itego-staff__btn" @click="prevPerson">
-          <div class="itego-staff__btn-img">
-            <img src="../assets/images/interface0/arrow2.svg" alt="" style="transform: rotate(180deg);" />
-          </div>
-          предыдущий специалист
+        <button class="itego-staff__circle-btn" @click="prevPerson">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        <div class="itego-staff__dots">
+          <span
+            v-for="(person, index) in staffList"
+            :key="index"
+            :class="['itego-staff__dot', { active: index === currentIndex }]"
+            @click="currentIndex = index"
+          ></span>
         </div>
 
-        <div class="itego-staff__btn" @click="nextPerson">
-          <div class="itego-staff__btn-img">
-            <img src="../assets/images/interface0/arrow2.svg" alt="" />
-          </div>
-          следующий специалист
-        </div>
+        <button class="itego-staff__circle-btn" @click="nextPerson">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
     </div>
   </section>
@@ -39,22 +47,18 @@ import ItegoStaffPerson from './ItegoStaffPerson.vue';
 
 export default {
   name: 'ItegoStaff',
-  components: {
-    ItegoStaffPerson
-  },
+  components: { ItegoStaffPerson },
   data() {
     return {
       currentIndex: 0,
+      touchStartX: 0,
+      touchEndX: 0,
       staffList: [
         {
           name: 'Алексей',
           post: 'Программист 1с',
           superpower: 'Напишет код любой сложности и он будет рабочим',
-          facts: [
-            '15 лет улучшает код в 1с',
-            'Работает по профессии',
-            'Сначала думает, потом делает :)',
-          ],
+          facts: ['15 лет улучшает код в 1с', 'Работает по профессии', 'Сначала думает, потом делает :)'],
           photo: require('../assets/images/staff/3.jpg')
         },
         {
@@ -65,7 +69,7 @@ export default {
             'С 7 лет за компами',
             'В узких кругах известен как личный ремонтник',
             'С 5 лет изучает Английский язык',
-            'Увлекается компьютерами, сетями и программированием',
+            'Увлекается компьютерами, сетями и программированием'
           ],
           photo: require('../assets/images/staff/4.jpg')
         },
@@ -102,7 +106,7 @@ export default {
             'КМС по настольному теннису',
             'Знает несколько иностранных языков',
             'Увлекается программированием',
-            'Любит путешествовать',
+            'Любит путешествовать'
           ],
           photo: require('../assets/images/staff/2.jpg')
         },
@@ -114,10 +118,10 @@ export default {
             '10 лет решает проблемы с ПК',
             'Знает сети, как свои пальцы',
             'СКУД? Камеры? СКС? Легко!',
-            'Завтра весь день не за ПК',
+            'Завтра весь день не за ПК'
           ],
           photo: require('../assets/images/staff/6.jpg')
-        },
+        }
       ]
     };
   },
@@ -126,20 +130,38 @@ export default {
       this.currentIndex = (this.currentIndex + 1) % this.staffList.length;
     },
     prevPerson() {
-      this.currentIndex =
-        (this.currentIndex - 1 + this.staffList.length) % this.staffList.length;
+      this.currentIndex = (this.currentIndex - 1 + this.staffList.length) % this.staffList.length;
+    },
+    onTouchStart(e) {
+      this.touchStartX = e.changedTouches[0].screenX;
+    },
+    onTouchEnd(e) {
+      this.touchEndX = e.changedTouches[0].screenX;
+      this.handleSwipe();
+    },
+    handleSwipe() {
+      const diff = this.touchEndX - this.touchStartX;
+      if (Math.abs(diff) > 50) {
+        diff < 0 ? this.nextPerson() : this.prevPerson();
+      }
     }
+  },
+  mounted() {
+    window.addEventListener('touchstart', this.onTouchStart, { passive: true });
+    window.addEventListener('touchend', this.onTouchEnd, { passive: true });
+  },
+  beforeDestroy() {
+    window.removeEventListener('touchstart', this.onTouchStart);
+    window.removeEventListener('touchend', this.onTouchEnd);
   }
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .itego-staff {
-  position: relative;
   padding: 30px 0;
   background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
+  text-align: center;
 
   &__title {
     font-family: "Montserrat", sans-serif;
@@ -157,62 +179,73 @@ export default {
   }
 
   &__controls {
-    margin-top: 50px;
+    margin-top: 40px;
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-  }
-
-  &__btn {
-    user-select: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 10px;
-    font-family: "Montserrat", sans-serif;
-    font-size: 16px;
+    gap: 30px;
   }
 
-  &__btn-img img {
-    // width: 100px;
-    // height: 54px;
+  &__circle-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid #1565C0;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #1565C0;
+      svg {
+        stroke: white;
+      }
+    }
+
+    svg {
+      stroke: #1565C0;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    background: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    &.active {
+      background: #1565C0;
+    }
   }
 }
-</style>
 
-<style lang="scss">
 @media screen and (max-width: 768px) {
   .itego-staff {
     &__title {
       font-size: 18px;
     }
+    &__subtitle {
+      font-size: 14px;
+    }
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 425px) {
   .itego-staff {
-    &__title {
-      font-size: 18px;
-      margin-bottom: 16px;
+    &__circle-btn {
+      width: 36px;
+      height: 36px;
     }
-
     &__subtitle {
-      font-size: 10px;
-      margin-bottom: 28px;
-    }
-
-    &__controls {
-      flex-direction: row;
-      justify-content: space-between;
-    }
-
-    &__btn {
-      font-size: 8px;
-    }
-
-    &__btn-img img {
-      width: 135px;
+      font-size: 12px;
     }
   }
 }

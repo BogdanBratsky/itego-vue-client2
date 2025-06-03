@@ -1,37 +1,39 @@
 <template>
-    <section id="about" class="itego-outsourcing-blocks">
-      <div class="container">
-        <nav class="itego-outsourcing-blocks__items">
-          <div class="itego-outsourcing-blocks__item">ИТ-обслуживание</div>
-          <div class="itego-outsourcing-blocks__item">Аренда серверов</div>
-          <div class="itego-outsourcing-blocks__item">Поддержка 1с</div>
-          <div class="itego-outsourcing-blocks__item">Резервное копирование данных</div>
-          <div class="itego-outsourcing-blocks__item">ИТ-аутсорсинг</div>
-        </nav>
+  <section id="about" class="itego-outsourcing-blocks">
+    <div class="container">
+      <nav class="itego-outsourcing-blocks__items">
+        <div class="itego-outsourcing-blocks__item">ИТ-обслуживание</div>
+        <div class="itego-outsourcing-blocks__item">Аренда серверов</div>
+        <div class="itego-outsourcing-blocks__item">Поддержка 1с</div>
+        <div class="itego-outsourcing-blocks__item">Резервное копирование данных</div>
+        <div class="itego-outsourcing-blocks__item">ИТ-аутсорсинг</div>
+      </nav>
+    </div>
+  </section>
+
+  <section class="itego-outsourcing">
+    <div class="container">
+      <div class="itego-outsourcing__title">
+        Когда нужен IT-аутсорсинг
       </div>
-    </section>
-  
-    <section class="itego-outsourcing">
-      <div class="container">
-        <div class="itego-outsourcing__title">
-          Когда нужен IT-аутсорсинг
+      <div class="itego-outsourcing__wrap">
+        <div class="itego-outsourcing__list">
+          <ul>
+            <li>Не хватает квалифицированных сотрудников внутри компании</li>
+            <li>Персонал часто жалуется на плохую работу техники и ПО, а системный администратор не справляется</li>
+            <li>Ограничен бюджет на найм и содержание компетентного IT-отдела</li>
+            <li>Отсутствует возможность быстрого реагирования на изменения в технологиях</li>
+            <li>Нет времени и ресурсов на постоянный контроль качества работы IT-отдела и его оптимизацию</li>
+            <li>Возникли сложности с масштабированием IT-инфраструктуры</li>
+            <li>У сотрудников не хватает специализированных знаний в определенных областях IT</li>
+            <li>Повышение риска утечки конфиденциальной информации из-за несанкционированного доступа</li>
+            <li>Недостаточная защита от кибератак и вредоносного программного обеспечения</li>
+          </ul>
         </div>
-        <div class="itego-outsourcing__wrap">
-          <div class="itego-outsourcing__list">
-            <ul>
-              <li>Не хватает квалифицированных сотрудников внутри компании</li>
-              <li>Персонал часто жалуется на плохую работу техники и ПО, а системный администратор не справляется</li>
-              <li>Ограничен бюджет на найм и содержание компетентного IT-отдела</li>
-              <li>Отсутствует возможность быстрого реагирования на изменения в технологиях</li>
-              <li>Нет времени и ресурсов на постоянный контроль качества работы IT-отдела и его оптимизацию</li>
-              <li>Возникли сложности с масштабированием IT-инфраструктуры</li>
-              <li>У сотрудников не хватает специализированных знаний в определенных областях IT</li>
-              <li>Повышение риска утечки конфиденциальной информации из-за несанкционированного доступа</li>
-              <li>Недостаточная защита от кибератак и вредоносного программного обеспечения</li>
-            </ul>
-          </div>
-  
-          <div class="itego-outsourcing__cards">
+
+        <div class="itego-outsourcing__cards" :class="{ 'mobile-mode': isMobile }">
+          <!-- Desktop: две анимированные колонки -->
+          <template v-if="!isMobile">
             <div class="first-column">
               <div class="scroll-wrapper scroll-down">
                 <div
@@ -43,7 +45,6 @@
                 </div>
               </div>
             </div>
-  
             <div class="second-column">
               <div class="scroll-wrapper scroll-up">
                 <div
@@ -55,12 +56,26 @@
                 </div>
               </div>
             </div>
-          </div>
+          </template>
+
+          <!-- Mobile: одна горизонтальная строка -->
+          <template v-else>
+            <div class="scroll-wrapper horizontal-scroll">
+              <div
+                class="itego-outsourcing__card"
+                v-for="(item, index) in mergedColumns"
+                :key="'merged-' + index"
+              >
+                {{ item }}
+              </div>
+            </div>
+          </template>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 </template>
-  
+
 <script>
 export default {
   name: 'ItegoOutsourcing',
@@ -91,7 +106,8 @@ export default {
         'Забыли пароль от…',
         'Сайты не открываются',
         'А где наши пароли?'
-      ]
+      ],
+      isMobile: false
     };
   },
   computed: {
@@ -100,6 +116,21 @@ export default {
     },
     repeatedSecondColumn() {
       return [...this.secondColumn, ...this.secondColumn];
+    },
+    mergedColumns() {
+      return [...this.firstColumn, ...this.secondColumn];
+    }
+  },
+  mounted() {
+    this.checkIsMobile();
+    window.addEventListener('resize', this.checkIsMobile);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.checkIsMobile);
+  },
+  methods: {
+    checkIsMobile() {
+      this.isMobile = window.innerWidth <= 768;
     }
   }
 };
@@ -111,7 +142,8 @@ export default {
   padding: 65px 0;
   &__items {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
     justify-content: space-between;
     color: white;
   }
@@ -121,6 +153,7 @@ export default {
     font-family: "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 14px;
+    text-align: center;
   }
 }
 
@@ -132,12 +165,15 @@ export default {
     font-size: 45px;
     color: #1565C0;
     margin-bottom: 61px;
+    text-align: center;
   }
 
   &__wrap {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
   }
 
   &__list {
@@ -149,26 +185,31 @@ export default {
       list-style: none;
       padding-left: 0;
     }
-    
     li {
       position: relative;
       padding-left: 25px;
       margin-bottom: 20px;
     }
-
     li::before {
       content: '●';
       position: absolute;
       left: 0;
       top: 0;
-      color: #1565C0; // если хочешь цветной маркер
+      color: #1565C0;
       line-height: 1.2;
     }
   }
 
   &__cards {
     display: flex;
+    flex-wrap: nowrap;
     gap: 20px;
+    justify-content: center;
+
+    &.mobile-mode {
+      overflow-x: auto;
+      padding: 10px;
+    }
   }
 
   &__card {
@@ -184,6 +225,8 @@ export default {
     background: white;
     min-width: 220px;
     text-align: center;
+    white-space: normal;
+    scroll-snap-align: start;
   }
 }
 
@@ -199,188 +242,83 @@ export default {
     flex-direction: column;
   }
 
-  // Градиент сверху
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100px;
-    background: linear-gradient(to bottom, white, transparent);
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  // Градиент снизу
+  &::before,
   &::after {
     content: '';
     position: absolute;
-    bottom: 0;
     left: 0;
     width: 100%;
     height: 100px;
-    background: linear-gradient(to top, white, transparent);
     pointer-events: none;
     z-index: 1;
+  }
+  &::before {
+    top: 0;
+    background: linear-gradient(to bottom, white, transparent);
+  }
+  &::after {
+    bottom: 0;
+    background: linear-gradient(to top, white, transparent);
   }
 }
 
 .scroll-down {
   animation: scrollDown 25s linear infinite;
 }
-
 .scroll-up {
   animation: scrollUp 25s linear infinite;
 }
 
 @keyframes scrollDown {
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(-50%);
-  }
+  0% { transform: translateY(0%); }
+  100% { transform: translateY(-50%); }
 }
-
 @keyframes scrollUp {
-  0% {
-    transform: translateY(-50%);
-  }
-  100% {
-    transform: translateY(0%);
+  0% { transform: translateY(-50%); }
+  100% { transform: translateY(0%); }
+}
+
+.horizontal-scroll {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 16px;
+
+  &::-webkit-scrollbar {
+    display: none;
   }
 }
 
-/* 👇 Адаптив */
 @media screen and (max-width: 1090px) {
-  .itego-outsourcing-blocks__item {
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 880px) {
-  .itego-outsourcing-blocks__item {
-    padding: 12px 18px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .itego-outsourcing__card {
-    padding: 30px;
-  }
-
-  .first-column {
-    margin: 0;
-    .itego-outsourcing__card:last-child {
-      background: white;
-    }
-  }
-
-  .second-column {
-    .itego-outsourcing__card:first-child {
-      background: white;
-    }
-  }
-
-  .itego-outsourcing__cards {
-    flex-direction: column;
-  }
-}
-
-@media screen and (max-width: 768px) {
-  .itego-outsourcing {
-    padding: 30px 0;
-    margin: 0;
-
-    &__title {
-      font-size: 30px;
-    }
-
-    &__wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    &__list {
-      font-size: 16px;
-    }
-
-    &__cards {
-      flex-direction: row;
-      width: 100%;
-      overflow-x: scroll;
-    }
-
-    &__card {
-      white-space: nowrap;
-      text-align: center;
-      font-size: 10px;
-      padding: 8px 12px;
-      margin-right: 5px;
-    }
-
-    .first-column,
-    .second-column {
-      display: flex;
-      height: auto;
-      width: auto;
-      animation: none;
-      overflow: visible;
-    }
-
-    .scroll-wrapper {
-      flex-direction: row;
-      animation: none;
-    }
-  }
-
   .itego-outsourcing-blocks {
-    padding: 0 0 10px;
-
     &__items {
-      flex-direction: column;
-      align-items: stretch;
-    }
-
-    &__item {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 100%;
-      margin-bottom: 10px;
-      padding: 22px 30px;
-      font-size: 10px;
-      text-align: center;
+    }
+    &__item {
+      width: 100%;
     }
   }
 }
 
 @media screen and (max-width: 425px) {
-  .itego-outsourcing {
-    &__title {
-      font-size: 20px;
-    }
-
-    &__list {
-      font-size: 14px;
-    }
+  .itego-outsourcing__title {
+    font-size: 20px;
+  }
+  .itego-outsourcing__list {
+    font-size: 14px;
   }
 }
 
 @media screen and (max-width: 320px) {
-  .itego-outsourcing {
-    &__title {
-      font-weight: 700;
-      font-size: 20px;
-      color: #1565C0;
-      margin-bottom: 12px;
-    }
-
-    &__list {
-      font-size: 13px;
-    }
+  .itego-outsourcing__list {
+    font-size: 13px;
+  }
+  .itego-outsourcing__card {
+    font-size: 12px;
+    padding: 16px;
+    min-width: 160px;
   }
 }
 </style>

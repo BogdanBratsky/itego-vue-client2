@@ -57,7 +57,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -124,7 +124,7 @@ export default {
 }
 </style>
 
-<style lang="scss">
+<style lang="scss" scoped>
 @media screen and (max-width: 1024px) {
     .itego-banner {
         &__info {
