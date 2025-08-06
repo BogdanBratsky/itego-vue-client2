@@ -81,7 +81,7 @@
                     </div>
                     <div class="itego-footer__footer-other-bottom">
                         <span>&copy</span>
-                        Itego.pro, 2024. Все права защищены
+                        Itego.pro, 2025. Все права защищены
                     </div>
                 </div>
             </div>
