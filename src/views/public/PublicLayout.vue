@@ -19,7 +19,7 @@ export default {
         ItegoServices
     },
     mounted() {
-        document.title = "ITEGO";
+        document.title = "itego";
     }
 }
 </script>

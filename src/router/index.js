@@ -24,6 +24,7 @@ const routes = [
       {
         path: ':id',
         component: () => import('../components/ItegoPostDetails.vue'),
+        props: true
       },
     ]
   },
@@ -33,7 +34,7 @@ const routes = [
     children: [
       {
         path: ':id',
-        component: () => import('../views/public/CategoriesView.vue'),
+        component: () => import('../views/public/PostListView.vue'),
       },
     ]
   },

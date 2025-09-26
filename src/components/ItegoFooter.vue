@@ -80,8 +80,8 @@
                         <span>Условия обработки персональных данных</span>
                     </div>
                     <div class="itego-footer__footer-other-bottom">
-                        <span>&copy</span>
-                        Itego.pro, 2025. Все права защищены
+                        <span>&copy;</span>
+                        Itego.pro, {{ currentYear }}. Все права защищены
                     </div>
                 </div>
             </div>
@@ -103,7 +103,8 @@ export default {
             isPhoneVisible: false,
             isOpen: false,
             isOpen2: false,
-            isEmailVisible: false  // Новое свойство
+            isEmailVisible: false,
+            currentYear: new Date().getFullYear() // автоматическая дата
         }
     },
     components: {
@@ -119,26 +120,20 @@ export default {
         },
         showForm() {
             this.isOpen = !this.isOpen;
-            if (this.isOpen) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.body.style.overflow = this.isOpen ? 'hidden' : 'auto';
         },
         showPhoneForm() {
             this.isOpen2 = !this.isOpen2;
-            if (this.isOpen2) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = 'auto';
-            }
+            document.body.style.overflow = this.isOpen2 ? 'hidden' : 'auto';
         }
     }
 }
 </script>
 
+
 <style lang="scss">
 .itego-footer {
+    border-top: 1px solid #f1f1f1;
     &__footer-top {
         background-color: white;
         padding: 70px 0;
@@ -250,7 +245,7 @@ export default {
         &-bottom {
             display: flex;
             align-items: center;
-            font-size: 8px;
+            font-size: 10px;
             span {
                 font-size: 18px;
                 margin-right: 5px;

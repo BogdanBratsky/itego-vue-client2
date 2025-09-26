@@ -1,67 +1,132 @@
 <template>
-    <div class="posts-list">
-        <header class="posts-list__header">
-            Все записи
-        </header>
-        <ItegoPost
-            v-for="article in articles"
-            :key="article.id"
-            :article="article"
-        />
-        <ItegoLoadMore @click="loadArticles" v-if="count > 20 && count != articles.length"/>
-    </div>
+  <div class="posts-list">
+    <header class="posts-list__header">{{ headerTitle }}</header>
+
+    <div v-if="loading">Загрузка…</div>
+    <div v-else-if="error" style="color:#c00">{{ error }}</div>
+
+    <ItegoPost
+      v-else
+      v-for="article in articles"
+      :key="article.id"
+      :article="article"
+    />
+
+    <ItegoLoadMore
+      v-if="!loading && !error && totalCount > articles.length"
+      @click="loadArticles"
+    />
+  </div>
 </template>
 
 <script>
-import { serverAddres } from '../../../config.js';
-import axios from 'axios';
+import PocketBase from 'pocketbase'
 import ItegoPost from '../../components/ItegoPost.vue'
 import ItegoLoadMore from '../../components/ItegoLoadMore.vue'
 
-export default {
-    data() {
-        return {
-            articles: [],
-            count: null,
-            page: 1,
-            limit: 20
-        }
-    },
-    components: {
-        ItegoPost,
-        ItegoLoadMore
-    },
-    methods: {
-        async loadArticles() {
-            await axios
-                .get(`${serverAddres}/articles?page=${this.page}&limit=${this.limit}`)
-                .then(response => {
-                    this.articles = [...this.articles, ...response.data.articles];
-                    this.count = response.data.totalCount
+const PB_URL = process.env.VUE_APP_PB_URL || 'https://pb.itego.pro'
+const pb = new PocketBase(PB_URL)
 
-                    this.page++;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        }
-    },
-    mounted() {
-        this.loadArticles()
-        document.title = 'Блог'
+export default {
+  name: 'PostListView',
+  components: { ItegoPost, ItegoLoadMore },
+
+  data() {
+    return {
+      articles: [],
+      totalCount: 0,
+      page: 1,
+      limit: 20,
+      loading: false,
+      error: '',
+      categoryName: ''
     }
+  },
+
+  computed: {
+    categoryId() {
+      return this.$route.params.id || null
+    },
+    headerTitle() {
+      return this.categoryId ? this.categoryName || 'Категория' : 'Все записи'
+    }
+  },
+
+  methods: {
+    async loadArticles() {
+      this.loading = true
+      try {
+        const options = {
+          sort: '-created',
+          expand: 'category',
+          fields: 'id,title,text,created,category,expand.category.name'
+        }
+
+        if (this.categoryId) {
+          options.filter = `category="${this.categoryId}"`
+        }
+
+        const res = await pb.collection('articles').getList(this.page, this.limit, options)
+
+        const mapped = res.items.map(r => ({
+          id: r.id,
+          title: r.title ?? '',
+          createdAt: r.created,
+          text: r.text ?? '',
+          category: r.category,
+          categoryName: r.expand?.category?.name || ''
+        }))
+
+        if (this.page === 1) {
+          if (this.categoryId && mapped.length) {
+            this.categoryName = mapped[0].categoryName
+            document.title = this.categoryName
+          } else {
+            document.title = 'Блог'
+          }
+        }
+
+        this.articles = [...this.articles, ...mapped]
+        this.totalCount = res.totalItems
+        this.page++
+      } catch (e) {
+        console.error('[PostListView] loadArticles error:', e)
+        this.error = 'Не удалось загрузить статьи'
+      } finally {
+        this.loading = false
+      }
+    },
+
+    resetAndLoad() {
+      this.articles = []
+      this.page = 1
+      this.totalCount = 0
+      this.categoryName = ''
+      this.loadArticles()
+    }
+  },
+
+  mounted() {
+    this.resetAndLoad()
+  },
+
+  watch: {
+    '$route.params.id'() {
+      this.resetAndLoad()
+    }
+  }
 }
 </script>
 
 <style lang="scss">
 .posts-list {
-    &__header {
-        font-size: 25px;
-        background-color: white;
-        box-shadow: 0 0 12px #dfdfdf;
-        border-radius: 8px;
-        margin-bottom: 12px;
-        padding: 12px 25px;
-    }
+  &__header {
+    font-size: 25px;
+    background-color: white;
+    box-shadow: 0 0 12px #dfdfdf;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 12px 25px;
+  }
 }
 </style>
