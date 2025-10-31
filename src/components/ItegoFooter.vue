@@ -55,6 +55,9 @@
                             <span>Стоимость ИТ аутсорсинга</span>
                         </div>
                     </div>
+                    <div class="itego-footer__footer-bottom-kaspersky">
+                        <img id="kaspersky" src="../assets/images/Kaspersky.png" alt="">
+                    </div>
                     <div class="itego-footer__footer-bottom-contacts">
                         <div class="itego-footer__footer-bottom-contacts-images">
                             <a href="https://vk.com/itegopro" target="_blank">
@@ -97,39 +100,38 @@ import ItegoModalForm from './ItegoModalForm.vue'
 import ItegoPhoneForm from './ItegoPhoneForm.vue'
 
 export default {
-    name: 'ItegoFooter',
-    data() {
-        return {
-            isPhoneVisible: false,
-            isOpen: false,
-            isOpen2: false,
-            isEmailVisible: false,
-            currentYear: new Date().getFullYear() // автоматическая дата
-        }
-    },
-    components: {
-        ItegoModalForm,
-        ItegoPhoneForm
-    },
-    methods: {
-        togglePhoneVisibility() {
-            this.isPhoneVisible = true;
-        },
-        toggleEmailVisibility() {
-            this.isEmailVisible = true;
-        },
-        showForm() {
-            this.isOpen = !this.isOpen;
-            document.body.style.overflow = this.isOpen ? 'hidden' : 'auto';
-        },
-        showPhoneForm() {
-            this.isOpen2 = !this.isOpen2;
-            document.body.style.overflow = this.isOpen2 ? 'hidden' : 'auto';
-        }
+  name: 'ItegoFooter',
+  data () {
+    return {
+      isPhoneVisible: false,
+      isOpen: false,
+      isOpen2: false,
+      isEmailVisible: false,
+      currentYear: new Date().getFullYear() // автоматическая дата
     }
+  },
+  components: {
+    ItegoModalForm,
+    ItegoPhoneForm
+  },
+  methods: {
+    togglePhoneVisibility () {
+      this.isPhoneVisible = true
+    },
+    toggleEmailVisibility () {
+      this.isEmailVisible = true
+    },
+    showForm () {
+      this.isOpen = !this.isOpen
+      document.body.style.overflow = this.isOpen ? 'hidden' : 'auto'
+    },
+    showPhoneForm () {
+      this.isOpen2 = !this.isOpen2
+      document.body.style.overflow = this.isOpen2 ? 'hidden' : 'auto'
+    }
+  }
 }
 </script>
-
 
 <style lang="scss">
 .itego-footer {
@@ -201,6 +203,10 @@ export default {
                 cursor: pointer;
                 margin-bottom: 12px;
             }
+        }
+        &-kaspersky #kaspersky {
+            max-height: 100px;
+            max-width: 200px;
         }
         &-contacts {
             img:not(:last-child) {
