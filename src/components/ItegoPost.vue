@@ -23,7 +23,6 @@ import PocketBase from 'pocketbase'
 
 const pb = new PocketBase(process.env.VUE_APP_PB_URL || 'https://pb.itego.pro')
 
-// Отключаем автоотмену запросов (иначе ловим ошибку AbortError)
 pb.autoCancellation(false)
 
 export default {
@@ -37,12 +36,8 @@ export default {
     }
   },
   async mounted() {
-    console.log("Категория: ", this.article.category)
-    console.log("typeof category:", typeof this.article.category)
-
     try {
       const res = await pb.collection('categories').getOne(this.article.category)
-      console.log("Категория найдена:", res)
       this.categoryTitle = res.name
     } catch (err) {
       console.warn('[ItegoPost] ❌ Не удалось получить категорию:', err)
@@ -68,12 +63,12 @@ export default {
 
 .post-card {
   width: 900px;
-  padding: 25px;
-  background-color: white;
-  box-shadow: 0 0 12px #dfdfdf;
+  padding: 25px 0;
+  // background-color: white;
+  // box-shadow: 0 0 12px #dfdfdf;
   margin-bottom: 10px;
-  border-radius: 8px;
   color: #3b3b3b;
+  border-top: 1px solid #eeeeee;
 
   &:active {
     box-shadow: 0 0 15px #dfdfdf;
@@ -81,8 +76,9 @@ export default {
 
   &__title {
     color: black;
-    font-size: 34px;
-    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 500;
+    padding-bottom: 22px;
     &:hover {
       color: $btnHoverCol;
       transition: 0.2s;
@@ -95,8 +91,8 @@ export default {
   }
 
   &__info {
-    padding-top: 20px;
-    border-top: 1px solid #eeeeee;
+    // padding: 12px 0;
+    // border-top: 1px solid #eeeeee;
     display: flex;
     align-items: center;
   }
@@ -105,10 +101,10 @@ export default {
     cursor: pointer;
     color: black;
     border: 1px solid #e7e7e7;
-    box-shadow: 0 0 10px #e4e4e4;
+    box-shadow: 0 0 4px #f3f3f3;
     border-radius: 4px;
     padding: 4px 8px;
-    margin-right: 20px;
+    margin-right: 10px;
     font-size: 15px;
   }
 

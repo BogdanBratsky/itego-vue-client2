@@ -3,8 +3,8 @@
     <ItegoHeaderBlog />
     <div class="container">
       <div class="wrapper">
-        <router-view></router-view>
         <ItegoCategoryList />
+        <router-view></router-view>
       </div>
     </div>
     <ItegoFooter />

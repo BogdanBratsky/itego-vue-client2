@@ -39,50 +39,50 @@ const routes = [
     ]
   },
   // маршруты для администраторской части сайта
-  {
-    path: '/admin',
-    component: () => import('../views/admin/AdminLayout.vue'),
-    meta: { requiresAuth: true },
-    children: [
-      {
-        path: '',
-        component: () => import('../views/admin/AdminPanelView.vue'),
-        children: [
-          {
-            path: 'articles',
-            component: () => import('../views/admin/AdminPostView.vue'),
-            children: [
-              {
-                path: '',
-                component: () => import('../views/admin/PostListView.vue'),
-              },
-              {
-                path: 'create',
-                component: () => import('../components/admin/AdminCreateArticle.vue')
-              },
-              {
-                path: 'edit/:id',
-                component: () => import('../components/admin/AdminEditArticle.vue')
-              }
-            ]
-          },
-          {
-            path: 'categories',
-            component: () => import('../views/admin/CategoryListView.vue')
-          },
-          {
-            path: 'users',
-            component: () => import('../views/admin/UserListView.vue')
-          }
-        ]
-      },
-      {
-        path: 'login',
-        component: () => import('../views/admin/LoginView.vue'),
-        meta: { requiresGuest: true }
-      }
-    ]
-  },
+  // {
+  //   path: '/admin',
+  //   component: () => import('../views/admin/AdminLayout.vue'),
+  //   meta: { requiresAuth: true },
+  //   children: [
+  //     {
+  //       path: '',
+  //       component: () => import('../views/admin/AdminPanelView.vue'),
+  //       children: [
+  //         {
+  //           path: 'articles',
+  //           component: () => import('../views/admin/AdminPostView.vue'),
+  //           children: [
+  //             {
+  //               path: '',
+  //               component: () => import('../views/admin/PostListView.vue'),
+  //             },
+  //             {
+  //               path: 'create',
+  //               component: () => import('../components/admin/AdminCreateArticle.vue')
+  //             },
+  //             {
+  //               path: 'edit/:id',
+  //               component: () => import('../components/admin/AdminEditArticle.vue')
+  //             }
+  //           ]
+  //         },
+  //         {
+  //           path: 'categories',
+  //           component: () => import('../views/admin/CategoryListView.vue')
+  //         },
+  //         {
+  //           path: 'users',
+  //           component: () => import('../views/admin/UserListView.vue')
+  //         }
+  //       ]
+  //     },
+  //     {
+  //       path: 'login',
+  //       component: () => import('../views/admin/LoginView.vue'),
+  //       meta: { requiresGuest: true }
+  //     }
+  //   ]
+  // },
   {
     path: '/:notFound(.*)',
     component: () => import('../views/404.vue')

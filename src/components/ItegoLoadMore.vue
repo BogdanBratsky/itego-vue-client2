@@ -20,9 +20,9 @@ export default {
     width: 100%;
     padding: 12px;
     background-color: white;
-    box-shadow: 0 0 12px #dfdfdf;
+    border: 1px solid #e2e2e2;
+    border-radius: 5px;
     margin-bottom: 12px;
-    border-radius: 8px;
     font-size: 20px;
     &:hover {
         background-color: #f0f0f0;

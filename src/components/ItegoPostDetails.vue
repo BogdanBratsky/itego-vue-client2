@@ -78,15 +78,34 @@ export default {
         content: a.content || a.text || a.body || '',
         createdAt: a.createdAt || a.created || ''
       }
+    },
+    makeContentResponsive() {
+      this.$nextTick(() => {
+        const content = this.$el.querySelector('.itego-post__content');
+        if (!content) return;
+
+        const imgs = content.querySelectorAll('img');
+        imgs.forEach(img => {
+          img.removeAttribute('width');
+          img.removeAttribute('height');
+          img.removeAttribute('sizes');
+          img.removeAttribute('srcset');
+
+          img.style.width = '100%';
+          img.style.height = 'auto';
+          img.style.maxWidth = '100%';
+          img.style.display = 'block';
+          img.style.objectFit = 'contain';
+        });
+      });
     }
   },
   mounted() {
     if (this.article) {
-      this.initFromArticleProp()
+      this.initFromArticleProp();
+      this.makeContentResponsive();
     } else if (this.id) {
-      this.fetchArticleById(this.id)
-    } else {
-      this.error = 'Не передан id записи'
+      this.fetchArticleById(this.id).then(() => this.makeContentResponsive());
     }
   },
   watch: {
@@ -128,6 +147,7 @@ export default {
   font-size: 16px;
   line-height: 1.7;
   word-wrap: break-word;
+  overflow-wrap: break-word;
 }
 
 .itego-post__content h2,
@@ -155,14 +175,15 @@ export default {
 }
 
 .itego-post__content img {
-  max-width: 100% !important;
-  width: auto !important;
-  height: auto !important;
   display: block;
-  margin: 16px 0;
-  border-radius: 6px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 100%;
+  height: auto;
+  width: 100%;
   object-fit: contain;
+  margin: 16px 0;
+  /* border: 1px solid black; */
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
 }
 
 </style>

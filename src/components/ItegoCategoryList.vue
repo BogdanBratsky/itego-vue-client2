@@ -1,7 +1,7 @@
 <template>
   <div>
     <aside class="category-list">
-      <label class="category-list__title">Выбор категории</label>
+      <!-- <label class="category-list__title">Выбор категории</label> -->
 
       <router-link
         :to="`/blog`"
@@ -82,7 +82,7 @@ export default {
 .category-list {
   display: flex;
   flex-direction: column;
-  box-shadow: 0 0 12px #dfdfdf;
+  // box-shadow: 0 0 12px #dfdfdf;
   border-radius: 8px 8px 2px 2px;
 
   &__title {
@@ -101,14 +101,17 @@ export default {
     display: flex;
     align-items: center;
     font-size: 17px;
-    padding: 12px 18px;
+    padding: 12px 0;
+    border-radius: 9px;
     width: 260px;
-    color: gray;
+    color: #808080;
+    font-weight: 500;
 
     &:hover {
       text-decoration: underline;
-      background-color: #f0f0f0;
-      transition: 0.2s;
+      padding: 12px 18px;
+      background-color: #f0f7ff;
+      transition: 0.4s;
     }
   }
 

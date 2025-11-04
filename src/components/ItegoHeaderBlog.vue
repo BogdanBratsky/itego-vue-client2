@@ -4,7 +4,7 @@
             <nav class="header__nav">
                 <div class="header__logo-block">
                     <img id="logo" src="../assets/images/contacts/logo.svg" alt="">
-                    <span class="header__admin-panel">БЛОГ</span>
+                    <!-- <span class="header__admin-panel">БЛОГ</span> -->
                 </div>
                 <router-link to="/">
                     <div class="header__mainpage-btn">На главную</div>
@@ -90,7 +90,7 @@ export default {
         width: 100%;
         z-index: 5;
         background-color: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        // box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         border-bottom: 1px solid #e2e2e2;
     }
 
@@ -112,7 +112,6 @@ export default {
         align-items: center;
     }
     #logo {
-        border-right: 2px solid #7e7e7e;
         padding-right: 6px;
         max-height: 32px;
         margin-right: 6px;
@@ -127,7 +126,7 @@ export default {
     &__mainpage-btn {
         border: 1px solid #e2e2e2;
         border-radius: 5px;
-        box-shadow: 0 0 10px #d8d8d8; 
+        // box-shadow: 0 0 3px #f1f1f1; 
         padding: 6px 10px;
         color: black;
     }

@@ -59,7 +59,7 @@ export default {
         const options = {
           sort: '-created',
           expand: 'category',
-          fields: 'id,title,text,created,category,expand.category.name'
+          fields: 'id,title,content,created,category,expand.category.name'
         }
 
         if (this.categoryId) {
@@ -72,7 +72,7 @@ export default {
           id: r.id,
           title: r.title ?? '',
           createdAt: r.created,
-          text: r.text ?? '',
+          content: r.content ?? '',
           category: r.category,
           categoryName: r.expand?.category?.name || ''
         }))
@@ -121,12 +121,10 @@ export default {
 <style lang="scss">
 .posts-list {
   &__header {
-    font-size: 25px;
-    background-color: white;
-    box-shadow: 0 0 12px #dfdfdf;
+    font-size: 34px;
+    font-weight: 600;
     border-radius: 8px;
     margin-bottom: 12px;
-    padding: 12px 25px;
   }
 }
 </style>
