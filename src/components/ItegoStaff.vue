@@ -14,13 +14,14 @@
 
       <ItegoStaffPerson
         v-else-if="staffList.length"
+        :key="currentPerson.id"
         :name="currentPerson.name"
         :post="currentPerson.post"
         :superpower="currentPerson.superpower"
         :facts="currentPerson.facts"
         :photo="currentPerson.photo"
       />
-
+      
       <div class="itego-staff__controls" v-if="!loading && !error && staffList.length">
         <button class="itego-staff__circle-btn" @click="prevPerson">
           <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
