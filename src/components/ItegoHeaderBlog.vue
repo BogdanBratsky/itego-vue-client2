@@ -112,8 +112,8 @@ export default {
         align-items: center;
     }
     #logo {
-        padding-right: 6px;
-        max-height: 32px;
+        // max-height: 32px;
+        max-width: 100px;
         margin-right: 6px;
     }
     &__admin-panel {
@@ -125,7 +125,7 @@ export default {
     }
     &__mainpage-btn {
         border: 1px solid #e2e2e2;
-        border-radius: 5px;
+        border-radius: 3px;
         // box-shadow: 0 0 3px #f1f1f1; 
         padding: 6px 10px;
         color: black;

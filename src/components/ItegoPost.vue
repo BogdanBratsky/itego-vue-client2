@@ -70,10 +70,6 @@ export default {
   color: #3b3b3b;
   border-top: 1px solid #eeeeee;
 
-  &:active {
-    box-shadow: 0 0 15px #dfdfdf;
-  }
-
   &__title {
     color: black;
     font-size: 24px;

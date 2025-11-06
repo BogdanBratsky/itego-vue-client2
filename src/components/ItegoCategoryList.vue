@@ -106,6 +106,7 @@ export default {
     width: 260px;
     color: #808080;
     font-weight: 500;
+    // text-decoration: underline;
 
     &:hover {
       text-decoration: underline;

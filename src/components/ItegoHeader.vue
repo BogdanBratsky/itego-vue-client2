@@ -161,7 +161,7 @@ export default {
     &__logo {
         cursor: pointer;
         img {
-            width: 106px;
+            max-width: 100px;
         }
     }
     &__blog {
