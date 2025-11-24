@@ -41,3 +41,20 @@ export default {
   justify-content: space-between;
 }
 </style>
+
+<style scoped>
+/* ====== Адаптив ====== */
+
+@media (max-width: 1024px) {
+  .wrapper {
+    gap: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;   /* категории сверху, контент ниже */
+  }
+}
+
+</style>

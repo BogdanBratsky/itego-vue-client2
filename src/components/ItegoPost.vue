@@ -114,3 +114,71 @@ export default {
   }
 }
 </style>
+
+<style scoped>
+/* ====== АДАПТИВ КАРТОЧКИ ПОСТА ====== */
+
+@media (max-width: 1024px) {
+  .post-card {
+    width: 100%;
+    padding: 22px 0;
+  }
+
+  .post-card__title {
+    font-size: 22px;
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .post-card {
+    padding: 20px 0;
+  }
+
+  .post-card__title {
+    font-size: 20px;
+    padding-bottom: 16px;
+  }
+
+  .post-card__info {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .post-card__category {
+    font-size: 14px;
+    padding: 3px 7px;
+  }
+
+  .post-card__date {
+    font-size: 14px;
+
+    img {
+      max-width: 12px;
+      margin-right: 6px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .post-card {
+    padding: 18px 0;
+  }
+
+  .post-card__title {
+    font-size: 18px;
+    padding-bottom: 14px;
+  }
+
+  .post-card__category {
+    font-size: 13px;
+    padding: 3px 6px;
+    margin-right: 6px;
+  }
+
+  .post-card__date {
+    font-size: 13px;
+  }
+}
+
+</style>

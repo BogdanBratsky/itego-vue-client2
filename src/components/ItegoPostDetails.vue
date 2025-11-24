@@ -187,3 +187,53 @@ export default {
 }
 
 </style>
+
+<style scoped>
+/* ====== АДАПТИВ ====== */
+
+@media (max-width: 1024px) {
+  .itego-post {
+    padding: 0 16px;
+  }
+
+  .itego-post__title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .itego-post__title {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  .itego-post__meta {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+
+  .itego-post__content {
+    font-size: 15px;
+    line-height: 1.65;
+  }
+
+  .itego-post__content img {
+    margin: 14px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .itego-post__title {
+    font-size: 22px;
+  }
+
+  .itego-post__content {
+    font-size: 14.5px;
+  }
+
+  .itego-post {
+    padding: 0 12px;
+  }
+}
+
+</style>

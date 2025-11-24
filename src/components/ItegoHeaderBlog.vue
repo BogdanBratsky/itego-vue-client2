@@ -243,3 +243,49 @@ export default {
     }
 }
 </style>
+
+<style scoped>
+/* ====== АДАПТИВ ====== */
+
+@media (max-width: 1024px) {
+    .header__mainpage-btn {
+        font-size: 14px;
+        padding: 5px 8px;
+    }
+
+    #logo {
+        max-width: 85px;
+    }
+}
+
+@media (max-width: 768px) {
+    .header__nav {
+        padding: 12px 0;
+    }
+
+    .header__mainpage-btn {
+        display: none; 
+    }
+
+    .header__burger {
+        display: block;
+        cursor: pointer;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    #logo {
+        max-width: 70px;
+    }
+
+    .header__nav {
+        padding: 10px 0;
+    }
+
+    .header--fixed {
+        border-bottom: 1px solid #eaeaea;
+    }
+}
+
+</style>

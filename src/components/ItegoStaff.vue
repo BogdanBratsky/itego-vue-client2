@@ -83,7 +83,7 @@ export default {
     async fetchEmployees() {
       try {
         const items = await pb.collection('employees').getFullList({
-          sort: 'created'
+          sort: 'order'
         })
         this.staffList = items.map((rec) => ({
           id: rec.id,
@@ -149,6 +149,7 @@ export default {
     font-size: 45px;
     color: #1565C0;
     margin-bottom: 15px;
+    // text-align: left;
   }
 
   &__subtitle {
